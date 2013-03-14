@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+    
+    <!-- Default Template -->
+    <definition name="default-template" template="/layout/default-template.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="page" value="" />
+    </definition>
+    
+    <!-- Home View of no-user-template -->
+    <definition name="home" extends="default-template">
+        <put-attribute name="title" value="Movstream" />
+        <put-attribute name="content" value="/views/public/home.jsp" />
+        <put-attribute name="page" value="home" />
+    </definition>
+    
+</tiles-definitions>
