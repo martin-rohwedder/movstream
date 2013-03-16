@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  *
  * @author Martin Rohwedder
- * @since 13-03-2013
+ * @since 16-03-2013
  * @version 1.0
  */
 @Controller
-public class HomeController {
+public class AuthenticationController {
 
-    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
-    public String renderHome() {
-        return "home";
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+    public String renderLogin() {
+        return "login";
     }
     
 }

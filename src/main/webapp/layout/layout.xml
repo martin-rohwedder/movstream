@@ -3,6 +3,12 @@
 
 <tiles-definitions>
     
+    <!-- Login Template -->
+    <definition name="login" template="/layout/login-template.jsp">
+        <put-attribute name="title" value="Log Ind" />
+        <put-attribute name="content" value="/views/public/login.jsp" />
+    </definition>
+    
     <!-- Default Template -->
     <definition name="default-template" template="/layout/default-template.jsp">
         <put-attribute name="title" value="" />
@@ -10,10 +16,10 @@
         <put-attribute name="page" value="" />
     </definition>
     
-    <!-- Home View of no-user-template -->
+    <!-- Home View -->
     <definition name="home" extends="default-template">
         <put-attribute name="title" value="Movstream" />
-        <put-attribute name="content" value="/views/public/home.jsp" />
+        <put-attribute name="content" value="/views/private/home.jsp" />
         <put-attribute name="page" value="home" />
     </definition>
     
