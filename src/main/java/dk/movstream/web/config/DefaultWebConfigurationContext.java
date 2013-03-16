@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.tiles2.TilesView;
 @Configuration
 @EnableWebMvc
 @ComponentScan("dk.movstream.web")
-@ImportResource({"classpath:/spring/tx-hibernate-context.xml"})
+@ImportResource({"classpath:/spring/tx-hibernate-context.xml", "classpath:/spring/security-context.xml"})
 public class DefaultWebConfigurationContext extends WebMvcConfigurationSupport {
 
     @Override

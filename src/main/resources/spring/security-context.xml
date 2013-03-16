@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+    
+    <security:http use-expressions="true">
+        
+        <!-- Form Login Filter -->
+        <security:form-login login-page="/login" default-target-url="/private/home" authentication-failure-url="/login" username-parameter="username" password-parameter="password" always-use-default-target="true" />
+        
+        <!-- Logout Filter -->
+        <security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" />
+        
+        <!-- Intercept Url filters -->
+        <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/login" access="permitAll" />
+        <security:intercept-url pattern="/resources/**" access="permitAll" />
+        
+        <security:intercept-url pattern="/**" access="fullyAuthenticated" />
+        
+    </security:http>
+    
+    <bean id="movstreamUserDetailsService" class="dk.movstream.web.security.MovstreamUserDetailsService" />
+    
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="movstreamUserDetailsService">
+            <security:password-encoder hash="sha-256">
+                <security:salt-source user-property="username" />
+            </security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+</beans>
