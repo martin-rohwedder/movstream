@@ -31,7 +31,7 @@
                     
                     <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand">Movstream</a>
                     <div class="nav-collapse collapse">
-                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="navbar-link">Username</a></p>
+                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="navbar-link">${user.username}</a></p>
                         
                         <ul class="nav">  
                             <c:choose>

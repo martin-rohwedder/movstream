@@ -1,5 +1,8 @@
 package dk.movstream.web.controller;
 
+import dk.movstream.web.security.SecurityContextSupport;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-    public String renderHome() {
+    public String renderHome(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        
+        if (session.getAttribute("user") == null) {
+            session.setAttribute("user", SecurityContextSupport.getUserDetails().getUser());
+        }
+        
         return "home";
     }
     
