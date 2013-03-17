@@ -1,0 +1,38 @@
+body {
+    background: #f5f5f5 url("../img/bg-gray.jpg") repeat top left;
+}
+.container-content {
+    min-height: 600px;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-top: 60px;
+    
+    /* Border radius and box shadow */
+    -webkit-border-radius: 10px;
+           -moz-border-radius: 10px;
+                border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+       -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+            box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+}
+#footer {
+    margin-top: 10px;
+}
+#cc-license {
+    text-align: right;
+}
+
+/* Responsive CSS fix */
+@media (max-width: 979px) {
+    .container-content {
+        padding-top: 20px; 
+    }
+    .navbar-text.pull-right {
+        float: none;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #cc-license {
+        text-align: left;
+    }
+}
