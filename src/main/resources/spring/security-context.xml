@@ -10,6 +10,9 @@
         <!-- Form Login Filter -->
         <security:form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login" username-parameter="username" password-parameter="password" always-use-default-target="true" login-processing-url="/logincheck.do" />
         
+        <!-- Remember Me Filter -->
+        <security:remember-me data-source-ref="dataSource" />
+        
         <!-- Logout Filter -->
         <security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" />
         
@@ -17,7 +20,7 @@
         <security:intercept-url pattern="/login" access="permitAll" />
         <security:intercept-url pattern="/resources/**" access="permitAll" />
         
-        <security:intercept-url pattern="/**" access="fullyAuthenticated" />
+        <security:intercept-url pattern="/**" access="authenticated" />
         
     </security:http>
     

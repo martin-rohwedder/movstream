@@ -34,5 +34,14 @@
         </c:otherwise>
     </c:choose>
     
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" name="_spring_security_remember_me" />
+                Remember me
+            </label>
+        </div>
+    </div>
+    
     <button class="btn btn-large btn-primary" type="submit"><i class="icon-lock icon-white"></i> Sign In</button>
 </form>
