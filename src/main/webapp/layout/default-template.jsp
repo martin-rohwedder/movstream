@@ -64,7 +64,7 @@
                         <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed">
                             <img alt="Creative Commons licens" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" />
                         </a>
-                        <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed">Creative Commons BY-NC 3.0 Unported License</a>
+                        Creative Commons 3.0 License
                     </p>
                 </div>
             </div>
