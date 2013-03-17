@@ -11,7 +11,7 @@
         <security:form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login" username-parameter="username" password-parameter="password" always-use-default-target="true" login-processing-url="/logincheck.do" />
         
         <!-- Remember Me Filter -->
-        <security:remember-me data-source-ref="dataSource" />
+        <security:remember-me token-validity-seconds="2592000" data-source-ref="dataSource" />
         
         <!-- Logout Filter -->
         <security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" />

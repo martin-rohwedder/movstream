@@ -38,7 +38,7 @@
         <div class="controls">
             <label class="checkbox">
                 <input type="checkbox" name="_spring_security_remember_me" />
-                Remember me
+                Remember me (30 days)
             </label>
         </div>
     </div>
