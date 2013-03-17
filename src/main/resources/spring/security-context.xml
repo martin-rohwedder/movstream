@@ -8,13 +8,12 @@
     <security:http use-expressions="true">
         
         <!-- Form Login Filter -->
-        <security:form-login login-page="/login" default-target-url="/private/home" authentication-failure-url="/login" username-parameter="username" password-parameter="password" always-use-default-target="true" />
+        <security:form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login" username-parameter="username" password-parameter="password" always-use-default-target="true" login-processing-url="/logincheck.do" />
         
         <!-- Logout Filter -->
         <security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" />
         
         <!-- Intercept Url filters -->
-        <security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/login" access="permitAll" />
         <security:intercept-url pattern="/resources/**" access="permitAll" />
         

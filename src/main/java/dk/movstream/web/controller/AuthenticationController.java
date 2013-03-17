@@ -1,8 +1,12 @@
 package dk.movstream.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author Martin Rohwedder
@@ -12,9 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AuthenticationController {
 
-    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-    public String renderLogin() {
-        return "login";
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public ModelAndView renderLogin(HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("login");
+        AuthenticationException authEx = (AuthenticationException) request.getSession().getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        
+        if (authEx != null) {
+            mav.addObject("loginError", "An Error Occured! Please check that you have provided the correct username and password");
+        }
+        
+        return mav;
     }
     
 }
