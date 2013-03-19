@@ -21,6 +21,18 @@ body {
 #cc-license {
     text-align: right;
 }
+.page-paragraph {
+    margin-bottom: 80px;
+}
+.thumbnails {
+    cursor: pointer;
+}
+.popover {
+    min-height: 100px;
+    max-height: 250px;
+    width: auto;
+    max-width: 350px;
+}
 
 /* Responsive CSS fix */
 @media (max-width: 979px) {
@@ -34,5 +46,11 @@ body {
     }
     #cc-license {
         text-align: left;
+    }
+    .popover {
+        min-height: 100px;
+        max-height: 340px;
+        width: auto;
+        max-width: 220px;
     }
 }
