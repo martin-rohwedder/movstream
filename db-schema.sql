@@ -22,6 +22,7 @@ create table `season`
 (
 `ID` int unsigned not null auto_increment,
 `TITLE` varchar(64) not null,
+`UPDATE_VERSION` int not null default 0,
 primary key (`ID`)
 )engine innodb default character set utf8;
 
@@ -29,6 +30,7 @@ create table `genre`
 (
 `ID` int unsigned not null auto_increment,
 `TITLE` varchar(64) not null,
+`UPDATE_VERSION` int not null default 0,
 primary key (`ID`)
 )engine innodb default character set utf8;
 
@@ -42,6 +44,7 @@ create table `movie`
 `PICTURE_FILENAME` varchar(255),
 `GENRE_ID` int unsigned not null,
 `SEASON_ID` int unsigned,
+`UPDATE_VERSION` int not null default 0,
 primary key (`ID`),
 foreign key (`GENRE_ID`) references `genre`(`ID`),
 foreign key (`SEASON_ID`) references `season`(`ID`)
