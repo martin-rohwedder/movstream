@@ -11,9 +11,19 @@
     
     <ul class="thumbnails">
     <c:forEach items="${listOfMovies}" var="movie">
-        <li>
-            <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-        </li>
+        
+        <c:choose>
+            <c:when test="${empty movie.season}">
+                <li>
+                    <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li>
+                    <div rel="popover" data-content="<p>This is a season</p><a href='season/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Go To Season</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
+                </li>
+            </c:otherwise>
+        </c:choose>
     </c:forEach>
     </ul>
     

@@ -51,29 +51,50 @@ public class HomeController {
         String letter = "";
         int index = -1;
         ArrayList<List<Movie>> myMovies = new ArrayList<List<Movie>>();
+        long seasonId = -1;
         
         for (Movie m : movies) {
-            
             //if first letter in title equals the current letter iterated over, continue.
             if (m.getTitle().substring(0, 1).equalsIgnoreCase(letter)) {
-                myMovies.get(index).add(m);
-            }
-            else {
+                if (m.getSeason() == null) {
+                    myMovies.get(index).add(m);
+                } else {
+                    if (seasonId != m.getSeason().getId()) {
+                        myMovies.get(index).add(m);
+                        seasonId = m.getSeason().getId();
+                    }
+                }
+            } else {
                 if (m.getTitle().substring(0, 1).matches("^[0-9]$")) {
                     if (index < 0) {
                         index = 0;
                         myMovies.add(new ArrayList<Movie>());
                     }
-                    
-                    myMovies.get(index).add(m);
-                }
-                else {
-                    index++;
-                    myMovies.add(new ArrayList<Movie>());
-                    myMovies.get(index).add(m);
+
+                    if (m.getSeason() == null) {
+                        myMovies.get(index).add(m);
+                    } else {
+                        if (seasonId != m.getSeason().getId()) {
+                            myMovies.get(index).add(m);
+                            seasonId = m.getSeason().getId();
+                        }
+                    }
+                } else {
+                    if (m.getSeason() == null) {
+                        index++;
+                        myMovies.add(new ArrayList<Movie>());
+                        myMovies.get(index).add(m);
+                    } else {
+                        if (seasonId != m.getSeason().getId()) {
+                            index++;
+                            myMovies.add(new ArrayList<Movie>());
+                            myMovies.get(index).add(m);
+                            seasonId = m.getSeason().getId();
+                        }
+                    }
                 }
             }
-            
+
             letter = m.getTitle().substring(0, 1);
         }
         
