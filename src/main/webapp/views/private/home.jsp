@@ -23,7 +23,7 @@
         <c:choose>
             <c:when test="${empty movie.season}">
                 <li>
-                    <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
+                    <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='<c:out value="${pageContext.servletContext.contextPath}" />/movie/show/<c:out value="${movie.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
                         <img src="http://placehold.it/160x200" alt="" />
                         <p class="text-center"><c:out value="${movie.title}" /></p>
                     </div>
@@ -31,7 +31,7 @@
             </c:when>
             <c:otherwise>
                 <li>
-                    <div rel="popover" data-content="<p><c:out value="${movie.season.description}" /></p><a href='season/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Go To Season</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
+                    <div rel="popover" data-content="<p><c:out value="${movie.season.description}" /></p><a href='<c:out value="${pageContext.servletContext.contextPath}" />/season/showepisodes/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-share-alt icon-white'></i> Show Episodes</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
                         <img src="http://placehold.it/160x200" alt="" />
                         <p class="text-center"><c:out value="${movie.season.title}" /></p>
                     </div>
