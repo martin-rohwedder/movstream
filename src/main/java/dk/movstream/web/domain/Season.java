@@ -28,6 +28,7 @@ public class Season implements Serializable {
     
     private long id;
     private String title;
+    private String description;
     private int updateVersion;
     private Set<Movie> movies = new HashSet<Movie>();
 
@@ -49,6 +50,15 @@ public class Season implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Column(name = "DESCRIPTION")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Version

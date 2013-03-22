@@ -5,9 +5,17 @@
 <p class="page-paragraph">Here is listed all the current availible movies in alphabetical order. If you want to filter the list of movies by genre, please select the genre at the top of the page. You can also do a search on a movie title or a part of it, by using the search box.</p>
 
 <c:forEach items="${movies}" var="listOfMovies">
-    
-    <h3 class="muted"><c:out value="${listOfMovies.get(0).title.substring(0, 1)}" /></h3>
-    <hr />
+
+    <c:choose>
+        <c:when test="${listOfMovies.get(0).title.substring(0, 1).matches('[0-9]')}">
+            <h3 class="muted">0-9</h3>
+            <hr />
+        </c:when>
+        <c:otherwise>
+            <h3 class="muted"><c:out value="${listOfMovies.get(0).title.substring(0, 1)}" /></h3>
+        <hr />
+        </c:otherwise>
+    </c:choose>
     
     <ul class="thumbnails">
     <c:forEach items="${listOfMovies}" var="movie">
@@ -15,12 +23,18 @@
         <c:choose>
             <c:when test="${empty movie.season}">
                 <li>
-                    <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
+                    <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
+                        <img src="http://placehold.it/160x200" alt="" />
+                        <p class="text-center"><c:out value="${movie.title}" /></p>
+                    </div>
                 </li>
             </c:when>
             <c:otherwise>
                 <li>
-                    <div rel="popover" data-content="<p>This is a season</p><a href='season/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Go To Season</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
+                    <div rel="popover" data-content="<p><c:out value="${movie.season.description}" /></p><a href='season/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Go To Season</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
+                        <img src="http://placehold.it/160x200" alt="" />
+                        <p class="text-center"><c:out value="${movie.season.title}" /></p>
+                    </div>
                 </li>
             </c:otherwise>
         </c:choose>
