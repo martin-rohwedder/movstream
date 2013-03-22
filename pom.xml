@@ -31,11 +31,7 @@
             <scope>provided</scope>
         </dependency>
         
-        <dependency>
-            <groupId>net.java.dev.glassfish</groupId>
-            <artifactId>glassfish-persistence-api</artifactId>
-            <version>b32g</version>
-        </dependency>
+        
         
         <dependency>
             <groupId>javaee</groupId>
