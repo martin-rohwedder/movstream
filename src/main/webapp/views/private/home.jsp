@@ -4,44 +4,20 @@
 
 <p class="page-paragraph">Here is listed all the current availible movies in alphabetical order. If you want to filter the list of movies by genre, please select the genre at the top of the page. You can also do a search on a movie title or a part of it, by using the search box.</p>
 
-<h3 class="muted">0-9</h3>
-<hr />
-
-<ul class="thumbnails">
-    <li>
-        <div rel="popover" data-content="<p>Etiam id felis sed tellus lacinia aliquet vel in dui. Donec eleifend semper nunc sed consectetur. Praesent tristique diam nec dolor scelerisque volutpat. Nam rhoncus sollicitudin ultricies. Morbi auctor facilisis commodo. Donec eu volutpat urna. Aliquam tempus venenatis nulla eget lobortis.</p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-</ul>
-
-<h3 class="muted">A</h3>
-<hr />
-
-<ul class="thumbnails">
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-    <li>
-        <div rel="popover" data-content="<h1>Test 1</h1>" data-original-title="Title 1" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
-    </li>
-</ul>
+<c:forEach items="${movies}" var="listOfMovies">
+    
+    <h3 class="muted"><c:out value="${listOfMovies.get(0).title.substring(0, 1)}" /></h3>
+    <hr />
+    
+    <ul class="thumbnails">
+    <c:forEach items="${listOfMovies}" var="movie">
+        <li>
+            <div rel="popover" data-content="<p><c:out value="${movie.description}" /></p><a href='#' class='btn btn-success btn-large btn-block'><i class='icon-play-circle icon-white'></i> Play Movie</a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail"><img src="http://placehold.it/160x200" alt="" /></div>
+        </li>
+    </c:forEach>
+    </ul>
+    
+</c:forEach>
 
 <script type="text/javascript">
     $(document).ready(function(){
