@@ -19,8 +19,8 @@ public class MovieService {
     @Qualifier("MovieDao")
     private MovieDao movieDao;
     
-    public List<Movie> getAllMovies() {
-        return movieDao.findAllMovies();
+    public List<Movie> getAllMoviesOrderedByTitle() {
+        return movieDao.findAllMoviesOrderedByTitle();
     }
     
 }

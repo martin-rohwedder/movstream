@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface MovieDao {
 
-    List<Movie> findAllMovies();
+    List<Movie> findAllMoviesOrderedByTitle();
     
 }

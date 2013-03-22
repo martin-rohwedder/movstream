@@ -30,7 +30,7 @@ public class HomeController {
             session.setAttribute("user", SecurityContextSupport.getUserDetails().getUser());
         }
         
-        mav.addObject("movies", movieService.getAllMovies());
+        mav.addObject("movies", movieService.getAllMoviesOrderedByTitle());
         
         return mav;
     }

@@ -29,8 +29,8 @@ public class MovieDaoImpl implements MovieDao {
     
     @Override
     @Transactional(readOnly=true)
-    public List<Movie> findAllMovies() {
-        return this.sessionFactory.getCurrentSession().createQuery("from Movie m").list();
+    public List<Movie> findAllMoviesOrderedByTitle() {
+        return this.sessionFactory.getCurrentSession().createQuery("from Movie movie order by movie.title asc").list();
     }
 
 }
