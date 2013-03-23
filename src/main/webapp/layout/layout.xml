@@ -23,4 +23,11 @@
         <put-attribute name="page" value="home" />
     </definition>
     
+    <!-- Season Show Episodes View -->
+    <definition name="showepisodes" extends="default-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/showepisodes.jsp" />
+        <put-attribute name="page" value="season" />
+    </definition>
+    
 </tiles-definitions>
