@@ -33,4 +33,10 @@ public class MovieDaoImpl implements MovieDao {
         return this.sessionFactory.getCurrentSession().createQuery("from Movie movie order by movie.title asc").list();
     }
 
+    @Override
+    @Transactional(readOnly=true)
+    public List<Movie> findAllMoviesBySeasonId(long seasonId) {
+        return this.sessionFactory.getCurrentSession().createQuery("from Movie movie where movie.season.id = :SEASON_ID").setParameter("SEASON_ID", seasonId).list();
+    }
+
 }
