@@ -22,6 +22,7 @@ public class MovieSeasonController {
     @RequestMapping(value = {"/season/showepisodes/{seasonId}"}, method = RequestMethod.GET)
     public ModelAndView renderSeasonEpisodes(@PathVariable("seasonId") long seasonId) {
         ModelAndView mav = new ModelAndView("showepisodes");
+        mav.addObject("episodes", movieService.getAllMoviesBySeasonId(seasonId));
         
         return mav;
     }

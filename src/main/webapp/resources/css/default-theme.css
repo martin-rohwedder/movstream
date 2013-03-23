@@ -34,6 +34,9 @@ body {
     min-width: 220px;
     max-width: 350px;
 }
+.episode-btn-align-right {
+    text-align: right;
+}
 
 /* Responsive CSS fix */
 @media (max-width: 979px) {
