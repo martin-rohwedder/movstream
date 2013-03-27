@@ -3,12 +3,11 @@ package dk.movstream.web.util;
 import dk.movstream.web.domain.Movie;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author Martin Rohwedder
  * @since 27-03-2013
- * @version
+ * @version 1.0
  */
 public class Utility {
 

@@ -1,11 +1,8 @@
 package dk.movstream.web.controller;
 
-import dk.movstream.web.domain.Movie;
 import dk.movstream.web.security.SecurityContextSupport;
 import dk.movstream.web.service.MovieService;
 import dk.movstream.web.util.Utility;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
