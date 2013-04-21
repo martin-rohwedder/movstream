@@ -35,4 +35,12 @@ public class MovieController {
         return mav;
     }
     
+    @RequestMapping(value = {"/genre/{genreId}"}, method = RequestMethod.GET)
+    public ModelAndView renderMoviesByGenre(@PathVariable("genreId") long genreId) {
+        ModelAndView mav = new ModelAndView("showmoviesbygenre");
+        mav.addObject("movies", movieService.getAllMoviesByGenreId(genreId));
+        
+        return mav;
+    }
+    
 } //End of class MovieSeasonController

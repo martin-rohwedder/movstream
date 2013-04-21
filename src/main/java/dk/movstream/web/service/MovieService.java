@@ -31,4 +31,8 @@ public class MovieService {
         return movieDao.findMovieById(movieId);
     }
     
+    public List<Movie> getAllMoviesByGenreId(long genreId) {
+        return movieDao.findAllMoviesByGenreId(genreId);
+    }
+    
 }
