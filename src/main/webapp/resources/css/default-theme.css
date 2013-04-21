@@ -37,6 +37,9 @@ body {
 .episode-btn-align-right {
     text-align: right;
 }
+#video-player {
+    margin: 50px auto;
+}
 
 /* Responsive CSS fix */
 @media (max-width: 979px) {
