@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @version 1.0
  */
 @Controller
-public class MovieSeasonController {
+public class MovieController {
 
     @Autowired
     private MovieService movieService;
