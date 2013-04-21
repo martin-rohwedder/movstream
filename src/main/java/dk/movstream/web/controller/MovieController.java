@@ -30,7 +30,7 @@ public class MovieController {
     @RequestMapping(value = {"/movie/show/{movieId}"}, method = RequestMethod.GET)
     public ModelAndView renderShowMovie(@PathVariable("movieId") long movieId) {
         ModelAndView mav = new ModelAndView("showmovie");
-        mav.addObject("movieId", movieId);
+        mav.addObject("movie", movieService.getMovieById(movieId));
         
         return mav;
     }

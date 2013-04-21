@@ -39,4 +39,9 @@ public class MovieDaoImpl implements MovieDao {
         return this.sessionFactory.getCurrentSession().createQuery("from Movie movie where movie.season.id = :SEASON_ID").setParameter("SEASON_ID", seasonId).list();
     }
 
+    @Override
+    public Movie findMovieById(long movieId) {
+        return (Movie) this.sessionFactory.getCurrentSession().createQuery("from Movie m where m.id = :ID").setParameter("ID", movieId).uniqueResult();
+    }
+
 }

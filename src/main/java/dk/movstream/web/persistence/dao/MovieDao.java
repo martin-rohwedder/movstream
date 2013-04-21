@@ -12,5 +12,6 @@ public interface MovieDao {
 
     List<Movie> findAllMoviesOrderedByTitle();
     List<Movie> findAllMoviesBySeasonId(long seasonId);
+    Movie findMovieById(long movieId);
     
 }

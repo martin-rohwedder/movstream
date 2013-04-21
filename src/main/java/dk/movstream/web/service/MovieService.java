@@ -27,4 +27,8 @@ public class MovieService {
         return movieDao.findAllMoviesBySeasonId(seasonId);
     }
     
+    public Movie getMovieById(long movieId) {
+        return movieDao.findMovieById(movieId);
+    }
+    
 }
