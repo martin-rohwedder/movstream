@@ -1,6 +1,8 @@
 package dk.movstream.web.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import org.springframework.context.annotation.Scope;
@@ -29,11 +32,11 @@ public class Movie implements Serializable {
     private String title;
     private String description;
     private String movieFilename;
-    private String subtitleFilename;
     private String pictureFilename;
     private int updateVersion;
     private Season season;
     private Genre genre;
+    private Set<Subtitle> subtitles = new HashSet<Subtitle>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,15 +76,6 @@ public class Movie implements Serializable {
         this.movieFilename = movieFilename;
     }
 
-    @Column(name = "SUBTITLE_FILENAME")
-    public String getSubtitleFilename() {
-        return subtitleFilename;
-    }
-
-    public void setSubtitleFilename(String subtitleFilename) {
-        this.subtitleFilename = subtitleFilename;
-    }
-
     @Column(name = "PICTURE_FILENAME")
     public String getPictureFilename() {
         return pictureFilename;
@@ -119,6 +113,24 @@ public class Movie implements Serializable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    public Set<Subtitle> getSubtitles() {
+        return subtitles;
+    }
+
+    public void setSubtitles(Set<Subtitle> subtitles) {
+        this.subtitles = subtitles;
+    }
+    
+    public void addSubtitle(Subtitle subtitle) {
+        subtitle.setMovie(this);
+        getSubtitles().add(subtitle);
+    }
+    
+    public void removeSubtitle(Subtitle subtitle) {
+        getSubtitles().remove(subtitle);
     }
     
 }
