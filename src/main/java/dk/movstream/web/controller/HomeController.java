@@ -1,6 +1,7 @@
 package dk.movstream.web.controller;
 
 import dk.movstream.web.security.SecurityContextSupport;
+import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import dk.movstream.web.util.Utility;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,8 @@ public class HomeController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private GenreService genreService;
     
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public ModelAndView renderHome(HttpServletRequest request) {
@@ -32,6 +35,7 @@ public class HomeController {
         }
         
         mav.addObject("movies", Utility.sortMoviesAlphabetically(movieService.getAllMoviesOrderedByTitle()));
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }

@@ -1,5 +1,6 @@
 package dk.movstream.web.controller;
 
+import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,14 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private GenreService genreService;
     
     @RequestMapping(value = {"/season/showepisodes/{seasonId}"}, method = RequestMethod.GET)
     public ModelAndView renderSeasonEpisodes(@PathVariable("seasonId") long seasonId) {
         ModelAndView mav = new ModelAndView("showepisodes");
         mav.addObject("episodes", movieService.getAllMoviesBySeasonId(seasonId));
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }
@@ -31,6 +35,7 @@ public class MovieController {
     public ModelAndView renderShowMovie(@PathVariable("movieId") long movieId) {
         ModelAndView mav = new ModelAndView("showmovie");
         mav.addObject("movie", movieService.getMovieById(movieId));
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }
@@ -39,6 +44,7 @@ public class MovieController {
     public ModelAndView renderMoviesByGenre(@PathVariable("genreId") long genreId) {
         ModelAndView mav = new ModelAndView("showmoviesbygenre");
         mav.addObject("movies", movieService.getAllMoviesByGenreId(genreId));
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }

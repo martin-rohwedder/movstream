@@ -27,7 +27,7 @@
     <body>
         <tiles:useAttribute id="currentPage" name="page" classname="java.lang.String" />
         
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -43,14 +43,31 @@
                         <ul class="nav">  
                             <c:choose>
                                 <c:when test="${currentPage eq 'home'}">
-                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home icon-white"></i> Home</a></li>
+                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> Home</a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home icon-white"></i> Home</a></li>
+                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> Home</a></li>
                                 </c:otherwise>
-                            </c:choose> 
+                            </c:choose>
+                            
+                            <c:choose>
+                                <c:when test="${currentPage eq 'genre'}">
+                                    <li class="active dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
+                                </c:otherwise>
+                            </c:choose>
+                                        <ul class="dropdown-menu">
+                                            <c:forEach items="${navGenres}" var="genre">
+                                                <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/genre/<c:out value="${genre.id}" />"><c:out value="${genre.title}" /></a></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
                                     
-                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off icon-white"></i> Logout</a></li>
+                            <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>

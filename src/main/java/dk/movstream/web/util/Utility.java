@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Utility {
-
+    
     /**
      * Sort movies after the movie titles first letter. If between 0 and 9, 
      * the movies need to be collected together. This is to provide the home view

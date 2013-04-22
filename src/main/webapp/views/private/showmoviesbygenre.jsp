@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:choose>
+    <c:when test="${not empty movies}">
+
 <h1 class="page-header"><c:out value="${movies.get(0).genre.title}" /></h1>
 
 <p class="page-paragraph">In the list of movies below, you can choose which one you want to watch from the movie genre '<c:out value="${movies.get(0).genre.title}" />'.</p>
@@ -39,3 +42,9 @@
         }, 'show'); 
     });
 </script>
+
+</c:when>
+<c:otherwise>
+    <p class="lead">No genre was found</p>
+</c:otherwise>
+</c:choose>
