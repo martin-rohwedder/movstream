@@ -56,6 +56,7 @@ create table `subtitle`
 `ID` int unsigned not null auto_increment,
 `FILENAME` varchar(255) not null,
 `LANGUAGE` varchar(30) not null,
+`SRC_LANG` varchar(4) not null,
 `MOVIE_ID` int unsigned not null,
 `UPDATE_VERSION` int not null default 0,
 foreign key (`MOVIE_ID`) references `movie`(`ID`),
@@ -109,11 +110,11 @@ values ('Mr. Beans Holiday', 'Bean is the best', '24-1-1', '24-1-1-pic', 2, null
 insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
 values ('007', 'Bond, James Bond', '24-1-1', '24-1-1-pic', 1, null);
 
-insert into `subtitle` (`FILENAME`, `LANGUAGE`, `MOVIE_ID`)
-values ('beansubtitle.vtt', 'english', 1);
-insert into `subtitle` (`FILENAME`, `LANGUAGE`, `MOVIE_ID`)
-values ('beansubtitle.vtt', 'danish', 1);
-insert into `subtitle` (`FILENAME`, `LANGUAGE`, `MOVIE_ID`)
-values ('beansubtitle.vtt', 'english', 9);
-insert into `subtitle` (`FILENAME`, `LANGUAGE`, `MOVIE_ID`)
-values ('beansubtitle.vtt', 'english', 10);
+insert into `subtitle` (`FILENAME`, `LANGUAGE`, `SRC_LANG`, `MOVIE_ID`)
+values ('beansubtitle.vtt', 'english', 'en', 1);
+insert into `subtitle` (`FILENAME`, `LANGUAGE`, `SRC_LANG`, `MOVIE_ID`)
+values ('beansubtitle.vtt', 'danish', 'da', 1);
+insert into `subtitle` (`FILENAME`, `LANGUAGE`, `SRC_LANG`, `MOVIE_ID`)
+values ('beansubtitle.vtt', 'english', 'en', 9);
+insert into `subtitle` (`FILENAME`, `LANGUAGE`, `SRC_LANG`, `MOVIE_ID`)
+values ('beansubtitle.vtt', 'english', 'en', 10);

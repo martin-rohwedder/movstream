@@ -29,6 +29,7 @@ public class Subtitle implements Serializable {
     private Long id;
     private String filename;
     private String language;
+    private String srcLang;
     private int updateVersion;
     private Movie movie;
 
@@ -59,6 +60,15 @@ public class Subtitle implements Serializable {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    @Column(name = "SRC_LANG")
+    public String getSrcLang() {
+        return srcLang;
+    }
+
+    public void setSrcLang(String srcLang) {
+        this.srcLang = srcLang;
     }
 
     @Version
