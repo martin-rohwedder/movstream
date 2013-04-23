@@ -50,6 +50,8 @@
                                 </c:otherwise>
                             </c:choose>
                             
+                            <li class="divider-vertical"></li>
+                                    
                             <c:choose>
                                 <c:when test="${currentPage eq 'genre'}">
                                     <li class="active dropdown">
@@ -66,6 +68,8 @@
                                             </c:forEach>
                                         </ul>
                                     </li>
+                                    
+                            <li class="divider-vertical"></li>
                                     
                             <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off"></i> Logout</a></li>
                         </ul>
