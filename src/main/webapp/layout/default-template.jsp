@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,6 +70,12 @@
                                         </ul>
                                     </li>
                                     
+                            <li class="divider-vertical"></li>
+                            
+                            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                                <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                            </sec:authorize>
+                                
                             <li class="divider-vertical"></li>
                                     
                             <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off"></i> Logout</a></li>
