@@ -40,6 +40,9 @@ body {
 #video-player {
     margin: 50px auto;
 }
+table.sortable > thead {
+    cursor: pointer;
+}
 
 /* Responsive CSS fix */
 @media (max-width: 979px) {

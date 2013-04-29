@@ -105,11 +105,11 @@
                 </c:choose>
         
                 <c:choose>
-                    <c:when test="${adminPage eq 'admincreatemovie'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/create">Create Movie</a></li>
+                    <c:when test="${adminPage eq 'adminmanagemovie'}">
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie">Manage Movies</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/create">Create Movie</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie">Manage Movies</a></li>
                     </c:otherwise>
                 </c:choose>
             </ul>

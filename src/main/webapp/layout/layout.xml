@@ -60,4 +60,12 @@
         <put-attribute name="adminpage" value="adminhome" />
     </definition>
     
+    <!-- Admin Manage Movie view -->
+    <definition name="adminmanagemovie" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/admin/adminmanagemovie.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
 </tiles-definitions>

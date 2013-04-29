@@ -73,7 +73,11 @@ create table `persistent_logins`
 )engine innodb default character set utf8;
 
 insert into `user` (`USERNAME`, `PASSWORD`, `USER_ROLE`)
-values ('test', 'e9233bd61e14137a7e28f92c50ce279215e774a1772d1e9dad5f275b9cc8177c', 'ROLE_SUPERADMIN');
+values ('superadmin', '560507b51f5cef80e257afc814c9c7967ac4fd097642543f9f10484c9976e163', 'ROLE_SUPERADMIN');
+insert into `user` (`USERNAME`, `PASSWORD`, `USER_ROLE`)
+values ('admin', 'e45676f504ce9787b3e53fbb831b917ccee65071083d5a144148456186c9c2ea', 'ROLE_ADMIN');
+insert into `user` (`USERNAME`, `PASSWORD`, `USER_ROLE`)
+values ('normal', 'db96c2abf3d4207be73c87a7c399dfdc4c180f2945325b4f5fb3a37ca3594d74', 'ROLE_NORMAL');
 
 insert into `genre` (`TITLE`)
 values ('Action');

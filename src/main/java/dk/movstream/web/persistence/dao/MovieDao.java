@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface MovieDao {
 
+    List<Movie> findAllMoviesOrderedById();
     List<Movie> findAllMoviesOrderedByTitle();
     List<Movie> findAllMoviesBySeasonId(long seasonId);
     Movie findMovieById(long movieId);

@@ -40,13 +40,21 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
+    @Transactional(readOnly=true)
     public Movie findMovieById(long movieId) {
         return (Movie) this.sessionFactory.getCurrentSession().createQuery("from Movie m where m.id = :ID").setParameter("ID", movieId).uniqueResult();
     }
 
     @Override
+    @Transactional(readOnly=true)
     public List<Movie> findAllMoviesByGenreId(long genreId) {
         return this.sessionFactory.getCurrentSession().createQuery("from Movie m where m.genre.id = :GENRE_ID order by m.title asc").setParameter("GENRE_ID", genreId).list();
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public List<Movie> findAllMoviesOrderedById() {
+        return this.sessionFactory.getCurrentSession().createQuery("from Movie movie order by movie.id asc").list();
     }
 
 }
