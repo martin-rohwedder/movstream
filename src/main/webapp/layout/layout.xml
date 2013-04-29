@@ -16,6 +16,14 @@
         <put-attribute name="page" value="" />
     </definition>
     
+    <!-- Admin Template -->
+    <definition name="admin-template" template="/layout/admin-template.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="page" value="" />
+        <put-attribute name="adminpage" value="" />
+    </definition>
+    
     <!-- Home View -->
     <definition name="home" extends="default-template">
         <put-attribute name="title" value="Movstream" />
@@ -45,10 +53,11 @@
     </definition>
     
     <!-- Admin Home view -->
-    <definition name="adminhome" extends="default-template">
+    <definition name="adminhome" extends="admin-template">
         <put-attribute name="title" value="movstream" />
         <put-attribute name="content" value="/views/private/admin/adminhome.jsp" />
         <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminhome" />
     </definition>
     
 </tiles-definitions>
