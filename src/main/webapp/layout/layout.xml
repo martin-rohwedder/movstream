@@ -44,4 +44,11 @@
         <put-attribute name="page" value="genre" />
     </definition>
     
+    <!-- Admin Home view -->
+    <definition name="adminhome" extends="default-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/admin/adminhome.jsp" />
+        <put-attribute name="page" value="admin" />
+    </definition>
+    
 </tiles-definitions>

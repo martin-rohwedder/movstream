@@ -73,7 +73,14 @@
                             <li class="divider-vertical"></li>
                             
                             <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
-                                <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                                <c:choose>
+                                    <c:when test="${currentPage eq 'admin'}">
+                                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                                    </c:otherwise>
+                                </c:choose>                                
                             </sec:authorize>
                                 
                             <li class="divider-vertical"></li>
