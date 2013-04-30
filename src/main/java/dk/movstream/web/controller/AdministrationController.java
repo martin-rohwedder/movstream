@@ -1,5 +1,6 @@
 package dk.movstream.web.controller;
 
+import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,14 @@ public class AdministrationController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private GenreService genreService;
     
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView renderAdminHome() {
         ModelAndView mav = new ModelAndView("adminhome");
+        
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }
@@ -31,6 +36,7 @@ public class AdministrationController {
         ModelAndView mav = new ModelAndView("adminmanagemovie");
         
         mav.addObject("movies", movieService.getAllMoviesOrderedById());
+        mav.addObject("navGenres", genreService.getAllMovieGenres());
         
         return mav;
     }
