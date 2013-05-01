@@ -4,11 +4,11 @@
 
 <br /><br />
 
-<table class="table table-striped table-condensed table-bordered sortable">
+<table class="table table-striped table-condensed table-bordered table-sorter">
     <thead>
         <tr>
             <th>#</th>
-            <th colspan="3">Movie Title</th>
+            <th>Movie Title</th>
         </tr>
     </thead>
     <tbody>

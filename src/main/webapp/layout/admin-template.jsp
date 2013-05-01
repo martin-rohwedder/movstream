@@ -18,7 +18,7 @@
         <!-- Javascript -->
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/video.min.js" type="text/javascript"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/tsort.min.js" type="text/javascript"></script>
         
         <!-- Fallback on video player to use flash if needed -->
         <script>
@@ -132,5 +132,15 @@
                 </div>
             </div>
         </div>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('table.table-sorter').tableSort({
+                    animation: "slide",
+                    speed: 1000
+                });
+            });
+        </script>
+        
     </body>
 </html>
