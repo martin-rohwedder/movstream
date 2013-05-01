@@ -2,6 +2,7 @@ body {
     background: #f5f5f5 url("../img/bg-gray.jpg") repeat top left;
 }
 .container-content {
+    position: relative;
     min-height: 600px;
     background-color: #ffffff;
     padding: 20px;
@@ -63,6 +64,11 @@ table.table-sorter th div.sortArrow div.sortArrowAscending {
 
 table.table-sorter th div.sortArrow div.sortArrowDescending {
 	background: url('../img/arrow_desc.png') no-repeat;
+}
+.progress-flow {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
 }
 
 /* Responsive CSS fix */

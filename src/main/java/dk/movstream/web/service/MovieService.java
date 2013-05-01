@@ -1,7 +1,11 @@
 package dk.movstream.web.service;
 
+import dk.movstream.web.domain.Genre;
 import dk.movstream.web.domain.Movie;
+import dk.movstream.web.domain.Season;
+import dk.movstream.web.domain.Subtitle;
 import dk.movstream.web.persistence.dao.MovieDao;
+import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,6 +41,19 @@ public class MovieService {
     
     public List<Movie> getAllMoviesOrderedById() {
         return movieDao.findAllMoviesOrderedById();
+    }
+    
+    /**
+     * Retrieve a movie object with empty genre, season and subtitles.
+     * @return Movie object
+     */
+    public Movie getMovieForm() {
+        Movie movie = new Movie();
+        movie.setGenre(new Genre());
+        movie.setSeason(new Season());
+        movie.setSubtitles(new HashSet<Subtitle>());
+        
+        return movie;   
     }
     
 }

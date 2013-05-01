@@ -71,7 +71,7 @@
     <!-- New Movie Flow Page 1 -->
     <definition name="createmovie1" extends="admin-template">
         <put-attribute name="title" value="movstream" />
-        <put-attribute name="content" value="/views/flows/newmovie/createmovie1.jsp" />
+        <put-attribute name="content" value="/views/flows/admin/movie/new/createmovie1.jsp" />
         <put-attribute name="page" value="admin" />
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>

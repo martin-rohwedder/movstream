@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/create" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> Create Movie</a>
+<a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/new" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> Create Movie</a>
 
 <br /><br />
 
