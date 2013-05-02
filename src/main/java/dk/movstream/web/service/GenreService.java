@@ -23,4 +23,8 @@ public class GenreService {
         return this.genreDao.findAllMovieGenres();
     }
     
+    public void saveMovieGenre(Genre genre) {
+        genreDao.insertMovieGenre(genre);
+    }
+    
 }

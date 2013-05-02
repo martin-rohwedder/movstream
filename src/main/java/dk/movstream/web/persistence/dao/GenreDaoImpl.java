@@ -33,4 +33,9 @@ public class GenreDaoImpl implements GenreDao {
         return this.sessionFactory.getCurrentSession().createQuery("from Genre g order by g.title asc").list();
     }
 
+    @Override
+    public void insertMovieGenre(Genre genre) {
+        this.sessionFactory.getCurrentSession().saveOrUpdate(genre);
+    }
+
 }

@@ -23,7 +23,7 @@
                         <form:option value="${genre.title}" />
                     </c:forEach>
                 </form:select>
-                <button type="submit" class="btn btn-link" id="" name="">Create New Genre</button>
+                <button type="submit" class="btn btn-link btn-mini" id="newgenre" name="_eventId_newgenre">(Create New Genre)</button>
             </div>
         </div>
             
@@ -36,8 +36,8 @@
             
         <div class="control-group">
             <div class="controls pull-right">
-                <button type="submit" class="btn btn-danger btn-small" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> Cancel</button>
-                <button type="submit" class="btn btn-success btn-small" id="next" name="_eventId_next">Next <i class="icon-chevron-right icon-white"></i></button>
+                <button type="submit" class="btn btn-danger btn-small" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
+                <button type="submit" class="btn btn-success btn-small" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
             </div>
         </div>
     </form:form>

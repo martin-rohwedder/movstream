@@ -11,5 +11,6 @@ import java.util.List;
 public interface GenreDao {
 
     List<Genre> findAllMovieGenres();
+    void insertMovieGenre(Genre genre);
     
 }

@@ -45,6 +45,6 @@
 
 </c:when>
 <c:otherwise>
-    <p class="lead">No genre was found</p>
+    <p class="lead text-center">No movies was found with this genre</p>
 </c:otherwise>
 </c:choose>

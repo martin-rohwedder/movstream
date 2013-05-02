@@ -16,8 +16,8 @@
             <tr>
                 <td style="width: 40px;"><c:out value="${movie.id}" /></td>
                 <td><c:out value="${movie.title}" /></td>
-                <td style="width: 70px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/edit/<c:out value="${movie.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
-                <td style="width: 70px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/delete/<c:out value="${movie.id}" />" class="btn btn-danger btn-mini"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
+                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/edit/<c:out value="${movie.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
+                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/delete/<c:out value="${movie.id}" />" class="btn btn-danger btn-mini"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
             </tr>
         </c:forEach>
     </tbody>
