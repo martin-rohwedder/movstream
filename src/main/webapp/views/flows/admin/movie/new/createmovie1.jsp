@@ -59,7 +59,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.progress .bar').progressbar({
-        transition_delay: 1200,
+        transition_delay: 400,
         display_text: 1
     });
 });

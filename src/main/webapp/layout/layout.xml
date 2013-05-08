@@ -84,4 +84,20 @@
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>
     
+    <!-- New Movie Flow Page 2 -->
+    <definition name="createmovie2" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/new/createmovie2.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- New Movie Flow Page 2.5 - Create New Season on the fly -->
+    <definition name="createmovie2-5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/new/createmovie2-5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
 </tiles-definitions>

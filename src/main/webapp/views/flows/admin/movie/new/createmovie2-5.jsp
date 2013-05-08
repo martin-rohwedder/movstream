@@ -4,13 +4,20 @@
 
 <h3>New Movie</h3>
 
-<div class="span4">
+<div class="span5">
     
-    <form:form modelAttribute="genreObject" action="${flowExecutionUrl}">
+    <form:form modelAttribute="seasonObject" action="${flowExecutionUrl}">
         <div class="control-group">
-            <label class="control-label" for="inputTitle"><strong>Genre Title</strong></label>
+            <label class="control-label" for="inputTitle"><strong>Season Title</strong></label>
             <div class="controls">
-                <form:input class="span4" path="title" id="inputTitle" placeholder="Genre Title" />
+                <form:input class="span5" path="title" id="inputTitle" placeholder="Season Title" />
+            </div>
+        </div>
+            
+        <div class="control-group">
+            <label class="control-label" for="inputDescription"><strong>Description</strong></label>
+            <div class="controls">
+                <form:textarea class="span5" path="description" id="inputDescription" placeholder="Season Description" rows="4"></form:textarea>
             </div>
         </div>
             
@@ -27,10 +34,10 @@
 <div class="progress-flow">
     <hr />
         
-    <p class="muted text-center">Step 1 of 4</p>
+    <p class="muted text-center">Step 2 of 4</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="25"></div>
+        <div class="bar" data-percentage="50"></div>
     </div>
     
     <br />
