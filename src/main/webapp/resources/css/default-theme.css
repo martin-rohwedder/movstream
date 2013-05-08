@@ -3,7 +3,8 @@ body {
 }
 .container-content {
     position: relative;
-    min-height: 600px;
+    min-height: 530px;
+    width: 970px;
     background-color: #ffffff;
     padding: 20px;
     padding-top: 60px;
