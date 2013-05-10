@@ -57,12 +57,19 @@
         <transition on="back" to="createmovie2" />
     </view-state>
     
-    <!-- Create Movie Page 3 - define picture, movie and subtitles -->
+    <!-- Create Movie Page 3 - define picture, movie -->
     <view-state id="createmovie3" view="createmovie3" model="flowScope.movieForm">
-        <transition on="next" to="endOfFlow" />
+        <transition on="next" to="createmovie4" />
         <transition on="back" to="createmovie2">
             <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />
         </transition>
+    </view-state>
+    
+    <!-- Create Movie Page 4 - define subtitles -->
+    <view-state id="createmovie4" view="createmovie4" model="flowScope.movieForm">
+        <transition on="next" to="endOfFlow" />
+        <transition on="back" to="createmovie3" />
+        <transition on="addsubtitle" to="endOfFlow" />
     </view-state>
     
     <end-state id="endOfFlow" view="redirect:/admin/movie" />

@@ -108,4 +108,12 @@
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>
     
+    <!-- New Movie Flow Page 4 -->
+    <definition name="createmovie4" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/new/createmovie4.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
 </tiles-definitions>
