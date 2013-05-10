@@ -35,8 +35,10 @@
         <on-entry>
             <evaluate expression="seasonService.getAllSeasons()" result="flowScope.seasons" />
         </on-entry>
-        <transition on="next" to="endOfFlow" />
-        <transition on="skip" to="endOfFlow" />
+        <transition on="next" to="createmovie3" />
+        <transition on="skip" to="createmovie3">
+            <evaluate expression="movieService.noSeasonAssociatedToMovie(flowScope.movieForm)" result="flowScope.movieForm" />
+        </transition>
         <transition on="newseason" to="createmovie2-5" />
         <transition on="back" to="createmovie1" />
     </view-state>
@@ -47,6 +49,14 @@
             <evaluate expression="seasonService.saveSeason(seasonObject)" />
         </transition>
         <transition on="back" to="createmovie2" />
+    </view-state>
+    
+    <!-- Create Movie Page 3 - define picture, movie and subtitles -->
+    <view-state id="createmovie3" view="createmovie3" model="flowScope.movieForm">
+        <transition on="next" to="endOfFlow" />
+        <transition on="back" to="createmovie2">
+            <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />
+        </transition>
     </view-state>
     
     <end-state id="endOfFlow" view="redirect:/admin/movie" />

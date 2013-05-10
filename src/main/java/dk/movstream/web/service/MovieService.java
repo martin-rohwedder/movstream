@@ -56,4 +56,17 @@ public class MovieService {
         return movie;   
     }
     
+    public Movie noSeasonAssociatedToMovie(Movie movie) {
+        movie.setSeason(null);
+        return movie;
+    }
+    
+    public Movie noSeasonAssociatedToMovieReverse(Movie movie) {
+        if (movie.getSeason() == null)
+        {
+            movie.setSeason(new Season());
+        }
+        return movie;
+    }
+    
 }

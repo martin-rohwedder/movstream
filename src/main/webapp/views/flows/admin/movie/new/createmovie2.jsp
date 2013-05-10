@@ -4,14 +4,14 @@
 
 <h3>New Movie</h3>
 
-<div class="span4">
+<div class="span5">
     
     <form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
         <div class="control-group">
             <label class="control-label" for="inputSeason"><strong>Choose Season</strong></label>
             <div class="controls input-prepend">
                 <span class="add-on" title="A season defines a collection of moviesm which all is associated with the same story. A season is not when movies is in the same category, but only if they are part of the same story"><i class="icon-question-sign"></i></span>
-                <form:select path="season.title">
+                <form:select path="season.title" class="span3">
                     <c:forEach items="${seasons}" var="season">
                         <form:option value="${season.title}" />
                     </c:forEach>
