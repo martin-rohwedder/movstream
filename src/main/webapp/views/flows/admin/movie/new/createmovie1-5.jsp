@@ -2,26 +2,30 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h3>New Movie</h3>
+<div class="flow-container">
 
-<div class="span4">
-    
-    <form:form modelAttribute="genreObject" action="${flowExecutionUrl}">
-        <div class="control-group">
-            <label class="control-label" for="inputTitle"><strong>Genre Title</strong></label>
-            <div class="controls">
-                <form:input class="span4" path="title" id="inputTitle" placeholder="Genre Title" />
+    <h3>New Movie</h3>
+
+    <div class="span4">
+
+        <form:form modelAttribute="genreObject" action="${flowExecutionUrl}">
+            <div class="control-group">
+                <label class="control-label" for="inputTitle"><strong>Genre Title</strong></label>
+                <div class="controls">
+                    <form:input class="span4" path="title" id="inputTitle" placeholder="Genre Title" />
+                </div>
             </div>
-        </div>
-            
-        <div class="control-group">
-            <div class="controls pull-right">
-                <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Create</strong></button>
-                <button type="submit" class="btn btn-success btn-small" id="create" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
+
+            <div class="control-group">
+                <div class="controls pull-right">
+                    <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Create</strong></button>
+                    <button type="submit" class="btn btn-success btn-small" id="create" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
+                </div>
             </div>
-        </div>
-    </form:form>
-    
+        </form:form>
+
+    </div>
+
 </div>
 
 <div class="progress-flow">
