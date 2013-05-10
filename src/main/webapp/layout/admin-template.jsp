@@ -120,10 +120,10 @@
         
         <div class="container">
             <div id="footer" class="row">
-                <div class="span4">
+                <div class="pull-left">
                     <p>&copy; 2013 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Movstream</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/martin-rohwedder/movstream" property="cc:attributionName" rel="cc:attributionURL">Martin Rohwedder</a></p>
                 </div>
-                <div id="cc-license" class="span8">
+                <div id="cc-license" class="pull-right">
                     <p>
                         <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed">
                             <img alt="Creative Commons licens" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" />
