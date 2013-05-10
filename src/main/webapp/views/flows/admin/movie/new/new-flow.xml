@@ -8,14 +8,19 @@
     
     <var name="genreObject" class="dk.movstream.web.domain.Genre" />
     <var name="seasonObject" class="dk.movstream.web.domain.Season" />
+    <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
     
     <on-start>
         <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
         <evaluate expression="movieService.getMovieForm()" result="flowScope.movieForm" />
+        <evaluate expression="genreListModel.setGenres(genreService.getAllMovieGenres())" />
     </on-start>
     
     <!-- Create Movie Page 1 - Titel, Description and Genre -->
     <view-state id="createmovie1" view="createmovie1" model="flowScope.movieForm">
+        <on-entry>
+            <evaluate expression="genreListModel.getGenres()" result="flowScope.genres" />
+        </on-entry>
         <transition on="next" to="createmovie2" />
         <transition on="newgenre" to="createmovie1-5" />
         <transition on="end" to="endOfFlow" />
@@ -24,8 +29,7 @@
     <!-- Create Genre - Flow part of create movie, to create a new genre on the fly -->
     <view-state id="createmovie1-5" view="createmovie1-5" model="genreObject">
         <transition on="create" to="createmovie1">
-            <evaluate expression="genreService.saveMovieGenre(genreObject)" />
-            <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
+            <evaluate expression="genreListModel.addGenre(genreObject)" />
         </transition>
         <transition on="back" to="createmovie1" />
     </view-state>

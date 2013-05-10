@@ -19,7 +19,7 @@
             <div class="controls input-prepend">
                 <span class="add-on" title="A genre defines a category the movie fits under. If you don't reckognise a suitable genre in the list, then click 'Create New Genre' to create new one."><i class="icon-question-sign"></i></span>
                 <form:select path="genre.title" class="span3">
-                    <c:forEach items="${navGenres}" var="genre">
+                    <c:forEach items="${genres}" var="genre">
                         <form:option value="${genre.title}" />
                     </c:forEach>
                 </form:select>
