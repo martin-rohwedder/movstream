@@ -9,11 +9,13 @@
     <var name="genreObject" class="dk.movstream.web.domain.Genre" />
     <var name="seasonObject" class="dk.movstream.web.domain.Season" />
     <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
+    <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
     
     <on-start>
         <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
         <evaluate expression="movieService.getMovieForm()" result="flowScope.movieForm" />
         <evaluate expression="genreListModel.setGenres(genreService.getAllMovieGenres())" />
+        <evaluate expression="seasonListModel.setSeasons(seasonService.getAllSeasons())" />
     </on-start>
     
     <!-- Create Movie Page 1 - Titel, Description and Genre -->
@@ -37,7 +39,7 @@
     <!-- Create Movie Page 2 - Associate movie to a season -->
     <view-state id="createmovie2" view="createmovie2" model="flowScope.movieForm">
         <on-entry>
-            <evaluate expression="seasonService.getAllSeasons()" result="flowScope.seasons" />
+            <evaluate expression="seasonListModel.getSeasons()" result="flowScope.seasons" />
         </on-entry>
         <transition on="next" to="createmovie3" />
         <transition on="skip" to="createmovie3">
@@ -50,7 +52,7 @@
     <!-- Create Season - Flow part of create movie, to create a new season on the fly -->
     <view-state id="createmovie2-5" view="createmovie2-5" model="seasonObject">
         <transition on="create" to="createmovie2">
-            <evaluate expression="seasonService.saveSeason(seasonObject)" />
+            <evaluate expression="seasonListModel.addSeason(seasonObject)" />
         </transition>
         <transition on="back" to="createmovie2" />
     </view-state>
