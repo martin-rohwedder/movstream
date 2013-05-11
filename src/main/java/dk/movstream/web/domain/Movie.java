@@ -36,6 +36,7 @@ public class Movie implements Serializable {
     private int updateVersion;
     private Season season;
     private Genre genre;
+    private MovieType movieType;
     private Set<Subtitle> subtitles = new HashSet<Subtitle>();
 
     @Id
@@ -113,6 +114,16 @@ public class Movie implements Serializable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "MOVIE_TYPE_ID")
+    public MovieType getMovieType() {
+        return movieType;
+    }
+
+    public void setMovieType(MovieType movieType) {
+        this.movieType = movieType;
     }
 
     @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)

@@ -13,17 +13,20 @@
         <form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
             <div class="control-group">
                 <label class="control-label" for="inputMovieFilename"><strong>Movie Filename</strong></label>
-                <div class="controls input-prepend">
-                    <span class="add-on" title="include the name of the movie file. Don't include the file path, since this should be set by a superadmin, in the system options"><i class="icon-question-sign"></i></span>
-                        <form:input class="span5" path="movieFilename" id="inputMovieFilename" placeholder="Movie Filename (Don't include path)" />
+                <div class="controls controls-row">
+                    <form:input class="span4" path="movieFilename" id="inputMovieFilename" placeholder="Movie Filename (Don't include path)" />
+                    <form:select path="movieType.name" class="span1">
+                        <c:forEach items="${movieTypes}" var="type">
+                            <form:option value="${type.name}" />
+                        </c:forEach>
+                    </form:select>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="inputPictureFilename"><strong>Movie Picture Filename</strong></label>
-                <div class="controls input-prepend">
-                    <span class="add-on" title="include the name of the movie picture file. Don't include the file path, since this should be set by a superadmin, in the system options"><i class="icon-question-sign"></i></span>
-                        <form:input class="span5" path="pictureFilename" id="inputPictureFilename" placeholder="picture Filename (Don't include path)" />
+                <div class="controls">
+                    <form:input class="span5" path="pictureFilename" id="inputPictureFilename" placeholder="picture Filename (Don't include path)" />
                 </div>
             </div>
 

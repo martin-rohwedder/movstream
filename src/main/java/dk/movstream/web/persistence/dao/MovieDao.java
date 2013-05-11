@@ -1,6 +1,7 @@
 package dk.movstream.web.persistence.dao;
 
 import dk.movstream.web.domain.Movie;
+import dk.movstream.web.domain.MovieType;
 import java.util.List;
 /**
  *
@@ -15,5 +16,6 @@ public interface MovieDao {
     List<Movie> findAllMoviesBySeasonId(long seasonId);
     Movie findMovieById(long movieId);
     List<Movie> findAllMoviesByGenreId(long genreId);
+    List<MovieType> findAllMovieTypes();
     
 }

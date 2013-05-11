@@ -59,6 +59,9 @@
     
     <!-- Create Movie Page 3 - define picture, movie -->
     <view-state id="createmovie3" view="createmovie3" model="flowScope.movieForm">
+        <on-entry>
+            <evaluate expression="movieService.getAllMovieTypes()" result="viewScope.movieTypes" />
+        </on-entry>
         <transition on="next" to="createmovie4" />
         <transition on="back" to="createmovie2">
             <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />

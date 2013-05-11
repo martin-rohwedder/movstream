@@ -1,6 +1,7 @@
 package dk.movstream.web.persistence.dao;
 
 import dk.movstream.web.domain.Movie;
+import dk.movstream.web.domain.MovieType;
 import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
@@ -55,6 +56,12 @@ public class MovieDaoImpl implements MovieDao {
     @Transactional(readOnly=true)
     public List<Movie> findAllMoviesOrderedById() {
         return this.sessionFactory.getCurrentSession().createQuery("from Movie movie order by movie.id asc").list();
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public List<MovieType> findAllMovieTypes() {
+        return this.sessionFactory.getCurrentSession().createQuery("from MovieType movietype").list();
     }
 
 }

@@ -2,6 +2,7 @@ package dk.movstream.web.service;
 
 import dk.movstream.web.domain.Genre;
 import dk.movstream.web.domain.Movie;
+import dk.movstream.web.domain.MovieType;
 import dk.movstream.web.domain.Season;
 import dk.movstream.web.domain.Subtitle;
 import dk.movstream.web.persistence.dao.MovieDao;
@@ -43,6 +44,10 @@ public class MovieService {
         return movieDao.findAllMoviesOrderedById();
     }
     
+    public List<MovieType> getAllMovieTypes() {
+        return movieDao.findAllMovieTypes();
+    }
+    
     /**
      * Retrieve a movie object with empty genre, season and subtitles.
      * @return Movie object
@@ -51,6 +56,7 @@ public class MovieService {
         Movie movie = new Movie();
         movie.setGenre(new Genre());
         movie.setSeason(new Season());
+        movie.setMovieType(new MovieType());
         movie.setSubtitles(new HashSet<Subtitle>());
         
         return movie;   

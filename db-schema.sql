@@ -8,6 +8,7 @@ drop table if exists `subtitle`;
 drop table if exists `movie`;
 drop table if exists `genre`;
 drop table if exists `season`;
+drop table if exists `movie_type`;
 
 create table `user`
 (
@@ -36,6 +37,14 @@ create table `genre`
 primary key (`ID`)
 )engine innodb default character set utf8;
 
+create table `movie_type`
+(
+`ID` int unsigned not null auto_increment,
+`NAME` varchar(20) not null,
+`UPDATE_VERSION` int not null default 0,
+primary key (`ID`)
+)engine innodb default character set utf8;
+
 create table `movie`
 (
 `ID` int unsigned not null auto_increment,
@@ -45,10 +54,12 @@ create table `movie`
 `PICTURE_FILENAME` varchar(255),
 `GENRE_ID` int unsigned not null,
 `SEASON_ID` int unsigned,
+`MOVIE_TYPE_ID` int unsigned not null,
 `UPDATE_VERSION` int not null default 0,
 primary key (`ID`),
 foreign key (`GENRE_ID`) references `genre`(`ID`),
-foreign key (`SEASON_ID`) references `season`(`ID`)
+foreign key (`SEASON_ID`) references `season`(`ID`),
+foreign key (`MOVIE_TYPE_ID`) references `movie_type`(`ID`)
 )engine innodb default character set utf8;
 
 create table `subtitle`
@@ -93,26 +104,33 @@ values ('24 Hours Season 2', 'Nuclear Bombs in Los Angeles');
 insert into `season` (`TITLE`, `DESCRIPTION`)
 values ('24 Hours Season 3', 'Season 3 with jack bauers 24 hours');
 
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 1 - Episode 1', 'Follow Jack Bauer', '24-1-1', '24-1-1-pic', 1, 1);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 1 - Episode 2', 'Follow Jack Bauer', '24-1-2', '24-1-2-pic', 1, 1);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 1 - Episode 3', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 1);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('Harry Potter', 'Follow Jack Bauer', '24-1-1', '24-1-1-pic', 3, null);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 2 - Episode 1', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 2);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 2 - Episode 2', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 2);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('24 Season 3 - Episode 1', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 3);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('Harry Potter 2', 'Harry has problems', '24-1-1', '24-1-1-pic', 3, null);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('Mr. Beans Holiday', 'Bean is the best', '24-1-1', '24-1-1-pic', 2, null);
-insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`)
-values ('007', 'Bond, James Bond', '24-1-1', '24-1-1-pic', 1, null);
+insert into `movie_type` (`NAME`)
+values ('mp4');
+insert into `movie_type` (`NAME`)
+values ('webm');
+insert into `movie_type` (`NAME`)
+values ('ogv');
+
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 1 - Episode 1', 'Follow Jack Bauer', '24-1-1', '24-1-1-pic', 1, 1, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 1 - Episode 2', 'Follow Jack Bauer', '24-1-2', '24-1-2-pic', 1, 1, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 1 - Episode 3', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 1, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('Harry Potter', 'Follow Jack Bauer', '24-1-1', '24-1-1-pic', 3, null, 2);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 2 - Episode 1', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 2, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 2 - Episode 2', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 2, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('24 Season 3 - Episode 1', 'Follow Jack Bauer', '24-1-2', '24-1-3-pic', 1, 3, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('Harry Potter 2', 'Harry has problems', '24-1-1', '24-1-1-pic', 3, null, 3);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('Mr. Beans Holiday', 'Bean is the best', '24-1-1', '24-1-1-pic', 2, null, 1);
+insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`)
+values ('007', 'Bond, James Bond', '24-1-1', '24-1-1-pic', 1, null, 1);
 
 insert into `subtitle` (`FILENAME`, `LANGUAGE`, `SRC_LANG`, `MOVIE_ID`)
 values ('beansubtitle.vtt', 'english', 'en', 1);
