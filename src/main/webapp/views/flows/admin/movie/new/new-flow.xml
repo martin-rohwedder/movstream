@@ -8,6 +8,7 @@
     
     <var name="genreObject" class="dk.movstream.web.domain.Genre" />
     <var name="seasonObject" class="dk.movstream.web.domain.Season" />
+    <var name="subtitleObject" class="dk.movstream.web.domain.Subtitle" />
     <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
     <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
     
@@ -72,7 +73,13 @@
     <view-state id="createmovie4" view="createmovie4" model="flowScope.movieForm">
         <transition on="next" to="endOfFlow" />
         <transition on="back" to="createmovie3" />
-        <transition on="addsubtitle" to="endOfFlow" />
+        <transition on="addsub" to="createmovie4-5" />
+    </view-state>
+    
+    <!-- Create Movie Page 4 - define subtitles -->
+    <view-state id="createmovie4-5" view="createmovie4-5" model="subtitleObject">
+        <transition on="create" to="createmovie4" />
+        <transition on="back" to="createmovie4" />
     </view-state>
     
     <end-state id="endOfFlow" view="redirect:/admin/movie" />
