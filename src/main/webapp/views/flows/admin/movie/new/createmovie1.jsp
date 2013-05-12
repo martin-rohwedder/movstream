@@ -37,26 +37,28 @@
                     <form:textarea class="span5" path="description" id="inputDescription" placeholder="Movie Description" rows="4"></form:textarea>
                     </div>
                 </div>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" class="btn btn-danger btn-small pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
-                        <button type="submit" class="btn btn-success btn-small pull-right" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
-                    </div>
-                </div>
         </form:form>
 
     </div>
 
 </div>
 
+<form:form modelAttribute="movieForm" class="clearfix">
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
+            <button type="submit" class="btn btn-info pull-right" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
+        </div>
+    </div>
+</form:form>
+
 <div>
     <hr />
         
-    <p class="muted text-center">Step 1 of 4</p>
+    <p class="muted text-center">Step 1 of 5</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="25"></div>
+        <div class="bar" data-percentage="0"></div>
     </div>
     
     <br />
@@ -66,7 +68,7 @@
 $(document).ready(function() {
     $('.progress .bar').progressbar({
         transition_delay: 400,
-        display_text: 1
+        display_text: 0
     });
 });
 </script>

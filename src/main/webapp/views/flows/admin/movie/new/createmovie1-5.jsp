@@ -31,10 +31,10 @@
 <div class="progress-flow">
     <hr />
         
-    <p class="muted text-center">Step 1 of 4</p>
+    <p class="muted text-center">Step 1 of 5</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="25"></div>
+        <div class="bar" data-percentage="0"></div>
     </div>
     
     <br />
@@ -44,7 +44,7 @@
 $(document).ready(function() {
     $('.progress .bar').progressbar({
         transition_delay: 400,
-        display_text: 1
+        display_text: 0
     });
 });
 </script>

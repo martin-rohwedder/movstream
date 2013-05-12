@@ -124,4 +124,12 @@
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>
     
+    <!-- New Movie Flow Page 5 - inspect movie details -->
+    <definition name="createmovie5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/new/createmovie5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
 </tiles-definitions>

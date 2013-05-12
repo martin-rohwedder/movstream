@@ -74,7 +74,7 @@
     
     <!-- Create Movie Page 4 - define subtitles -->
     <view-state id="createmovie4" view="createmovie4" model="flowScope.movieForm">
-        <transition on="next" to="endOfFlow" />
+        <transition on="next" to="createmovie5" />
         <transition on="back" to="createmovie3" />
         <transition on="addsub" to="createmovie4-5" />
         <transition on="removesub" to="createmovie4">
@@ -90,6 +90,12 @@
         <transition on="create" to="createmovie4">
             <evaluate expression="flowScope.movieForm.addSubtitle(viewScope.subtitleObject)" />
         </transition>
+        <transition on="back" to="createmovie4" />
+    </view-state>
+    
+    <!-- Create Movie Page 5 - view movie details page -->
+    <view-state id="createmovie5" view="createmovie5" model="flowScope.movieForm">
+        <transition on="savemovie" to="endOfFlow" />
         <transition on="back" to="createmovie4" />
     </view-state>
     

@@ -23,29 +23,31 @@
                     <button type="submit" class="btn btn-link btn-mini" id="newseason" name="_eventId_newseason">(Create New Season)</button>
                 </div>
             </div>
-
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn btn-info btn-small pull-left" id="back" name="_eventId_back"><i class="icon-arrow-left icon-white"></i> <strong>Back</strong></button>
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-warning btn-small" id="skip" name="_eventId_skip"><strong>Skip</strong> <i class="icon-share-alt icon-white"></i></button>
-                        <button type="submit" class="btn btn-success btn-small" id="next" name="_eventId_next"><strong>Add To Season</strong> <i class="icon-chevron-right icon-white"></i></button>
-                    </div>
-                </div>
-            </div>
         </form:form>
 
     </div>
 
 </div>
 
+<form:form modelAttribute="movieForm" class="clearfix">
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-warning" id="skip" name="_eventId_skip"><strong>Skip This Part</strong> <i class="icon-share-alt icon-white"></i></button>
+                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong>Add To Season</strong> <i class="icon-chevron-right icon-white"></i></button>
+            </div>
+        </div>
+    </div>
+</form:form>
+
 <div>
     <hr />
         
-    <p class="muted text-center">Step 2 of 4</p>
+    <p class="muted text-center">Step 2 of 5</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="50"></div>
+        <div class="bar" data-percentage="25"></div>
     </div>
     
     <br />

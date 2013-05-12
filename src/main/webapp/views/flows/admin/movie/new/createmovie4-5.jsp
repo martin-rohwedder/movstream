@@ -46,10 +46,10 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 4 of 4</p>
+    <p class="muted text-center">Step 4 of 5</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="100"></div>
+        <div class="bar" data-percentage="75"></div>
     </div>
     
     <br />
