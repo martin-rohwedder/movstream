@@ -27,4 +27,8 @@ public class GenreService {
         genreDao.insertMovieGenre(genre);
     }
     
+    public Genre getGenreInstance() {
+        return new Genre();
+    }
+    
 }

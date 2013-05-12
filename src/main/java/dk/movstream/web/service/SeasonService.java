@@ -27,4 +27,8 @@ public class SeasonService {
         seasonDao.insertSeason(season);
     }
     
+    public Season getSeasonInstance() {
+        return new Season();
+    }
+    
 }

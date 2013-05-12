@@ -6,8 +6,6 @@
 
     <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
     
-    <var name="genreObject" class="dk.movstream.web.domain.Genre" />
-    <var name="seasonObject" class="dk.movstream.web.domain.Season" />
     <var name="subtitleObject" class="dk.movstream.web.domain.Subtitle" />
     <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
     <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
@@ -30,9 +28,12 @@
     </view-state>
     
     <!-- Create Genre - Flow part of create movie, to create a new genre on the fly -->
-    <view-state id="createmovie1-5" view="createmovie1-5" model="genreObject">
+    <view-state id="createmovie1-5" view="createmovie1-5" model="viewScope.genreObject">
+        <on-entry>
+            <evaluate expression="genreService.getGenreInstance()" result="viewScope.genreObject" />
+        </on-entry>
         <transition on="create" to="createmovie1">
-            <evaluate expression="genreListModel.addGenre(genreObject)" />
+            <evaluate expression="genreListModel.addGenre(viewScope.genreObject)" />
         </transition>
         <transition on="back" to="createmovie1" />
     </view-state>
@@ -51,9 +52,12 @@
     </view-state>
     
     <!-- Create Season - Flow part of create movie, to create a new season on the fly -->
-    <view-state id="createmovie2-5" view="createmovie2-5" model="seasonObject">
+    <view-state id="createmovie2-5" view="createmovie2-5" model="viewScope.seasonObject">
+        <on-entry>
+            <evaluate expression="seasonService.getSeasonInstance()" result="viewScope.seasonObject" />
+        </on-entry>
         <transition on="create" to="createmovie2">
-            <evaluate expression="seasonListModel.addSeason(seasonObject)" />
+            <evaluate expression="seasonListModel.addSeason(viewScope.seasonObject)" />
         </transition>
         <transition on="back" to="createmovie2" />
     </view-state>
