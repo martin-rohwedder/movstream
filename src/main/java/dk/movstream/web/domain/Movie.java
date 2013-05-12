@@ -140,7 +140,11 @@ public class Movie implements Serializable {
         getSubtitles().add(subtitle);
     }
     
-    public void removeSubtitle(Subtitle subtitle) {
+    public void removeSubtitleByIndex(int index) {
+        getSubtitles().remove(index);
+    }
+    
+    public void removeSubtitleByObject(Subtitle subtitle) {
         getSubtitles().remove(subtitle);
     }
     

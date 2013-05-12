@@ -77,6 +77,9 @@
         <transition on="next" to="endOfFlow" />
         <transition on="back" to="createmovie3" />
         <transition on="addsub" to="createmovie4-5" />
+        <transition on="removesub" to="createmovie4">
+            <evaluate expression="flowScope.movieForm.removeSubtitleByIndex(requestParameters.subindex)" />
+        </transition>
     </view-state>
     
     <!-- Create Movie Page 4-5 - add a new subtitle -->

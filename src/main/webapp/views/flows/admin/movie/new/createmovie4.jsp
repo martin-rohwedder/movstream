@@ -21,13 +21,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <c:set var="index" value="0" />
                     <c:forEach items="${movieForm.subtitles}" var="subtitle">
                         <tr>
                             <td><c:out value="${subtitle.filename}" /></td>
                             <td><c:out value="${subtitle.language}" /></td>
                             <td><c:out value="${subtitle.srcLang}" /></td>
-                            <td><button class="btn btn-danger btn-mini" type="submit" id="removesub" name="_eventId_removesub?subid=0"><i class="icon-remove-circle icon-white"></i> Remove</button></td>
+                            <td><a class="btn btn-danger btn-mini" href="${flowExecutionUrl}&_eventId=removesub&subindex=<c:out value="${index}" />"><i class="icon-remove-circle icon-white"></i> Remove</a></td>
                         </tr>
+                        <c:set var="index" value="${index + 1}" />
                     </c:forEach>
                 </tbody>
             </table>
