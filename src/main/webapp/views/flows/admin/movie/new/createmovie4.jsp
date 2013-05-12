@@ -2,6 +2,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
+
 <div class="flow-container">
 
     <h3>New Movie</h3>
@@ -9,8 +11,6 @@
     <div class="span5">
 
         <p class="muted">Add as many subtitles as you like for the movie.</p>
-
-        <form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
 
             <table class="table table-bordered table-striped table-condensed subtitle-table span5">
                 <thead>
@@ -33,13 +33,11 @@
                     </c:forEach>
                 </tbody>
             </table>
-        </form:form>
 
     </div>
 
 </div>
 
-<form:form modelAttribute="movieForm" class="clearfix">
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
@@ -50,6 +48,8 @@
         </div>
     </div>
 </form:form>
+
+<div class="clearfix"></div>
 
 <div>
     <hr />

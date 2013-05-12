@@ -51,7 +51,7 @@
             
 </div>
 
-<form:form modelAttribute="movieForm" class="clearfix">
+<form:form modelAttribute="movieForm" action="${flowExecutionUrl}" class="clearfix">
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-arrow-left icon-white"></i> <strong>Back</strong></button>

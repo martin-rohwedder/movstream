@@ -2,6 +2,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
+
 <div class="flow-container">
 
     <h3>New Movie</h3>
@@ -10,7 +12,6 @@
 
         <p class="muted">Define movie details</p>
 
-        <form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
             <div class="control-group">
                 <label class="control-label" for="inputTitle"><strong>Title</strong></label>
                 <div class="controls">
@@ -31,19 +32,17 @@
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label" for="inputDescription"><strong>Description</strong></label>
-                <div class="controls">
-                    <form:textarea class="span5" path="description" id="inputDescription" placeholder="Movie Description" rows="4"></form:textarea>
+                    <div class="control-group">
+                        <label class="control-label" for="inputDescription"><strong>Description</strong></label>
+                        <div class="controls">
+                            <form:textarea class="span5" path="description" id="inputDescription" placeholder="Movie Description" rows="4"></form:textarea>
+                        </div>
                     </div>
-                </div>
-        </form:form>
 
     </div>
 
 </div>
 
-<form:form modelAttribute="movieForm" class="clearfix">
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
@@ -51,6 +50,8 @@
         </div>
     </div>
 </form:form>
+
+<div class="clearfix"></div>
 
 <div>
     <hr />

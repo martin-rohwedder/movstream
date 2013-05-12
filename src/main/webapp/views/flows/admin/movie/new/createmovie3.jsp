@@ -2,6 +2,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
+
 <div class="flow-container">
 
     <h3>New Movie</h3>
@@ -10,7 +12,6 @@
 
         <p class="muted">Define the movie filename and movie picture filename.</p>
 
-        <form:form modelAttribute="movieForm" action="${flowExecutionUrl}">
             <div class="control-group">
                 <label class="control-label" for="inputMovieFilename"><strong>Movie Filename</strong></label>
                 <div class="controls controls-row">
@@ -29,13 +30,11 @@
                     <form:input class="span5" path="pictureFilename" id="inputPictureFilename" placeholder="picture Filename (Don't include path)" />
                 </div>
             </div>
-        </form:form>
 
     </div>
 
 </div>
-
-<form:form modelAttribute="movieForm" class="clearfix">
+                
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
@@ -43,6 +42,8 @@
         </div>
     </div>
 </form:form>
+
+<div class="clearfix"></div>
 
 <div>
     <hr />
