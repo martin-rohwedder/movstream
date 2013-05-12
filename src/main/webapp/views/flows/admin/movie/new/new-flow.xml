@@ -6,7 +6,6 @@
 
     <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
     
-    <var name="subtitleObject" class="dk.movstream.web.domain.Subtitle" />
     <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
     <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
     
@@ -80,9 +79,14 @@
         <transition on="addsub" to="createmovie4-5" />
     </view-state>
     
-    <!-- Create Movie Page 4 - define subtitles -->
-    <view-state id="createmovie4-5" view="createmovie4-5" model="subtitleObject">
-        <transition on="create" to="createmovie4" />
+    <!-- Create Movie Page 4-5 - add a new subtitle -->
+    <view-state id="createmovie4-5" view="createmovie4-5" model="viewScope.subtitleObject">
+        <on-entry>
+            <evaluate expression="movieService.getSubtitleInstance()" result="viewScope.subtitleObject" />
+        </on-entry>
+        <transition on="create" to="createmovie4">
+            <evaluate expression="flowScope.movieForm.addSubtitle(viewScope.subtitleObject)" />
+        </transition>
         <transition on="back" to="createmovie4" />
     </view-state>
     

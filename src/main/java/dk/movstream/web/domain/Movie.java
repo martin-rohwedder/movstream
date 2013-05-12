@@ -1,8 +1,8 @@
 package dk.movstream.web.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +37,7 @@ public class Movie implements Serializable {
     private Season season;
     private Genre genre;
     private MovieType movieType;
-    private Set<Subtitle> subtitles = new HashSet<Subtitle>();
+    private List<Subtitle> subtitles = new ArrayList<Subtitle>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -127,11 +127,11 @@ public class Movie implements Serializable {
     }
 
     @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
-    public Set<Subtitle> getSubtitles() {
+    public List<Subtitle> getSubtitles() {
         return subtitles;
     }
 
-    public void setSubtitles(Set<Subtitle> subtitles) {
+    public void setSubtitles(List<Subtitle> subtitles) {
         this.subtitles = subtitles;
     }
     

@@ -6,7 +6,7 @@ import dk.movstream.web.domain.MovieType;
 import dk.movstream.web.domain.Season;
 import dk.movstream.web.domain.Subtitle;
 import dk.movstream.web.persistence.dao.MovieDao;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -57,7 +57,7 @@ public class MovieService {
         movie.setGenre(new Genre());
         movie.setSeason(new Season());
         movie.setMovieType(new MovieType());
-        movie.setSubtitles(new HashSet<Subtitle>());
+        movie.setSubtitles(new ArrayList<Subtitle>());
         
         return movie;   
     }
@@ -73,6 +73,10 @@ public class MovieService {
             movie.setSeason(new Season());
         }
         return movie;
+    }
+    
+    public Subtitle getSubtitleInstance() {
+        return new Subtitle();
     }
     
 }

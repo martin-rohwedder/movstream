@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${subtitles}" var="subtitle">
+                    <c:forEach items="${movieForm.subtitles}" var="subtitle">
                         <tr>
                             <td><c:out value="${subtitle.filename}" /></td>
                             <td><c:out value="${subtitle.language}" /></td>
