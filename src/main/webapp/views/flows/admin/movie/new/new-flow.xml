@@ -21,7 +21,9 @@
         <on-entry>
             <evaluate expression="genreListModel.getGenres()" result="flowScope.genres" />
         </on-entry>
-        <transition on="next" to="createmovie2" />
+        <transition on="next" to="createmovie2">
+            <evaluate expression="genreListModel.getGenreByTitle(flowScope.movieForm.genre.title)" result="flowScope.movieForm.genre" />
+        </transition>
         <transition on="newgenre" to="createmovie1-5" />
         <transition on="end" to="endOfFlow" />
     </view-state>
@@ -42,7 +44,9 @@
         <on-entry>
             <evaluate expression="seasonListModel.getSeasons()" result="flowScope.seasons" />
         </on-entry>
-        <transition on="next" to="createmovie3" />
+        <transition on="next" to="createmovie3">
+            <evaluate expression="seasonListModel.getSeasonByTitle(flowScope.movieForm.season.title)" result="flowScope.movieForm.season" />
+        </transition>
         <transition on="skip" to="createmovie3">
             <evaluate expression="movieService.noSeasonAssociatedToMovie(flowScope.movieForm)" result="flowScope.movieForm" />
         </transition>

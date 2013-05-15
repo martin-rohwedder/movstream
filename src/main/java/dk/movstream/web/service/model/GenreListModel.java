@@ -1,6 +1,7 @@
 package dk.movstream.web.service.model;
 
 import dk.movstream.web.domain.Genre;
+import dk.movstream.web.domain.Movie;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,23 @@ public class GenreListModel implements Serializable {
     
     public void addGenre(Genre genre) {
         this.genres.add(genre);
+    }
+    
+    public Genre getGenreByTitle(String title) {
+        Genre myGenre = new Genre();
+        
+        for (Genre genre : genres) {
+            if (genre.getTitle().equalsIgnoreCase(title)) {
+                myGenre.setId(genre.getId());
+                myGenre.setTitle(genre.getTitle());
+                myGenre.setUpdateVersion(genre.getUpdateVersion());
+                for (Movie movie : genre.getMovies()) {
+                    myGenre.addMovie(movie);
+                }
+            }
+        }
+        
+        return myGenre;
     }
     
 }

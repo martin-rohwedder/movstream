@@ -14,7 +14,7 @@
             <dt>Title</dt>
             <dd><c:out value="${movieForm.title}" /></dd>
             <dt>Genre</dt>
-            <dd><c:out value="${movieForm.genre.title}" /></dd>
+            <dd><c:out value="${movieForm.genre.title} (${movieForm.genre.id})" /></dd>
             <dt>Description</dt>
             <dd><c:out value="${movieForm.description}" /></dd>
             <dt>Season</dt>
@@ -24,7 +24,8 @@
                         No Season associated
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${movieForm.season.title}" />
+                        <c:out value="${movieForm.season.title} (${movieForm.season.id})" /><br />
+                        <c:out value="${movieForm.season.description}" />
                     </c:otherwise>
                 </c:choose>
             </dd>
