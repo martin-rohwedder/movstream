@@ -87,13 +87,6 @@ public class MovieDaoImpl implements MovieDao {
         
         //Save the movie details, and get the new movie ID.
         this.sessionFactory.getCurrentSession().saveOrUpdate(movie);
-        
-        //Save the subtitles associated to the movie, if any.
-        if (!movie.getSubtitles().isEmpty()) {
-            for (Subtitle subtitle : movie.getSubtitles()) {
-                this.sessionFactory.getCurrentSession().saveOrUpdate(subtitle);
-            }
-        }
     }
 
 }

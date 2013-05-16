@@ -3,6 +3,7 @@ package dk.movstream.web.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -126,7 +127,7 @@ public class Movie implements Serializable {
         this.movieType = movieType;
     }
 
-    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
     public List<Subtitle> getSubtitles() {
         return subtitles;
     }
