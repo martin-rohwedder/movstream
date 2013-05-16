@@ -132,4 +132,70 @@
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>
     
+    
+    
+    <!-- Edit Movie Flow Page 1 -->
+    <definition name="editmovie1" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie1.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 1.5 - Create New Genre on the fly -->
+    <definition name="editmovie1-5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie1-5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 2 -->
+    <definition name="editmovie2" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie2.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 2.5 - Create New Season on the fly -->
+    <definition name="editmovie2-5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie2-5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 3 -->
+    <definition name="editmovie3" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie3.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 4 -->
+    <definition name="editmovie4" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie4.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 4.5 - Add a new subtitle -->
+    <definition name="editmovie4-5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie4-5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
+    <!-- edit Movie Flow Page 5 - inspect movie details -->
+    <definition name="editmovie5" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/movie/edit/editmovie5.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagemovie" />
+    </definition>
+    
 </tiles-definitions>

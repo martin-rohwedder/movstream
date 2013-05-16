@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
+    
+    <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
+    <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
+    <var name="movieTypeListModel" class="dk.movstream.web.service.model.MovieTypeListModel" />
+    
+    <on-start>
+        <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
+        <evaluate expression="movieService.getMovieById(RequestParameters.editMovieId)" result="flowScope.movieForm" />
+        <evaluate expression="genreListModel.setGenres(genreService.getAllMovieGenres())" />
+        <evaluate expression="seasonListModel.setSeasons(seasonService.getAllSeasons())" />
+        <evaluate expression="movieTypeListModel.setMovieTypes(movieService.getAllMovieTypes())" />
+    </on-start>
+    
+    <!-- edit Movie Page 1 - Titel, Description and Genre -->
+    <view-state id="editmovie1" view="editmovie1" model="flowScope.movieForm">
+        <on-entry>
+            <evaluate expression="genreListModel.getGenres()" result="flowScope.genres" />
+        </on-entry>
+        <transition on="next" to="editmovie2">
+            <evaluate expression="genreListModel.getGenreByTitle(flowScope.movieForm.genre.title)" result="flowScope.movieForm.genre" />
+        </transition>
+        <transition on="newgenre" to="editmovie1-5" />
+        <transition on="end" to="endOfFlow" />
+    </view-state>
+    
+    <!-- Edit Genre - Flow part of create movie, to create a new genre on the fly -->
+    <view-state id="editmovie1-5" view="editmovie1-5" model="viewScope.genreObject">
+        <on-entry>
+            <evaluate expression="genreService.getGenreInstance()" result="viewScope.genreObject" />
+        </on-entry>
+        <transition on="create" to="editmovie1">
+            <evaluate expression="genreListModel.addGenre(viewScope.genreObject)" />
+        </transition>
+        <transition on="back" to="editmovie1" />
+    </view-state>
+    
+    <!-- Create Movie Page 2 - Associate movie to a season -->
+    <view-state id="editmovie2" view="editmovie2" model="flowScope.movieForm">
+        <on-entry>
+            <evaluate expression="seasonListModel.getSeasons()" result="flowScope.seasons" />
+            <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />
+        </on-entry>
+        <transition on="next" to="editmovie3">
+            <evaluate expression="seasonListModel.getSeasonByTitle(flowScope.movieForm.season.title)" result="flowScope.movieForm.season" />
+        </transition>
+        <transition on="skip" to="editmovie3">
+            <evaluate expression="movieService.noSeasonAssociatedToMovie(flowScope.movieForm)" result="flowScope.movieForm" />
+        </transition>
+        <transition on="newseason" to="editmovie2-5" />
+        <transition on="back" to="editmovie1" />
+    </view-state>
+    
+    <!-- edit Season - Flow part of create movie, to create a new season on the fly -->
+    <view-state id="editmovie2-5" view="editmovie2-5" model="viewScope.seasonObject">
+        <on-entry>
+            <evaluate expression="seasonService.getSeasonInstance()" result="viewScope.seasonObject" />
+        </on-entry>
+        <transition on="create" to="editmovie2">
+            <evaluate expression="seasonListModel.addSeason(viewScope.seasonObject)" />
+        </transition>
+        <transition on="back" to="editmovie2" />
+    </view-state>
+    
+    <!-- Edit Movie Page 3 - define picture, movie -->
+    <view-state id="editmovie3" view="editmovie3" model="flowScope.movieForm">
+        <on-entry>
+            <evaluate expression="movieTypeListModel.getMovieTypes()" result="viewScope.movieTypes" />
+        </on-entry>
+        <transition on="next" to="editmovie4">
+            <evaluate expression="movieTypeListModel.getMovieTypeByName(flowScope.movieForm.movieType.name)" result="flowScope.movieForm.movieType" />
+        </transition>
+        <transition on="back" to="editmovie2">
+            <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />
+        </transition>
+    </view-state>
+    
+    <!-- Edit Movie Page 4 - define subtitles -->
+    <view-state id="editmovie4" view="editmovie4" model="flowScope.movieForm">
+        <transition on="next" to="editmovie5" />
+        <transition on="back" to="editmovie3" />
+        <transition on="addsub" to="editmovie4-5" />
+        <transition on="removesub" to="editmovie4">
+            <evaluate expression="flowScope.movieForm.removeSubtitleByIndex(requestParameters.subindex)" />
+        </transition>
+    </view-state>
+    
+    <!-- Edit Movie Page 4-5 - add a new subtitle -->
+    <view-state id="editmovie4-5" view="editmovie4-5" model="viewScope.subtitleObject">
+        <on-entry>
+            <evaluate expression="movieService.getSubtitleInstance()" result="viewScope.subtitleObject" />
+        </on-entry>
+        <transition on="create" to="editmovie4">
+            <evaluate expression="flowScope.movieForm.addSubtitle(viewScope.subtitleObject)" />
+        </transition>
+        <transition on="back" to="editmovie4" />
+    </view-state>
+    
+    <!-- Edit Movie Page 5 - view movie details page -->
+    <view-state id="editmovie5" view="editmovie5" model="flowScope.movieForm">
+        <transition on="savemovie" to="flowDone">
+            <evaluate expression="movieService.saveMovie(flowScope.movieForm)" />
+        </transition>
+        <transition on="back" to="editmovie4" />
+    </view-state>
+    
+    <end-state id="flowDone" view="redirect:/admin/movie?edited=1" />
+    
+    <end-state id="endOfFlow" view="redirect:/admin/movie" />
+    
+</flow>

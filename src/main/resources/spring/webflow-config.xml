@@ -21,7 +21,7 @@
         </webflow:flow-execution-listeners>
     </webflow:flow-executor>
     
-    <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" validator="validator" development="true" />
+    <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" validator="validator" development="false" />
     
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
     
