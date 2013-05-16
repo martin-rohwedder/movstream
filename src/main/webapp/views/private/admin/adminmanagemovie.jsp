@@ -1,5 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:if test="${not empty param.created}">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong>Congratulations!</strong> Your movie has been created and saved in the database.</p>
+    </div>
+</c:if>
+
 <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/new" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> Create Movie</a>
 
 <br /><br />
