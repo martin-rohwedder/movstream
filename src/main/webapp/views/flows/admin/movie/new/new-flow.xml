@@ -8,12 +8,14 @@
     
     <var name="genreListModel" class="dk.movstream.web.service.model.GenreListModel" />
     <var name="seasonListModel" class="dk.movstream.web.service.model.SeasonListModel" />
+    <var name="movieTypeListModel" class="dk.movstream.web.service.model.MovieTypeListModel" />
     
     <on-start>
         <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
         <evaluate expression="movieService.getMovieForm()" result="flowScope.movieForm" />
         <evaluate expression="genreListModel.setGenres(genreService.getAllMovieGenres())" />
         <evaluate expression="seasonListModel.setSeasons(seasonService.getAllSeasons())" />
+        <evaluate expression="movieTypeListModel.setMovieTypes(movieService.getAllMovieTypes())" />
     </on-start>
     
     <!-- Create Movie Page 1 - Titel, Description and Genre -->
@@ -68,9 +70,11 @@
     <!-- Create Movie Page 3 - define picture, movie -->
     <view-state id="createmovie3" view="createmovie3" model="flowScope.movieForm">
         <on-entry>
-            <evaluate expression="movieService.getAllMovieTypes()" result="viewScope.movieTypes" />
+            <evaluate expression="movieTypeListModel.getMovieTypes()" result="viewScope.movieTypes" />
         </on-entry>
-        <transition on="next" to="createmovie4" />
+        <transition on="next" to="createmovie4">
+            <evaluate expression="movieTypeListModel.getMovieTypeByName(flowScope.movieForm.movieType.name)" result="flowScope.movieForm.movieType" />
+        </transition>
         <transition on="back" to="createmovie2">
             <evaluate expression="movieService.noSeasonAssociatedToMovieReverse(flowScope.movieForm)" result="flowScope.movieForm" />
         </transition>
@@ -99,9 +103,13 @@
     
     <!-- Create Movie Page 5 - view movie details page -->
     <view-state id="createmovie5" view="createmovie5" model="flowScope.movieForm">
-        <transition on="savemovie" to="endOfFlow" />
+        <transition on="savemovie" to="flowDone">
+            <evaluate expression="movieService.saveMovie(flowScope.movieForm)" />
+        </transition>
         <transition on="back" to="createmovie4" />
     </view-state>
+    
+    <end-state id="flowDone" view="redirect:/admin/movie?created=1" />
     
     <end-state id="endOfFlow" view="redirect:/admin/movie" />
     

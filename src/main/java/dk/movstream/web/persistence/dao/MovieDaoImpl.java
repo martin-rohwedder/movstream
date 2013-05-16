@@ -1,7 +1,10 @@
 package dk.movstream.web.persistence.dao;
 
+import dk.movstream.web.domain.Genre;
 import dk.movstream.web.domain.Movie;
 import dk.movstream.web.domain.MovieType;
+import dk.movstream.web.domain.Season;
+import dk.movstream.web.domain.Subtitle;
 import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
@@ -62,6 +65,35 @@ public class MovieDaoImpl implements MovieDao {
     @Transactional(readOnly=true)
     public List<MovieType> findAllMovieTypes() {
         return this.sessionFactory.getCurrentSession().createQuery("from MovieType movietype").list();
+    }
+
+    @Override
+    @Transactional
+    public void insertMovie(Movie movie) {
+        Genre genre = null;
+        Season season = null;
+        
+        //Save the genre if we have a new genre.
+        if (movie.getGenre().getId() == 0) {
+            this.sessionFactory.getCurrentSession().saveOrUpdate(movie.getGenre());
+        }
+        
+        //Save the season, if it's not yet created in the database.
+        if (movie.getSeason() != null) {
+            if (movie.getSeason().getId() == 0) {
+                this.sessionFactory.getCurrentSession().saveOrUpdate(movie.getSeason());
+            }
+        }
+        
+        //Save the movie details, and get the new movie ID.
+        this.sessionFactory.getCurrentSession().saveOrUpdate(movie);
+        
+        //Save the subtitles associated to the movie, if any.
+        if (!movie.getSubtitles().isEmpty()) {
+            for (Subtitle subtitle : movie.getSubtitles()) {
+                this.sessionFactory.getCurrentSession().saveOrUpdate(subtitle);
+            }
+        }
     }
 
 }

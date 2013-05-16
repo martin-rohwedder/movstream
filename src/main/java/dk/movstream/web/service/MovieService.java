@@ -48,6 +48,10 @@ public class MovieService {
         return movieDao.findAllMovieTypes();
     }
     
+    public void saveMovie(Movie movie) {
+        this.movieDao.insertMovie(movie);
+    }
+    
     /**
      * Retrieve a movie object with empty genre, season and subtitles.
      * @return Movie object
