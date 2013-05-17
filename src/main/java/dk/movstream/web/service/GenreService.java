@@ -19,6 +19,22 @@ public class GenreService {
     @Qualifier("GenreDao")
     private GenreDao genreDao;
     
+    public List<Genre> getAllMovieGenresWithMovies() {
+        List<Genre> genres = this.genreDao.findAllMovieGenres();
+        Genre myGenre = null;
+        for (Genre genre : genres) {
+            if (genre.getMovies().isEmpty()) {
+                myGenre = genre;
+            }
+        }
+        
+        if (myGenre != null) {
+            genres.remove(myGenre);
+        }
+        
+        return genres;
+    }
+    
     public List<Genre> getAllMovieGenres() {
         return this.genreDao.findAllMovieGenres();
     }

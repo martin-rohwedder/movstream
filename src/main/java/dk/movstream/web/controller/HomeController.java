@@ -35,7 +35,7 @@ public class HomeController {
         }
         
         mav.addObject("movies", Utility.sortMoviesAlphabetically(movieService.getAllMoviesOrderedByTitle()));
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }

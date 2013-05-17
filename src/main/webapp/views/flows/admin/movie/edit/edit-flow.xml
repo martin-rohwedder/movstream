@@ -11,7 +11,7 @@
     <var name="movieTypeListModel" class="dk.movstream.web.service.model.MovieTypeListModel" />
     
     <on-start>
-        <evaluate expression="genreService.getAllMovieGenres()" result="flowScope.navGenres" />
+        <evaluate expression="genreService.getAllMovieGenresWithMovies()" result="flowScope.navGenres" />
         <evaluate expression="movieService.getMovieById(RequestParameters.editMovieId)" result="flowScope.movieForm" />
         <evaluate expression="genreListModel.setGenres(genreService.getAllMovieGenres())" />
         <evaluate expression="seasonListModel.setSeasons(seasonService.getAllSeasons())" />

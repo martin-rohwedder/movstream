@@ -26,7 +26,7 @@ public class MovieController {
     public ModelAndView renderSeasonEpisodes(@PathVariable("seasonId") long seasonId) {
         ModelAndView mav = new ModelAndView("showepisodes");
         mav.addObject("episodes", movieService.getAllMoviesBySeasonId(seasonId));
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }
@@ -35,7 +35,7 @@ public class MovieController {
     public ModelAndView renderShowMovie(@PathVariable("movieId") long movieId) {
         ModelAndView mav = new ModelAndView("showmovie");
         mav.addObject("movie", movieService.getMovieById(movieId));
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }
@@ -44,7 +44,7 @@ public class MovieController {
     public ModelAndView renderMoviesByGenre(@PathVariable("genreId") long genreId) {
         ModelAndView mav = new ModelAndView("showmoviesbygenre");
         mav.addObject("movies", movieService.getAllMoviesByGenreId(genreId));
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }

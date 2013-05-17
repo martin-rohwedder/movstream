@@ -27,7 +27,7 @@ public class AdministrationController {
     public ModelAndView renderAdminHome() {
         ModelAndView mav = new ModelAndView("adminhome");
         
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }
@@ -37,7 +37,7 @@ public class AdministrationController {
         ModelAndView mav = new ModelAndView("adminmanagemovie");
         
         mav.addObject("movies", movieService.getAllMoviesOrderedById());
-        mav.addObject("navGenres", genreService.getAllMovieGenres());
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
     }
