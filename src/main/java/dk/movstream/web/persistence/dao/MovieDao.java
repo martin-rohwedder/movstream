@@ -18,5 +18,6 @@ public interface MovieDao {
     List<Movie> findAllMoviesByGenreId(long genreId);
     List<MovieType> findAllMovieTypes();
     void insertMovie(Movie movie);
+    void removeMovie(Movie movie);
     
 }

@@ -52,6 +52,11 @@ public class MovieService {
         this.movieDao.insertMovie(movie);
     }
     
+    public void deleteMovie(long id) {
+        Movie movie = this.movieDao.findMovieById(id);
+        this.movieDao.removeMovie(movie);
+    }
+    
     /**
      * Retrieve a movie object with empty genre, season and subtitles.
      * @return Movie object

@@ -89,4 +89,9 @@ public class MovieDaoImpl implements MovieDao {
         this.sessionFactory.getCurrentSession().saveOrUpdate(movie);
     }
 
+    @Override
+    public void removeMovie(Movie movie) {
+        this.sessionFactory.getCurrentSession().delete(movie);
+    }
+
 }
