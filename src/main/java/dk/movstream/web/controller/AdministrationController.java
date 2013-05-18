@@ -1,5 +1,6 @@
 package dk.movstream.web.controller;
 
+import dk.movstream.web.security.SecurityContextSupport;
 import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import dk.movstream.web.service.UserService;
@@ -59,6 +60,20 @@ public class AdministrationController {
         mav.addObject("users", userService.getAllUsers());
         
         return mav;
+    }
+    
+    @RequestMapping(value = {"/user/delete"}, method = RequestMethod.GET)
+    public String deleteUserAction(@RequestParam(value = "deleteUserId", required = true) Long id) {
+        if (id == 1) {
+            return "redirect:/admin/user?deleted=0";
+        }
+        else if (SecurityContextSupport.getUserDetails().getUser().getId() == id) {
+            return "redirect:/admin/user?deleted=2";
+        }
+        else {
+            this.userService.deleteUser(id);
+            return "redirect:/admin/user?deleted=1";
+        }
     }
     
 }

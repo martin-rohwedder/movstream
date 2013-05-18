@@ -7,6 +7,29 @@
     </div>
 </c:if>
 
+<c:if test="${not empty param.deleted}">
+    <c:choose>
+        <c:when test="${param.deleted eq 1}">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p><strong>Congratulations!</strong> The user has been deleted and removed from the database.</p>
+            </div>
+        </c:when>
+        <c:when test="${param.deleted eq 2}">
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p><strong>Error!</strong> Your're not allowed to delete your own user. Contact the super administrator or a normal administrator, to get your user deleted.</p>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p><strong>Error!</strong> The user is a super administrator, and can't be deleted from the system.</p>
+            </div>
+        </c:otherwise>
+    </c:choose>
+</c:if>
+
 <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/new" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> Create User</a>
 
 <br /><br />

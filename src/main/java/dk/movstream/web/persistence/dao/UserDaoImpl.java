@@ -50,4 +50,14 @@ public class UserDaoImpl implements UserDao {
         this.sessionFactory.getCurrentSession().saveOrUpdate(user);
     }
 
+    @Override
+    public User findUserById(long id) {
+        return (User) this.sessionFactory.getCurrentSession().createQuery("from User u where u.id = :ID").setParameter("ID", id).uniqueResult();
+    }
+
+    @Override
+    public void removeUser(User user) {
+        this.sessionFactory.getCurrentSession().delete(user);
+    }
+
 }

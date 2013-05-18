@@ -27,6 +27,10 @@ public class UserService {
         return this.userDao.findAll();
     }
     
+    public User getUserById(long id) {
+        return this.userDao.findUserById(id);
+    }
+    
     /**
      * Save a new user with default password. Password is hashed with an SHA256 encryption.
      * @param user
@@ -34,6 +38,11 @@ public class UserService {
     public void saveNewUser(User user) {
         user.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex("default{" + user.getUsername() + "}"));
         this.userDao.insertUser(user);
+    }
+    
+    public void deleteUser(long id) {
+        User user = this.getUserById(id);
+        this.userDao.removeUser(user);
     }
     
     /**
