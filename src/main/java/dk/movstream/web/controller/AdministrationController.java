@@ -2,6 +2,7 @@ package dk.movstream.web.controller;
 
 import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
+import dk.movstream.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ public class AdministrationController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private GenreService genreService;
     
@@ -46,6 +49,16 @@ public class AdministrationController {
     public String deleteMovieAction(@RequestParam(value = "deleteMovieId", required = true) Long id) {
         this.movieService.deleteMovie(id);
         return "redirect:/admin/movie?deleted=1";
+    }
+    
+    @RequestMapping(value = {"/user"}, method = RequestMethod.GET)
+    public ModelAndView renderManageUser() {
+        ModelAndView mav = new ModelAndView("adminmanageuser");
+        
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("users", userService.getAllUsers());
+        
+        return mav;
     }
     
 }

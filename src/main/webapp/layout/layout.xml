@@ -52,6 +52,8 @@
         <put-attribute name="page" value="genre" />
     </definition>
     
+    <!--         ADMIN VIEWS          -->
+    
     <!-- Admin Home view -->
     <definition name="adminhome" extends="admin-template">
         <put-attribute name="title" value="movstream" />
@@ -67,6 +69,16 @@
         <put-attribute name="page" value="admin" />
         <put-attribute name="adminpage" value="adminmanagemovie" />
     </definition>
+    
+    <!-- Admin Manage User view -->
+    <definition name="adminmanageuser" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/admin/adminmanageuser.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanageuser" />
+    </definition>
+    
+    <!--       FLOW VIEWS         -->
     
     <!-- New Movie Flow Page 1 -->
     <definition name="createmovie1" extends="admin-template">

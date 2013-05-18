@@ -113,6 +113,15 @@
                         <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie">Manage Movies</a></li>
                     </c:otherwise>
                 </c:choose>
+                        
+                <c:choose>
+                    <c:when test="${adminPage eq 'adminmanageuser'}">
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user">Manage Users</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user">Manage Users</a></li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             
             <tiles:insertAttribute name="content" />
