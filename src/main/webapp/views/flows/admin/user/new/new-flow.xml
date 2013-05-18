@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
+    
+    <var name="userRoleListModel" class="dk.movstream.web.service.model.UserRoleListModel" />
+    
+    <on-start>
+        <evaluate expression="genreService.getAllMovieGenresWithMovies()" result="flowScope.navGenres" />
+        <evaluate expression="userService.getUserForm()" result="flowScope.userForm" />
+    </on-start>
+    
+    <!-- Create User Page 1 - Username and user role -->
+    <view-state id="createuser1" view="createuser1" model="flowScope.userForm">
+        <on-entry>
+            <evaluate expression="userRoleListModel.getUserRoles()" result="viewScope.userRoles" />
+        </on-entry>
+        <transition on="next" to="createuser2" />
+        <transition on="end" to="endOfFlow" />
+    </view-state>
+    
+    <!-- Create User Page 2 - user details -->
+    <view-state id="createuser2" view="createuser2" model="flowScope.userForm">
+        <on-entry>
+            <evaluate expression="userRoleListModel.getUserRoleDescrName(flowScope.userForm.userRole)" result="viewScope.userRoleDescrName" />
+        </on-entry>
+        <transition on="saveuser" to="flowDone">
+            <evaluate expression="userService.saveNewUser(flowScope.userForm)" />
+        </transition>
+        <transition on="back" to="createuser1" />
+    </view-state>
+    
+    <end-state id="flowDone" view="redirect:/admin/user?created=1" />
+    
+    <end-state id="endOfFlow" view="redirect:/admin/user" />
+    
+</flow>

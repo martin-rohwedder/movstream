@@ -37,18 +37,17 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User save(User user) {
-        this.sessionFactory.getCurrentSession().saveOrUpdate(user);
-        LOG.log(Level.INFO, "User Object With ID {0} has been saved in the database. User details is: {1}", new Object[] {user.getId(), user});
-        return user;
-    }
-
-    @Override
     @Transactional(readOnly=true)
     public User findUserByUsername(String username) {
         User user = (User) this.sessionFactory.getCurrentSession().createQuery("from User u where u.username = :USERNAME").setParameter("USERNAME", username).uniqueResult();
         LOG.log(Level.INFO, "User Object With ID {0} has been retrieved from the database!", user.getId());
         return user;
+    }
+
+    @Override
+    @Transactional
+    public void insertUser(User user) {
+        this.sessionFactory.getCurrentSession().saveOrUpdate(user);
     }
 
 }

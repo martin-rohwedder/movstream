@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserDao {
 
     List<User> findAll();
-    User save(User user);
     User findUserByUsername(String username);
+    void insertUser(User user);
     
 }
