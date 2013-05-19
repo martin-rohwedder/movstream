@@ -41,7 +41,7 @@
                     
                     <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand">Movstream</a>
                     <div class="nav-collapse collapse">
-                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="navbar-link">${user.username}</a></p>
+                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/user" class="navbar-link">${user.username}</a></p>
                         
                         <ul class="nav">  
                             <c:choose>
@@ -71,10 +71,21 @@
                                             </c:forEach>
                                         </ul>
                                     </li>
-                                    
+                            
                             <li class="divider-vertical"></li>
+                                    
+                            <c:choose>
+                                <c:when test="${currentPage eq 'user'}">
+                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
+                                </c:otherwise>
+                            </c:choose>
                             
                             <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                                <li class="divider-vertical"></li>
+                                
                                 <c:choose>
                                     <c:when test="${currentPage eq 'admin'}">
                                         <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>

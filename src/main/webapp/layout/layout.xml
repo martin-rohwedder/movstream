@@ -52,6 +52,13 @@
         <put-attribute name="page" value="genre" />
     </definition>
     
+    <!-- User Home view -->
+    <definition name="userhome" extends="default-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/userhome.jsp" />
+        <put-attribute name="page" value="user" />
+    </definition>
+    
     <!--         ADMIN VIEWS          -->
     
     <!-- Admin Home view -->

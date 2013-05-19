@@ -39,7 +39,7 @@
                     
                     <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand">Movstream</a>
                     <div class="nav-collapse collapse">
-                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="navbar-link">${user.username}</a></p>
+                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/user" class="navbar-link">${user.username}</a></p>
                         
                         <ul class="nav">  
                             <c:choose>
@@ -50,36 +50,45 @@
                                     <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> Home</a></li>
                                 </c:otherwise>
                             </c:choose>
-                            
+
                             <li class="divider-vertical"></li>
-                                    
+
                             <c:choose>
                                 <c:when test="${currentPage eq 'genre'}">
                                     <li class="active dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
-                                </c:when>
-                                <c:otherwise>
+                                    </c:when>
+                                    <c:otherwise>
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
+                                    </c:otherwise>
+                                </c:choose>
+                                <ul class="dropdown-menu">
+                                    <c:forEach items="${navGenres}" var="genre">
+                                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/genre/<c:out value="${genre.id}" />"><c:out value="${genre.title}" /></a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                            
+                            <li class="divider-vertical"></li>
+                            
+                            <c:choose>
+                                <c:when test="${currentPage eq 'user'}">
+                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
                                 </c:otherwise>
                             </c:choose>
-                                        <ul class="dropdown-menu">
-                                            <c:forEach items="${navGenres}" var="genre">
-                                                <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/genre/<c:out value="${genre.id}" />"><c:out value="${genre.title}" /></a></li>
-                                            </c:forEach>
-                                        </ul>
-                                    </li>
                             
                             <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                                <li class="divider-vertical"></li>
+                                
                                 <c:choose>
                                     <c:when test="${currentPage eq 'admin'}">
-                                        <li class="divider-vertical"></li>
-                                        
                                         <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li class="divider-vertical"></li>
-                                        
                                         <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
                                     </c:otherwise>
                                 </c:choose>                                
