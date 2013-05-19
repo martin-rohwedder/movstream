@@ -40,6 +40,10 @@ public class UserService {
         this.userDao.insertUser(user);
     }
     
+    public void updateUser(User user) {
+        this.userDao.insertUser(user);
+    }
+    
     public void deleteUser(long id) {
         User user = this.getUserById(id);
         this.userDao.removeUser(user);
@@ -51,6 +55,20 @@ public class UserService {
      */
     public User getUserForm() {
         return new User();
+    }
+    
+    /**
+     * Check if the user object has the role of super admin
+     * @param user
+     * @return true if user is super admin
+     */
+    public boolean isUserSuperAdmin(User user) {
+        if (user.getUserRole().equalsIgnoreCase("ROLE_SUPERADMIN")) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
 }

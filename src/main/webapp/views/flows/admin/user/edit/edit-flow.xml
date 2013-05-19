@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
+    
+    <var name="userRoleListModel" class="dk.movstream.web.service.model.UserRoleListModel" />
+    
+    <on-start>
+        <evaluate expression="genreService.getAllMovieGenresWithMovies()" result="flowScope.navGenres" />
+        <evaluate expression="userService.getUserById(RequestParameters.editUserId)" result="flowScope.userForm" />
+    </on-start>
+    
+    <decision-state id="isUserSuperadmin">
+        <if test="userService.isUserSuperAdmin(flowScope.userForm)" then="flowDoneWithError" else="edituser1" />
+    </decision-state>
+    
+    <!-- Edit User Page 1 - Username and user role -->
+    <view-state id="edituser1" view="edituser1" model="flowScope.userForm">
+        <on-entry>
+            <evaluate expression="userRoleListModel.getUserRoles()" result="viewScope.userRoles" />
+        </on-entry>
+        <transition on="next" to="edituser2" />
+        <transition on="end" to="endOfFlow" />
+    </view-state>
+    
+    <!-- Edit User Page 2 - user details -->
+    <view-state id="edituser2" view="edituser2" model="flowScope.userForm">
+        <on-entry>
+            <evaluate expression="userRoleListModel.getUserRoleDescrName(flowScope.userForm.userRole)" result="viewScope.userRoleDescrName" />
+        </on-entry>
+        <transition on="saveuser" to="flowDone">
+            <evaluate expression="userService.updateUser(flowScope.userForm)" />
+        </transition>
+        <transition on="back" to="edituser1" />
+    </view-state>
+    
+    <end-state id="flowDone" view="redirect:/admin/user?edited=1" />
+    
+    <end-state id="flowDoneWithError" view="redirect:/admin/user?edited=2" />
+    
+    <end-state id="endOfFlow" view="redirect:/admin/user" />
+    
+</flow>

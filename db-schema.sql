@@ -13,7 +13,7 @@ drop table if exists `movie_type`;
 create table `user`
 (
 `ID` int unsigned not null auto_increment,
-`USERNAME` varchar(255) not null,
+`USERNAME` varchar(255) not null unique,
 `PASSWORD` varchar(255) not null,
 `UPDATE_VERSION` int not null default 0,
 `USER_ROLE` varchar(255) not null,

@@ -228,4 +228,20 @@
         <put-attribute name="adminpage" value="adminmanageuser" />
     </definition>
     
+    <!-- Edit User Flow Page 1 -->
+    <definition name="edituser1" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/user/edit/edituser1.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanageuser" />
+    </definition>
+    
+    <!-- Edit User Flow Page 2 -->
+    <definition name="edituser2" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/user/edit/edituser2.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanageuser" />
+    </definition>
+    
 </tiles-definitions>

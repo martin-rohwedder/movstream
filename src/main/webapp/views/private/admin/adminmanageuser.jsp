@@ -3,8 +3,25 @@
 <c:if test="${not empty param.created}">
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Congratulations!</strong> Your user has been created and saved in the database.</p>
+        <p><strong>Congratulations!</strong> Your user has been created and saved in the database. Please remember that the users password is 'default'. The user will be asked to change the password the first time he is logging in.</p>
     </div>
+</c:if>
+
+<c:if test="${not empty param.edited}">
+    <c:choose>
+        <c:when test="${param.edited eq 1}">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p><strong>Congratulations!</strong> The user has been updated and saved to the database.</p>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p><strong>Error!</strong> The user is a super administrator, and can't be edited in the system. If you're logged in as an super administrator and want to change your password, then select 'My User' in the top navigation.</p>
+            </div>
+        </c:otherwise>
+    </c:choose>
 </c:if>
 
 <c:if test="${not empty param.deleted}">
@@ -18,7 +35,7 @@
         <c:when test="${param.deleted eq 2}">
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Error!</strong> Your're not allowed to delete your own user. Contact the super administrator or a normal administrator, to get your user deleted.</p>
+                <p><strong>Error!</strong> Your're not allowed to delete your own account. Contact the super administrator or another administrator, to get your account deleted.</p>
             </div>
         </c:when>
         <c:otherwise>

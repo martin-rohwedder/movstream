@@ -17,8 +17,6 @@
             <dd><c:out value="${userForm.username}" /></dd>
             <dt>Role</dt>
             <dd><c:out value="${userRoleDescrName}" /></dd>
-            <dt>Password</dt>
-            <dd>default</dd>
         </dl>
             
     </div>
