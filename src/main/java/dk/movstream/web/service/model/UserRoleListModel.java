@@ -26,6 +26,10 @@ public class UserRoleListModel implements Serializable {
         this.userRoles = userRoles;
     }
     
+    public void addUserRole(String name, String descriptiveName) {
+        this.userRoles.add(new UserRoleModel(name, descriptiveName));
+    }
+    
     /**
      * Get the descriptive name for a specific user role.
      * @param name

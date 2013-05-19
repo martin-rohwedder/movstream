@@ -47,7 +47,7 @@
             <tr>
                 <td style="width: 40px;"><c:out value="${user.id}" /></td>
                 <td><c:out value="${user.username}" /></td>
-                <td><c:out value="${user.userRole}" /></td>
+                <td><c:out value="${userRoleListModel.getUserRoleDescrName(user.userRole)}" /></td>
                 <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/edit?editUserId=<c:out value="${user.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
                 <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${user.id}" />" class="btn btn-danger btn-mini trigger-delete-user"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
             </tr>

@@ -4,6 +4,7 @@ import dk.movstream.web.security.SecurityContextSupport;
 import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import dk.movstream.web.service.UserService;
+import dk.movstream.web.service.model.UserRoleListModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +59,10 @@ public class AdministrationController {
         
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         mav.addObject("users", userService.getAllUsers());
+        
+        UserRoleListModel userRoleListModel = new UserRoleListModel();
+        userRoleListModel.addUserRole("ROLE_SUPERADMIN", "Super Administrator");
+        mav.addObject("userRoleListModel", userRoleListModel);
         
         return mav;
     }
