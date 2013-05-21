@@ -41,6 +41,7 @@ public class UserService {
     }
     
     public void updateUser(User user) {
+        user.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(user.getPassword() + "{" + user.getUsername() + "}"));
         this.userDao.insertUser(user);
     }
     
