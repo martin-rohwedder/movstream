@@ -12,5 +12,6 @@ public interface GenreDao {
 
     List<Genre> findAllMovieGenres();
     void insertMovieGenre(Genre genre);
+    Genre findGenreById(long id);
     
 }

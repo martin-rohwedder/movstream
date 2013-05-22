@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
+    
+    <var name="userRoleListModel" class="dk.movstream.web.service.model.UserRoleListModel" />
+    
+    <on-start>
+        <evaluate expression="genreService.getAllMovieGenresWithMovies()" result="flowScope.navGenres" />
+        <evaluate expression="genreService.getGenreById(RequestParameters.editGenreId)" result="flowScope.genreForm" />
+    </on-start>
+    
+    <!-- Edit Genre Page 1 - rename the new genre -->
+    <view-state id="editgenre1" view="editgenre1" model="flowScope.genreForm">
+        <transition on="savegenre" to="flowDone">
+            <evaluate expression="genreService.saveMovieGenre(flowScope.genreForm)" />
+        </transition>
+        <transition on="end" to="endOfFlow" />
+    </view-state>
+    
+    <end-state id="flowDone" view="redirect:/admin/genre?edited=1" />
+    
+    <end-state id="endOfFlow" view="redirect:/admin/genre" />
+    
+</flow>

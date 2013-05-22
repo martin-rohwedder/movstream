@@ -34,8 +34,15 @@ public class GenreDaoImpl implements GenreDao {
     }
 
     @Override
+    @Transactional
     public void insertMovieGenre(Genre genre) {
         this.sessionFactory.getCurrentSession().saveOrUpdate(genre);
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public Genre findGenreById(long id) {
+        return (Genre) this.sessionFactory.getCurrentSession().createQuery("from Genre g where g.id = :ID").setParameter("ID", id).uniqueResult();
     }
 
 }
