@@ -12,5 +12,6 @@ public interface SeasonDao {
 
     List<Season> findAllSeasons();
     void insertSeason(Season season);
+    Season findSeasonById(long id);
     
 }

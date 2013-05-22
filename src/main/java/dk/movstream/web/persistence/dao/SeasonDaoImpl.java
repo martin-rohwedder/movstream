@@ -34,8 +34,15 @@ public class SeasonDaoImpl implements SeasonDao {
     }
 
     @Override
+    @Transactional
     public void insertSeason(Season season) {
         this.sessionFactory.getCurrentSession().saveOrUpdate(season);
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public Season findSeasonById(long id) {
+        return (Season) this.sessionFactory.getCurrentSession().createQuery("from Season s where s.id = :ID").setParameter("ID", id).uniqueResult();
     }
 
 }

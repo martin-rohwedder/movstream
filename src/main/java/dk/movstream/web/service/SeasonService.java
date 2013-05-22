@@ -27,6 +27,10 @@ public class SeasonService {
         seasonDao.insertSeason(season);
     }
     
+    public Season getSeasonById(long id) {
+        return seasonDao.findSeasonById(id);
+    }
+    
     public Season getSeasonInstance() {
         return new Season();
     }

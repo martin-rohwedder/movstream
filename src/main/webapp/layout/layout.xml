@@ -277,4 +277,14 @@
         <put-attribute name="adminpage" value="adminmanagegenre" />
     </definition>
     
+    
+    
+    <!-- Edit Season Flow Page 1 -->
+    <definition name="editseason1" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/flows/admin/season/edit/editseason1.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanageseason" />
+    </definition>
+    
 </tiles-definitions>
