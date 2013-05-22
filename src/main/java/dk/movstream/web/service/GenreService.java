@@ -51,4 +51,9 @@ public class GenreService {
         return new Genre();
     }
     
+    public void deleteMovieGenre(long id) {
+        Genre genre = this.getGenreById(id);
+        this.genreDao.removeMovieGenre(genre);
+    }
+    
 }

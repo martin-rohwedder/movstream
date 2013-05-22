@@ -3,6 +3,7 @@ package dk.movstream.web.domain;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -61,7 +62,7 @@ public class Genre implements Serializable {
         this.updateVersion = updateVersion;
     }
 
-    @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     public Set<Movie> getMovies() {
         return this.movies;
     }

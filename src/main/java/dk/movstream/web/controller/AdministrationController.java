@@ -91,4 +91,10 @@ public class AdministrationController {
         return mav;
     }
     
+    @RequestMapping(value = {"/genre/delete"}, method = RequestMethod.GET)
+    public String deleteGenreAction(@RequestParam(value = "deleteGenreId", required = true) Long id) {
+        genreService.deleteMovieGenre(id);
+        return "redirect:/admin/genre?deleted=0";
+    }
+    
 }

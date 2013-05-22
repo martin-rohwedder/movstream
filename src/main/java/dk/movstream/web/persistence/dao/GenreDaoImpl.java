@@ -45,4 +45,10 @@ public class GenreDaoImpl implements GenreDao {
         return (Genre) this.sessionFactory.getCurrentSession().createQuery("from Genre g where g.id = :ID").setParameter("ID", id).uniqueResult();
     }
 
+    @Override
+    @Transactional
+    public void removeMovieGenre(Genre genre) {
+        this.sessionFactory.getCurrentSession().delete(genre);
+    }
+
 }
