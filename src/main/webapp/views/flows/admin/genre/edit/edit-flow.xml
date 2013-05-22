@@ -6,8 +6,6 @@
 
     <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
     
-    <var name="userRoleListModel" class="dk.movstream.web.service.model.UserRoleListModel" />
-    
     <on-start>
         <evaluate expression="genreService.getAllMovieGenresWithMovies()" result="flowScope.navGenres" />
         <evaluate expression="genreService.getGenreById(RequestParameters.editGenreId)" result="flowScope.genreForm" />
