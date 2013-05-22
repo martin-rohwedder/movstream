@@ -31,6 +31,11 @@ public class SeasonService {
         return seasonDao.findSeasonById(id);
     }
     
+    public void deleteSeason(long id) {
+        Season season = this.getSeasonById(id);
+        this.seasonDao.removeSeason(season);
+    }
+    
     public Season getSeasonInstance() {
         return new Season();
     }

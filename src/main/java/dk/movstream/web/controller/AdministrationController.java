@@ -110,4 +110,10 @@ public class AdministrationController {
         return mav;
     }
     
+    @RequestMapping(value = {"/season/delete"}, method = RequestMethod.GET)
+    public String deleteSeasonAction(@RequestParam(value = "deleteSeasonId", required = true) Long id) {
+        seasonService.deleteSeason(id);
+        return "redirect:/admin/season?deleted=0";
+    }
+    
 }

@@ -45,4 +45,10 @@ public class SeasonDaoImpl implements SeasonDao {
         return (Season) this.sessionFactory.getCurrentSession().createQuery("from Season s where s.id = :ID").setParameter("ID", id).uniqueResult();
     }
 
+    @Override
+    @Transactional
+    public void removeSeason(Season season) {
+        this.sessionFactory.getCurrentSession().delete(season);
+    }
+
 }
