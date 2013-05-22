@@ -93,6 +93,14 @@
         <put-attribute name="adminpage" value="adminmanagegenre" />
     </definition>
     
+    <!-- Admin Manage Season view -->
+    <definition name="adminmanageseason" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/admin/adminmanageseason.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanageseason" />
+    </definition>
+    
     <!--       FLOW VIEWS         -->
     
     <!-- New Movie Flow Page 1 -->

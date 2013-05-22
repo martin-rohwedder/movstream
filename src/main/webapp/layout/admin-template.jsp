@@ -142,6 +142,15 @@
                         <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre">Manage Genres</a></li>
                     </c:otherwise>
                 </c:choose>
+                        
+                <c:choose>
+                    <c:when test="${adminPage eq 'adminmanageseason'}">
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season">Manage Seasons</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season">Manage Seasons</a></li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             
             <tiles:insertAttribute name="content" />

@@ -3,6 +3,7 @@ package dk.movstream.web.controller;
 import dk.movstream.web.security.SecurityContextSupport;
 import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
+import dk.movstream.web.service.SeasonService;
 import dk.movstream.web.service.UserService;
 import dk.movstream.web.service.model.UserRoleListModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class AdministrationController {
     private UserService userService;
     @Autowired
     private GenreService genreService;
+    @Autowired
+    private SeasonService seasonService;
     
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView renderAdminHome() {
@@ -95,6 +98,16 @@ public class AdministrationController {
     public String deleteGenreAction(@RequestParam(value = "deleteGenreId", required = true) Long id) {
         genreService.deleteMovieGenre(id);
         return "redirect:/admin/genre?deleted=0";
+    }
+    
+    @RequestMapping(value = {"/season"}, method = RequestMethod.GET)
+    public ModelAndView renderManageSeason() {
+        ModelAndView mav = new ModelAndView("adminmanageseason");
+        
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("seasons", seasonService.getAllSeasons());
+        
+        return mav;
     }
     
 }
