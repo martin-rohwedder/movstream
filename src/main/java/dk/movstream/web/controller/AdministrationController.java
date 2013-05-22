@@ -84,6 +84,17 @@ public class AdministrationController {
         }
     }
     
+    @RequestMapping(value = {"/user/reset"}, method = RequestMethod.GET)
+    public String resetUserPassword(@RequestParam(value = "resetPasswordUserId", required = true) Long id) {
+        if (id == 1) {
+            return "redirect:/admin/user?passwordReseted=0";
+        }
+        else {
+            userService.resetUserPassword(userService.getUserById(id));
+            return "redirect:/admin/user?passwordReseted=1";
+        }
+    }
+    
     @RequestMapping(value = {"/genre"}, method = RequestMethod.GET)
     public ModelAndView renderManageGenre() {
         ModelAndView mav = new ModelAndView("adminmanagegenre");

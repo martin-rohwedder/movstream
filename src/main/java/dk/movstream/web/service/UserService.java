@@ -40,6 +40,15 @@ public class UserService {
         this.userDao.insertUser(user);
     }
     
+    /**
+     * reset the user password to default and save it. Password is hashed with an SHA256 encryption.
+     * @param user
+     */
+    public void resetUserPassword(User user) {
+        user.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex("default{" + user.getUsername() + "}"));
+        this.userDao.insertUser(user);
+    }
+    
     public void updateUser(User user) {
         user.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(user.getPassword() + "{" + user.getUsername() + "}"));
         this.userDao.insertUser(user);

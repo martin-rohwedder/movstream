@@ -7,6 +7,20 @@
     </div>
 </c:if>
 
+<c:if test="${param.passwordReseted == 0}">
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong>Error!</strong> You can't reset the super administrators password.</p>
+    </div>
+</c:if>
+
+<c:if test="${param.passwordReseted == 1}">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong>Congratulations!</strong> The users password has been reseted. Remeber to provide them with the password <strong>default</strong>, which they can change after they log in.</p>
+    </div>
+</c:if>
+
 <c:if test="${not empty param.edited}">
     <c:choose>
         <c:when test="${param.edited eq 1}">
@@ -66,6 +80,7 @@
                 <td><c:out value="${user.username}" /></td>
                 <td><c:out value="${userRoleListModel.getUserRoleDescrName(user.userRole)}" /></td>
                 <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/edit?editUserId=<c:out value="${user.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
+                <td style="width: 150px;"><a href="#modal-reset-password-container" data-id="<c:out value="${user.id}" />" class="btn btn-info btn-mini trigger-reset-password"><i class="icon-repeat icon-white"></i> Reset Password</a></td>
                 <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${user.id}" />" class="btn btn-danger btn-mini trigger-delete-user"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
             </tr>
         </c:forEach>
@@ -83,6 +98,21 @@
     </div>
     <div class="modal-footer">
         <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/delete?deleteUserId=" class="btn btn-danger delete-user-btn">Yes</a>
+        <a href="" class="btn" data-dismiss="modal" aria-hidden="true">No</a>
+    </div>
+</div>
+        
+<div id="modal-reset-password-container" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Reset Password</h3>
+    </div>
+    <div class="modal-body">
+        <p>You're about to reset the users password. The new password will be <strong>default</strong>, which you need to provide to the user. Users can after log in change the password to what they want.</p>
+        <p>Are you sure you want to continue?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/reset?resetPasswordUserId=" class="btn btn-info reset-password-btn">Yes</a>
         <a href="" class="btn" data-dismiss="modal" aria-hidden="true">No</a>
     </div>
 </div>
@@ -104,5 +134,21 @@
         
         var id = $(this).data('id');
         $('#modal-delete-container').data('id', id).modal('show');
+    });
+    
+    $('#modal-reset-password-container').bind('show', function() {
+        var id = $(this).data('id'),
+        removeBtn = $(this).find('.reset-password-btn'),
+        href = removeBtn.attr('href');
+        
+        removeBtn.attr('href', href.replace(/resetPasswordUserId=\d*/, 'resetPasswordUserId=' + id));
+    })
+    .modal({ backdrop: true, show: false });
+    
+    $('.trigger-reset-password').click(function(e) {
+        e.preventDefault();
+        
+        var id = $(this).data('id');
+        $('#modal-reset-password-container').data('id', id).modal('show');
     });
 </script>
