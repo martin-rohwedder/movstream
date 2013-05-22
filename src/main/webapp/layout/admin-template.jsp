@@ -133,6 +133,15 @@
                         <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user">Manage Users</a></li>
                     </c:otherwise>
                 </c:choose>
+                        
+                <c:choose>
+                    <c:when test="${adminPage eq 'adminmanagegenre'}">
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre">Manage Genres</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre">Manage Genres</a></li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             
             <tiles:insertAttribute name="content" />

@@ -81,4 +81,14 @@ public class AdministrationController {
         }
     }
     
+    @RequestMapping(value = {"/genre"}, method = RequestMethod.GET)
+    public ModelAndView renderManageGenre() {
+        ModelAndView mav = new ModelAndView("adminmanagegenre");
+        
+        mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("genres", genreService.getAllMovieGenres());
+        
+        return mav;
+    }
+    
 }
