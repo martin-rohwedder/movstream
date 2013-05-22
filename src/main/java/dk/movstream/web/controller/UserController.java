@@ -57,4 +57,27 @@ public class UserController {
         }
     }
     
+    @RequestMapping(value = {"changePasswordFirstTime.do"}, method = RequestMethod.POST)
+    public String changePasswordFirstTimeAction(@RequestParam("oldPassword")String oldPassword, 
+                                       @RequestParam("newPassword")String newPassword, 
+                                       @RequestParam("repeatNewPassword")String repeatNewPassword)
+    {
+        if (!org.apache.commons.codec.digest.DigestUtils.sha256Hex(oldPassword + "{" + SecurityContextSupport.getUserDetails().getUsername() + "}").equalsIgnoreCase(SecurityContextSupport.getUserDetails().getPassword())) {
+            return "redirect:/home?passwordChanged=0";   //Redirect with error message about oldPassword is not matching with password in database.
+        }
+        else if (newPassword.length() < 6 || repeatNewPassword.length() < 6) {
+            return "redirect:/home?passwordChanged=1";   //Redirect with error message about newPassword and repeatNewPassword is lower than 6 characters
+        }
+        else if (!newPassword.equals(repeatNewPassword)) {
+            return "redirect:/home?passwordChanged=2";   //Redirect with error message about newPassword and repeatNewPassword is not matching each other.
+        }
+        else {
+            User user = SecurityContextSupport.getUserDetails().getUser();
+            user.setPassword(newPassword);
+            userService.updateUser(user);
+            
+            return "redirect:/home?passwordChanged=3";   //Redirect with no error message.
+        }
+    }
+    
 }

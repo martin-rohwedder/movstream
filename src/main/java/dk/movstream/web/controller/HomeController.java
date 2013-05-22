@@ -37,6 +37,10 @@ public class HomeController {
         mav.addObject("movies", Utility.sortMoviesAlphabetically(movieService.getAllMoviesOrderedByTitle()));
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
+        if (SecurityContextSupport.getUserDetails().getUser().getPassword().equals(org.apache.commons.codec.digest.DigestUtils.sha256Hex("default{" + SecurityContextSupport.getUserDetails().getUser().getUsername() + "}"))) {
+            mav.addObject("changePasswordDialog", true);
+        }
+        
         return mav;
     }
     
