@@ -151,6 +151,17 @@
                         <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season">Manage Seasons</a></li>
                     </c:otherwise>
                 </c:choose>
+                        
+                <sec:authorize access="hasRole('ROLE_SUPERADMIN')">
+                    <c:choose>
+                        <c:when test="${adminPage eq 'adminmanagesettings'}">
+                            <li class="active pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings">System Settings</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings">System Settings</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </sec:authorize>
             </ul>
             
             <tiles:insertAttribute name="content" />

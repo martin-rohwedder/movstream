@@ -101,6 +101,14 @@
         <put-attribute name="adminpage" value="adminmanageseason" />
     </definition>
     
+    <!-- Admin System Settings view -->
+    <definition name="adminmanagesettings" extends="admin-template">
+        <put-attribute name="title" value="movstream" />
+        <put-attribute name="content" value="/views/private/admin/adminmanagesettings.jsp" />
+        <put-attribute name="page" value="admin" />
+        <put-attribute name="adminpage" value="adminmanagesettings" />
+    </definition>
+    
     <!--       FLOW VIEWS         -->
     
     <!-- New Movie Flow Page 1 -->
