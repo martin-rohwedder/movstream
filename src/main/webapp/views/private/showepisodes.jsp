@@ -2,7 +2,7 @@
 
 <c:choose>
     <c:when test="${empty episodes}">
-        <p class="lead">No episodes was found</p>
+        <p class="lead"><spring:message code="page.showepisodes.noseason.label" /></p>
     </c:when>
     <c:otherwise>
 
@@ -10,13 +10,13 @@
 
 <h1 class="page-header"><c:out value="${episodes.get(0).season.title}" /></h1>
 
-<p>Select the episode, from the table below, which you want to watch.</p>
+<p><spring:message code="page.showepisodes.pagedescription.label" />.</p>
 
 <table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
-            <th>Episode Title</th>
+            <th><spring:message code="page.showepisodes.episodetitle.label" /></th>
             <th></th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
         <tr>
             <td><c:out value="${episodeNumber}" /></td>
             <td><c:out value="${episode.title}" /></td>
-            <td style="text-align: right;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/movie/show/<c:out value="${episode.id}" />" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Play Episode</a></td>
+            <td style="text-align: right;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/movie/show/<c:out value="${episode.id}" />" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> <spring:message code="page.showepisodes.button.playepisode.label" /></a></td>
         </tr>
         </c:forEach>
     </tbody>
