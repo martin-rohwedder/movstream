@@ -2,6 +2,7 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,15 +42,15 @@
                     
                     <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand">Movstream</a>
                     <div class="nav-collapse collapse">
-                        <p class="navbar-text pull-right">Logged in as <a href="<c:out value="${pageContext.servletContext.contextPath}" />/user" class="navbar-link">${user.username}</a></p>
+                        <p class="navbar-text pull-right"><spring:message code="template.navigation.loggedinas.label" /> <a href="<c:out value="${pageContext.servletContext.contextPath}" />/user" class="navbar-link">${user.username}</a></p>
                         
                         <ul class="nav">  
                             <c:choose>
                                 <c:when test="${currentPage eq 'home'}">
-                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> Home</a></li>
+                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> <spring:message code="template.navigation.menuitem.home.label" /></a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> Home</a></li>
+                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/home"><i class="icon-home"></i> <spring:message code="template.navigation.menuitem.home.label" /></a></li>
                                 </c:otherwise>
                             </c:choose>
                             
@@ -58,11 +59,11 @@
                             <c:choose>
                                 <c:when test="${currentPage eq 'genre'}">
                                     <li class="active dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> <spring:message code="template.navigation.menuitem.browsegenres.label" /> <b class="caret"></b></a>
                                 </c:when>
                                 <c:otherwise>
                                     <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> Browse Genres <b class="caret"></b></a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-film"></i> <spring:message code="template.navigation.menuitem.browsegenres.label" /> <b class="caret"></b></a>
                                 </c:otherwise>
                             </c:choose>
                                         <ul class="dropdown-menu">
@@ -76,10 +77,10 @@
                                     
                             <c:choose>
                                 <c:when test="${currentPage eq 'user'}">
-                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
+                                    <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> <spring:message code="template.navigation.menuitem.myuser.label" /></a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> My User</a></li>
+                                    <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/user"><i class="icon-user"></i> <spring:message code="template.navigation.menuitem.myuser.label" /></a></li>
                                 </c:otherwise>
                             </c:choose>
                             
@@ -88,17 +89,17 @@
                                 
                                 <c:choose>
                                     <c:when test="${currentPage eq 'admin'}">
-                                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> <spring:message code="template.navigation.menuitem.adminsettings.label" /></a></li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> Admin Options</a></li>
+                                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><i class="icon-wrench"></i> <spring:message code="template.navigation.menuitem.adminsettings.label" /></a></li>
                                     </c:otherwise>
                                 </c:choose>                                
                             </sec:authorize>
                                 
                             <li class="divider-vertical"></li>
                                     
-                            <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off"></i> Logout</a></li>
+                            <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/logout"><i class="icon-off"></i> <spring:message code="template.navigation.menuitem.logout.label" /></a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,56 +110,56 @@
             <ul class="nav nav-tabs">
                 <c:choose>
                     <c:when test="${adminPage eq 'adminhome'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin">Details</a></li>
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><spring:message code="template.subnavigation.menuitem.details.label" /></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin">Details</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin"><spring:message code="template.subnavigation.menuitem.details.label" /></a></li>
                     </c:otherwise>
                 </c:choose>
         
                 <c:choose>
                     <c:when test="${adminPage eq 'adminmanagemovie'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie">Manage Movies</a></li>
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie"><spring:message code="template.subnavigation.menuitem.managemovies.label" /></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie">Manage Movies</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie"><spring:message code="template.subnavigation.menuitem.managemovies.label" /></a></li>
                     </c:otherwise>
                 </c:choose>
                         
                 <c:choose>
                     <c:when test="${adminPage eq 'adminmanageuser'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user">Manage Users</a></li>
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user"><spring:message code="template.subnavigation.menuitem.manageusers.label" /></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user">Manage Users</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user"><spring:message code="template.subnavigation.menuitem.manageusers.label" /></a></li>
                     </c:otherwise>
                 </c:choose>
                         
                 <c:choose>
                     <c:when test="${adminPage eq 'adminmanagegenre'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre">Manage Genres</a></li>
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre"><spring:message code="template.subnavigation.menuitem.managegenres.label" /></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre">Manage Genres</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre"><spring:message code="template.subnavigation.menuitem.managegenres.label" /></a></li>
                     </c:otherwise>
                 </c:choose>
                         
                 <c:choose>
                     <c:when test="${adminPage eq 'adminmanageseason'}">
-                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season">Manage Seasons</a></li>
+                        <li class="active"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season"><spring:message code="template.subnavigation.menuitem.manageseasons.label" /></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season">Manage Seasons</a></li>
+                        <li><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/season"><spring:message code="template.subnavigation.menuitem.manageseasons.label" /></a></li>
                     </c:otherwise>
                 </c:choose>
                         
                 <sec:authorize access="hasRole('ROLE_SUPERADMIN')">
                     <c:choose>
                         <c:when test="${adminPage eq 'adminmanagesettings'}">
-                            <li class="active pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings">System Settings</a></li>
+                            <li class="active pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings"><spring:message code="template.subnavigation.menuitem.systemsettings.label" /></a></li>
                         </c:when>
                         <c:otherwise>
-                            <li class="pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings">System Settings</a></li>
+                            <li class="pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings"><spring:message code="template.subnavigation.menuitem.systemsettings.label" /></a></li>
                         </c:otherwise>
                     </c:choose>
                 </sec:authorize>
@@ -170,7 +171,7 @@
         <div class="container">
             <div id="footer" class="row">
                 <div class="pull-left">
-                    <p>&copy; 2013 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Movstream</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/martin-rohwedder/movstream" property="cc:attributionName" rel="cc:attributionURL">Martin Rohwedder</a></p>
+                    <p>&copy; 2013 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Movstream</span> <spring:message code="template.by.label" /> <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/martin-rohwedder/movstream" property="cc:attributionName" rel="cc:attributionURL">Martin Rohwedder</a></p>
                 </div>
                 <div id="cc-license" class="pull-right">
                     <p>
