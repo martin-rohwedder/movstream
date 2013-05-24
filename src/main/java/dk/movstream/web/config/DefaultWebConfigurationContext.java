@@ -1,6 +1,7 @@
 package dk.movstream.web.config;
 
-import dk.movstream.web.util.PropertyLocaleResolver;
+import dk.movstream.web.util.i18n.PropertyLocaleChangeInterceptor;
+import dk.movstream.web.util.i18n.PropertyLocaleResolver;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -11,12 +12,12 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
-import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.handler.AbstractHandlerMapping;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles2.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles2.TilesView;
@@ -31,7 +32,7 @@ import org.springframework.web.servlet.view.tiles2.TilesView;
 @ComponentScan("dk.movstream.web")
 @ImportResource({"classpath:/spring/tx-hibernate-context.xml", "classpath:/spring/security-context.xml", "classpath:/spring/webflow-config.xml"})
 @PropertySource("classpath:/configuration/system.properties")
-public class DefaultWebConfigurationContext extends WebMvcConfigurationSupport {
+public class DefaultWebConfigurationContext extends WebMvcConfigurerAdapter {
 
     @Autowired
     Environment env;
@@ -39,14 +40,6 @@ public class DefaultWebConfigurationContext extends WebMvcConfigurationSupport {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-    
-    @Override
-    @Bean
-    public HandlerMapping resourceHandlerMapping() {
-        AbstractHandlerMapping handlerMapping = (AbstractHandlerMapping) super.resourceHandlerMapping();
-        handlerMapping.setOrder(-1);
-        return handlerMapping;
     }
     
     @Bean
@@ -67,15 +60,29 @@ public class DefaultWebConfigurationContext extends WebMvcConfigurationSupport {
     @Bean
     public LocaleResolver localeResolver() {
         PropertyLocaleResolver localeResolver = new PropertyLocaleResolver();
-        localeResolver.setDefaultLocale(new Locale(env.getProperty("system.default.language")));
+        localeResolver.setDefaultLocale(new Locale(env.getProperty("system.default.language").toLowerCase()));
         return localeResolver;
     }
     
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:/languages/lang");
+        messageSource.setBasenames("classpath:/languages/lang", "org.springframework.security.messages");
+        messageSource.setUseCodeAsDefaultMessage(true);
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(0);
         return messageSource;
+    }
+    
+    @Bean
+    public HandlerInterceptor localeChangeInterceptor() {
+        PropertyLocaleChangeInterceptor localeChangeInterceptor = new PropertyLocaleChangeInterceptor();
+        return localeChangeInterceptor;
+    }
+    
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
     }
     
 }

@@ -4,9 +4,16 @@ import dk.movstream.web.security.SecurityContextSupport;
 import dk.movstream.web.service.GenreService;
 import dk.movstream.web.service.MovieService;
 import dk.movstream.web.service.SeasonService;
+import dk.movstream.web.service.SystemSettingsService;
 import dk.movstream.web.service.UserService;
 import dk.movstream.web.service.model.UserRoleListModel;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +37,8 @@ public class AdministrationController {
     private GenreService genreService;
     @Autowired
     private SeasonService seasonService;
+    @Autowired
+    private SystemSettingsService systemSettingsService;
     
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView renderAdminHome() {
@@ -134,6 +143,13 @@ public class AdministrationController {
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;
+    }
+    
+    @RequestMapping(value = {"/settings"}, method = RequestMethod.POST)
+    public String deleteSeasonAction(@RequestParam(value = "languageCode", required = true) String lang)
+            throws IOException {
+        systemSettingsService.setLanguageCode(lang);
+        return "redirect:/admin/settings?settingsSaved=0";
     }
     
 }

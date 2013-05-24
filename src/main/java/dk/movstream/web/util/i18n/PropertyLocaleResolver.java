@@ -1,4 +1,4 @@
-package dk.movstream.web.util;
+package dk.movstream.web.util.i18n;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.util.Locale;
 import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.LocaleResolver;
 /**
  *
@@ -16,7 +18,7 @@ import org.springframework.web.servlet.LocaleResolver;
 public class PropertyLocaleResolver implements LocaleResolver {
 
     private Properties prop = new Properties();
-    private Locale defaultLocale = new Locale("en");
+    private Locale defaultLocale = Locale.ENGLISH;
     
     public void setDefaultLocale(Locale locale) {
         this.defaultLocale = locale;
@@ -30,11 +32,12 @@ public class PropertyLocaleResolver implements LocaleResolver {
     @Override
     public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         try {
-            this.prop.load(new FileInputStream("classpath:/configuration/system.properties"));
+            Resource resource = new ClassPathResource("configuration/system.properties");
+            this.prop.load(new FileInputStream(resource.getFile()));
             this.defaultLocale = new Locale(this.prop.getProperty("system.default.language"));
         }
         catch (IOException e) {
-            this.defaultLocale = (defaultLocale != null ? defaultLocale : new Locale("en"));
+            this.defaultLocale = (defaultLocale != null ? defaultLocale : Locale.ENGLISH);
         }
     }
 
