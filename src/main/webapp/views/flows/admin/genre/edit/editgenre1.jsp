@@ -26,7 +26,7 @@
 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong><spring:message code="flow.editgenre.page1.form.button.cancel.label" /></strong></button>
+            <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong><spring:message code="overall.flow.button.cancel.label" /></strong></button>
             <button type="submit" class="btn btn-success pull-right" id="savegenre" name="_eventId_savegenre"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="flow.editgenre.page1.form.button.savegenre.label" /></strong></button>
         </div>
     </div>
