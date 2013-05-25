@@ -22,19 +22,10 @@
         <on-entry>
             <evaluate expression="userRoleListModel.getUserRoles()" result="viewScope.userRoles" />
         </on-entry>
-        <transition on="next" to="edituser2" />
-        <transition on="end" to="endOfFlow" />
-    </view-state>
-    
-    <!-- Edit User Page 2 - user details -->
-    <view-state id="edituser2" view="edituser2" model="flowScope.userForm">
-        <on-entry>
-            <evaluate expression="userRoleListModel.getUserRoleDescrName(flowScope.userForm.userRole)" result="viewScope.userRoleDescrName" />
-        </on-entry>
         <transition on="saveuser" to="flowDone">
             <evaluate expression="userService.updateUser(flowScope.userForm)" />
         </transition>
-        <transition on="back" to="edituser1" />
+        <transition on="end" to="endOfFlow" />
     </view-state>
     
     <end-state id="flowDone" view="redirect:/admin/user?edited=1" />
