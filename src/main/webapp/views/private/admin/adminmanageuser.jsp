@@ -1,23 +1,24 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:if test="${not empty param.created}">
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Congratulations!</strong> Your user has been created and saved in the database. Please remember that the users password is 'default'. The user will be asked to change the password the first time he is logging in.</p>
+        <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.success.created.message" />.</p>
     </div>
 </c:if>
 
 <c:if test="${param.passwordReseted == 0}">
     <div class="alert alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Error!</strong> You can't reset the super administrators password.</p>
+        <p><strong><spring:message code="overall.error.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.error.passwordreset.message" />.</p>
     </div>
 </c:if>
 
 <c:if test="${param.passwordReseted == 1}">
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Congratulations!</strong> The users password has been reseted. Remeber to provide them with the password <strong>default</strong>, which they can change after they log in.</p>
+        <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.success.passwordreset.message" />.</p>
     </div>
 </c:if>
 
@@ -26,13 +27,13 @@
         <c:when test="${param.edited eq 1}">
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Congratulations!</strong> The user has been updated and saved to the database.</p>
+                <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.success.edited.message" />.</p>
             </div>
         </c:when>
         <c:otherwise>
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Error!</strong> The user is a super administrator, and can't be edited in the system. If you're logged in as an super administrator and want to change your password, then select 'My User' in the top navigation.</p>
+                <p><strong><spring:message code="overall.error.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.error.edited.message" />.</p>
             </div>
         </c:otherwise>
     </c:choose>
@@ -43,25 +44,25 @@
         <c:when test="${param.deleted eq 1}">
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Congratulations!</strong> The user has been deleted and removed from the database.</p>
+                <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.success.deleted.message" />.</p>
             </div>
         </c:when>
         <c:when test="${param.deleted eq 2}">
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Error!</strong> Your're not allowed to delete your own account. Contact the super administrator or another administrator, to get your account deleted.</p>
+                <p><strong><spring:message code="overall.error.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.error.deleted.yourownuser.message" />.</p>
             </div>
         </c:when>
         <c:otherwise>
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p><strong>Error!</strong> The user is a super administrator, and can't be deleted from the system.</p>
+                <p><strong><spring:message code="overall.error.label" />!</strong> <spring:message code="page.adminmanageuser.dialog.error.deleted.issuperadmin.message" />.</p>
             </div>
         </c:otherwise>
     </c:choose>
 </c:if>
 
-<a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/new" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> Create User</a>
+<a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/new" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> <spring:message code="page.adminmanageuser.button.createuser.label" /></a>
 
 <br /><br />
 
@@ -69,8 +70,8 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Username</th>
-            <th>Role</th>
+            <th><spring:message code="page.adminmanageuser.table.username.label" /></th>
+            <th><spring:message code="page.adminmanageuser.table.userrole.label" /></th>
         </tr>
     </thead>
     <tbody>
@@ -79,9 +80,9 @@
                 <td style="width: 40px;"><c:out value="${user.id}" /></td>
                 <td><c:out value="${user.username}" /></td>
                 <td><c:out value="${userRoleListModel.getUserRoleDescrName(user.userRole)}" /></td>
-                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/edit?editUserId=<c:out value="${user.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
-                <td style="width: 150px;"><a href="#modal-reset-password-container" data-id="<c:out value="${user.id}" />" class="btn btn-info btn-mini trigger-reset-password"><i class="icon-repeat icon-white"></i> Reset Password</a></td>
-                <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${user.id}" />" class="btn btn-danger btn-mini trigger-delete-user"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
+                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/edit?editUserId=<c:out value="${user.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> <spring:message code="page.adminmanageuser.button.edit.label" /></a></td>
+                <td style="width: 150px;"><a href="#modal-reset-password-container" data-id="<c:out value="${user.id}" />" class="btn btn-info btn-mini trigger-reset-password"><i class="icon-repeat icon-white"></i> <spring:message code="page.adminmanageuser.button.resetpassword.label" /></a></td>
+                <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${user.id}" />" class="btn btn-danger btn-mini trigger-delete-user"><i class="icon-remove-circle icon-white"></i> <spring:message code="page.adminmanageuser.button.delete.label" /></a></td>
             </tr>
         </c:forEach>
     </tbody>
@@ -90,30 +91,30 @@
 <div id="modal-delete-container" class="modal hide fade">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Delete User Permanently</h3>
+        <h3><spring:message code="page.adminmanageuser.dialog.delete.headline.label" /></h3>
     </div>
     <div class="modal-body">
-        <p>You're about to delete a user from the system. This action is permanently and can't be undone!</p>
-        <p>Are you sure you want to continue?</p>
+        <p><spring:message code="page.adminmanageuser.dialog.delete.infomessage.label" />!</p>
+        <p><spring:message code="overall.info.areyousure.label" /></p>
     </div>
     <div class="modal-footer">
-        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/delete?deleteUserId=" class="btn btn-danger delete-user-btn">Yes</a>
-        <a href="" class="btn" data-dismiss="modal" aria-hidden="true">No</a>
+        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/delete?deleteUserId=" class="btn btn-danger delete-user-btn"><spring:message code="overall.yes.label" /></a>
+        <a href="" class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="overall.no.label" /></a>
     </div>
 </div>
         
 <div id="modal-reset-password-container" class="modal hide fade">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Reset Password</h3>
+        <h3><spring:message code="page.adminmanageuser.dialog.resetpassword.headline.label" /></h3>
     </div>
     <div class="modal-body">
-        <p>You're about to reset the users password. The new password will be <strong>default</strong>, which you need to provide to the user. Users can after log in change the password to what they want.</p>
-        <p>Are you sure you want to continue?</p>
+        <p><spring:message code="page.adminmanageuser.dialog.resetpassword.infomessage.label" />.</p>
+        <p><spring:message code="overall.info.areyousure.label" /></p>
     </div>
     <div class="modal-footer">
-        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/reset?resetPasswordUserId=" class="btn btn-info reset-password-btn">Yes</a>
-        <a href="" class="btn" data-dismiss="modal" aria-hidden="true">No</a>
+        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/user/reset?resetPasswordUserId=" class="btn btn-info reset-password-btn"><spring:message code="overall.yes.label" /></a>
+        <a href="" class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="overall.no.label" /></a>
     </div>
 </div>
 
