@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:choose>
     <c:when test="${not empty movie}">
@@ -14,6 +15,6 @@
 
     </c:when>
     <c:otherwise>
-        <p class="lead">No movie was found</p>
+        <p class="lead text-center"><spring:message code="page.showmovie.nomovies.label" /></p>
     </c:otherwise>
 </c:choose>
