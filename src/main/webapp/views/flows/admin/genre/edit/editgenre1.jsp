@@ -6,17 +6,17 @@
 
 <div class="flow-container">
 
-    <h3>Edit Genre</h3>
+    <h3><spring:message code="flow.editgenre.page1.pagetitle.label" /></h3>
 
     <div class="span5">
 
-        <p class="muted">Rename the movie genre</p>
+        <p class="muted"><spring:message code="flow.editgenre.page1.pagedescription.label" /></p>
         
         <div class="control-group">
-            <label class="control-label" for="inputTitle"><strong>Genre Title</strong></label>
+            <label class="control-label" for="inputTitle"><strong><spring:message code="flow.editgenre.page1.form.genretitle.label" /></strong></label>
             <div class="controls input-prepend">
-                <span class="add-on" title="The movie genre is like a category for movies associated to it, so choose a descriptive and general title"><i class="icon-question-sign"></i></span>
-                <form:input class="span4" path="title" id="inputTitle" placeholder="Genre Title" />
+                <span class="add-on" title="<spring:message code="flow.editgenre.page1.form.genretitle.helptext" />"><i class="icon-question-sign"></i></span>
+                <form:input class="span4" path="title" id="inputTitle" />
             </div>
         </div>
                     
@@ -26,8 +26,8 @@
 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
-            <button type="submit" class="btn btn-success pull-right" id="savegenre" name="_eventId_savegenre"><i class="icon-ok-circle icon-white"></i> <strong>Save Genre</strong></button>
+            <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong><spring:message code="flow.editgenre.page1.form.button.cancel.label" /></strong></button>
+            <button type="submit" class="btn btn-success pull-right" id="savegenre" name="_eventId_savegenre"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="flow.editgenre.page1.form.button.savegenre.label" /></strong></button>
         </div>
     </div>
 </form:form>
@@ -37,7 +37,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 1 of 1</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="1,1" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="100"></div>
