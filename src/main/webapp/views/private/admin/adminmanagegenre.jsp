@@ -1,20 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:if test="${not empty param.edited}">
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Congratulations!</strong> Your genre has been updated in the database.</p>
+        <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanagegenre.dialog.success.edited.message" />.</p>
     </div>
 </c:if>
 
 <c:if test="${not empty param.deleted}">
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>Congratulations!</strong> Your genre and its associated movies, has been removed from the database.</p>
+        <p><strong><spring:message code="overall.congratulations.label" />!</strong> <spring:message code="page.adminmanagegenre.dialog.success.deleted.message" />.</p>
     </div>
 </c:if>
 
-<p class="muted">You can't create a new genre here, because a genre only can be created with a movie. You therefore have to create a new movie to create a new genre.</p>
+<p class="muted"><spring:message code="page.adminmanagegenre.pagedescription.label" />.</p>
 
 <br />
 
@@ -22,7 +23,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Genre</th>
+            <th><spring:message code="page.adminmanagegenre.table.genre.label" /></th>
         </tr>
     </thead>
     <tbody>
@@ -30,8 +31,8 @@
             <tr>
                 <td style="width: 40px;"><c:out value="${genre.id}" /></td>
                 <td><c:out value="${genre.title}" /></td>
-                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre/edit?editGenreId=<c:out value="${genre.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</a></td>
-                <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${genre.id}" />" class="btn btn-danger btn-mini trigger-delete-genre"><i class="icon-remove-circle icon-white"></i> Delete</a></td>
+                <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre/edit?editGenreId=<c:out value="${genre.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> <spring:message code="page.adminmanagegenre.button.edit.label" /></a></td>
+                <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${genre.id}" />" class="btn btn-danger btn-mini trigger-delete-genre"><i class="icon-remove-circle icon-white"></i> <spring:message code="page.adminmanagegenre.button.delete.label" /></a></td>
             </tr>
         </c:forEach>
     </tbody>
@@ -40,15 +41,15 @@
 <div id="modal-delete-container" class="modal hide fade">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Delete Genre Permanently</h3>
+        <h3><spring:message code="page.adminmanagegenre.dialog.delete.headline.label" /></h3>
     </div>
     <div class="modal-body">
-        <p>You're about to delete a genre, and all its associated movies from the system. This action is permanently and can't be undone!</p>
-        <p>Are you sure you want to continue?</p>
+        <p><spring:message code="page.adminmanagegenre.dialog.delete.infomessage.label" />!</p>
+        <p><spring:message code="overall.info.areyousure.label" /></p>
     </div>
     <div class="modal-footer">
-        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre/delete?deleteGenreId=" class="btn btn-danger delete-genre-btn">Yes</a>
-        <a href="" class="btn" data-dismiss="modal" aria-hidden="true">No</a>
+        <a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/genre/delete?deleteGenreId=" class="btn btn-danger delete-genre-btn"><spring:message code="overall.yes.label" /></a>
+        <a href="" class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="overall.no.label" /></a>
     </div>
 </div>
 
