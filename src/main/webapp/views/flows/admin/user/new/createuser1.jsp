@@ -38,7 +38,7 @@
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong>Cancel</strong></button>
-            <button type="submit" class="btn btn-info pull-right" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
+            <button type="submit" class="btn btn-info pull-right" id="saveuser" name="_eventId_saveuser"><strong>Save User</strong> <i class="icon-chevron-right icon-white"></i></button>
         </div>
     </div>
 </form:form>
@@ -48,10 +48,10 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 1 of 2</p>
+    <p class="muted text-center">Step 1 of 1</p>
         
     <div class="progress progress-striped active">
-        <div class="bar" data-percentage="0"></div>
+        <div class="bar" data-percentage="100"></div>
     </div>
     
     <br />

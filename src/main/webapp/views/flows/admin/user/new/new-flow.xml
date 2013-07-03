@@ -18,19 +18,10 @@
         <on-entry>
             <evaluate expression="userRoleListModel.getUserRoles()" result="viewScope.userRoles" />
         </on-entry>
-        <transition on="next" to="createuser2" />
-        <transition on="end" to="endOfFlow" />
-    </view-state>
-    
-    <!-- Create User Page 2 - user details -->
-    <view-state id="createuser2" view="createuser2" model="flowScope.userForm">
-        <on-entry>
-            <evaluate expression="userRoleListModel.getUserRoleDescrName(flowScope.userForm.userRole)" result="viewScope.userRoleDescrName" />
-        </on-entry>
         <transition on="saveuser" to="flowDone">
             <evaluate expression="userService.saveNewUser(flowScope.userForm)" />
         </transition>
-        <transition on="back" to="createuser1" />
+        <transition on="end" to="endOfFlow" />
     </view-state>
     
     <end-state id="flowDone" view="redirect:/admin/user?created=1" />
