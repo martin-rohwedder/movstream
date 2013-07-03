@@ -1,14 +1,16 @@
 $(document).ready(function(){    
     var hasErrors = true;
     
+    var titleGroupId = '#edit-genre-title-group';
+    
     $('#inputTitle').bind('change blur keyup mouseup', function(){
         if ($(this).val().length === 0) {
-            $('#edit-genre-title-group').removeClass('success');
-            $('#edit-genre-title-group').addClass('error');
+            $(titleGroupId).removeClass('success');
+            $(titleGroupId).addClass('error');
             hasErrors = true;
         } else {
-            $('#edit-genre-title-group').removeClass('error');
-            $('#edit-genre-title-group').addClass('success');
+            $(titleGroupId).removeClass('error');
+            $(titleGroupId).addClass('success');
             hasErrors = false;
         }
     });
@@ -16,12 +18,12 @@ $(document).ready(function(){
     $('#savegenre').click(function(e) {
         //Validate title
         if ($('#inputTitle').val().length === 0) {
-            $('#edit-genre-title-group').removeClass('success');
-            $('#edit-genre-title-group').addClass('error');
+            $(titleGroupId).removeClass('success');
+            $(titleGroupId).addClass('error');
             hasErrors = true;
         } else {
-            $('#edit-genre-title-group').removeClass('error');
-            $('#edit-genre-title-group').addClass('success');
+            $(titleGroupId).removeClass('error');
+            $(titleGroupId).addClass('success');
             hasErrors = false;
         }
         
