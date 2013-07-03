@@ -24,7 +24,7 @@ $(document).ready(function(){
     
     $('#saveuser').click(function(e) {
         //Validate username        
-        if ($('#inputUsername').val().length === 0) {
+        if ($('#inputUsername').val().length === 0 || $('#inputUsername').val().length < 4) {
             $(usernameGroupId).removeClass('success');
             $(usernameGroupId).addClass('error');
             hasErrors = true;
