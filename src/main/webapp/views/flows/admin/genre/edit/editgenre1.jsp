@@ -12,7 +12,7 @@
 
         <p class="muted"><spring:message code="flow.editgenre.page1.pagedescription.label" /></p>
         
-        <div class="control-group">
+        <div id="edit-genre-title-group" class="control-group">
             <label class="control-label" for="inputTitle"><strong><spring:message code="flow.editgenre.page1.form.genretitle.label" /></strong></label>
             <div class="controls input-prepend">
                 <span class="add-on" title="<spring:message code="flow.editgenre.page1.form.genretitle.helptext" />"><i class="icon-question-sign"></i></span>
@@ -54,3 +54,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/edit-genre-validation.js" defer></script>
