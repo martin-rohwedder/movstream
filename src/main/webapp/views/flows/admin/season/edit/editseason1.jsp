@@ -12,14 +12,14 @@
 
         <p class="muted"><spring:message code="flow.editseason.page1.pagedescription.label" /></p>
         
-        <div class="control-group">
+        <div id="edit-season-title-group" class="control-group">
             <label class="control-label" for="inputTitle"><strong><spring:message code="flow.editseason.page1.form.seasontitle.label" /></strong></label>
             <div class="controls">
                 <form:input class="span5" path="title" id="inputTitle" />
             </div>
         </div>
 
-        <div class="control-group">
+        <div id="edit-season-description-group" class="control-group">
             <label class="control-label" for="inputDescription"><strong><spring:message code="flow.editseason.page1.form.seasondescription.label" /></strong></label>
             <div class="controls">
                 <form:textarea class="span5" path="description" id="inputDescription" rows="4"></form:textarea>
@@ -60,3 +60,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/edit-season-validation.js" defer></script>
