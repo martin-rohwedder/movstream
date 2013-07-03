@@ -12,18 +12,18 @@
 
         <p class="muted">Define a unique username</p>
 
-        <div class="control-group">
+        <div id="new-user-username-group" class="control-group">
             <label class="control-label" for="inputUsername"><strong>Username</strong></label>
             <div class="controls">
                 <form:input class="span5" path="username" id="inputUsername" placeholder="Username" />
             </div>
         </div>
 
-        <div class="control-group">
+        <div id="new-user-userrole-group" class="control-group">
             <label class="control-label" for="inputUserRole"><strong>Role</strong></label>
             <div class="controls input-prepend">
                 <span class="add-on" title="A role defines a users access level. Users with the normal role, has only acces to view movies, where users with the administrator role has far more options, like administrating movies and users."><i class="icon-question-sign"></i></span>
-                <form:select path="userRole" class="span3">
+                <form:select path="userRole" class="span3" id="selectUserRole">
                     <c:forEach items="${userRoles}" var="userRole">
                         <form:option value="${userRole.name}"><c:out value="${userRole.descriptiveName}" /></form:option>
                     </c:forEach>
@@ -65,3 +65,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/new-user-validation.js" defer></script>
