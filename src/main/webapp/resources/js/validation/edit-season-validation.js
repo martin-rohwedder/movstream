@@ -1,5 +1,6 @@
 $(document).ready(function(){    
     var hasErrors = true;
+    var errorCount = 0;
     
     var titleGroupId = '#edit-season-title-group';
     var descriptionGroupId = '#edit-season-description-group';
@@ -34,6 +35,7 @@ $(document).ready(function(){
             $(titleGroupId).removeClass('success');
             $(titleGroupId).addClass('error');
             hasErrors = true;
+            errorCount++;
         } else {
             $(titleGroupId).removeClass('error');
             $(titleGroupId).addClass('success');
@@ -45,14 +47,16 @@ $(document).ready(function(){
             $(descriptionGroupId).removeClass('success');
             $(descriptionGroupId).addClass('error');
             hasErrors = true;
+            errorCount++;
         } else {
             $(descriptionGroupId).removeClass('error');
             $(descriptionGroupId).addClass('success');
             hasErrors = false;
         }
         
-        if (hasErrors) {
+        if (hasErrors || errorCount > 0) {
             e.preventDefault();
+            errorCount = 0;
         }
     });
 });
