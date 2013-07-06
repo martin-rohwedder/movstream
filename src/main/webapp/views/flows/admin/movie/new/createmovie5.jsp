@@ -14,7 +14,7 @@
             <dt>Title</dt>
             <dd><c:out value="${movieForm.title}" /></dd>
             <dt>Genre</dt>
-            <dd><c:out value="${movieForm.genre.title} (${movieForm.genre.id})" /></dd>
+            <dd><c:out value="${movieForm.genre.title}" /></dd>
             <dt>Description</dt>
             <dd><c:out value="${movieForm.description}" /></dd>
             <dt>Season</dt>

@@ -9,24 +9,24 @@
     <div class="span5">
 
         <form:form modelAttribute="seasonObject" action="${flowExecutionUrl}">
-            <div class="control-group">
-                <label class="control-label" for="inputTitle"><strong>Season Title</strong></label>
+            <div id="new-movie-season-title-group" class="control-group">
+                <label class="control-label" for="inputSeasonTitle"><strong>Season Title</strong></label>
                 <div class="controls">
-                    <form:input class="span5" path="title" id="inputTitle" placeholder="Season Title" />
+                    <form:input class="span5" path="title" id="inputSeasonTitle" placeholder="Season Title" />
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label" for="inputDescription"><strong>Description</strong></label>
+            <div id="new-movie-season-description-group" class="control-group">
+                <label class="control-label" for="inputSeasonDescription"><strong>Description</strong></label>
                 <div class="controls">
-                    <form:textarea class="span5" path="description" id="inputDescription" placeholder="Season Description" rows="4"></form:textarea>
+                    <form:textarea class="span5" path="description" id="inputSeasonDescription" placeholder="Season Description" rows="4"></form:textarea>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls pull-right">
                         <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Create</strong></button>
-                        <button type="submit" class="btn btn-success btn-small" id="create" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
+                        <button type="submit" class="btn btn-success btn-small" id="createseason" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
                     </div>
                 </div>
         </form:form>
@@ -55,3 +55,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/new-movie-validation.js" defer></script>

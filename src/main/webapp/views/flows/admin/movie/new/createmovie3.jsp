@@ -12,7 +12,7 @@
 
         <p class="muted">Define the movie filename and movie picture filename.</p>
 
-            <div class="control-group">
+            <div id="new-movie-filename-group" class="control-group">
                 <label class="control-label" for="inputMovieFilename"><strong>Movie Filename</strong></label>
                 <div class="controls controls-row">
                     <form:input class="span4" path="movieFilename" id="inputMovieFilename" placeholder="Movie Filename (Don't include path)" />
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="control-group">
+            <div id="new-movie-picture-filename-group" class="control-group">
                 <label class="control-label" for="inputPictureFilename"><strong>Movie Picture Filename</strong></label>
                 <div class="controls">
                     <form:input class="span5" path="pictureFilename" id="inputPictureFilename" placeholder="picture Filename (Don't include path)" />
@@ -38,7 +38,7 @@
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
-            <button type="submit" class="btn btn-info pull-right" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
+            <button type="submit" class="btn btn-info pull-right" id="next3" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
         </div>
     </div>
 </form:form>
@@ -65,3 +65,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/new-movie-validation.js" defer></script>
