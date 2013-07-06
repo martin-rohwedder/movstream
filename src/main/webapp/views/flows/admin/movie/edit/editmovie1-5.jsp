@@ -9,17 +9,17 @@
     <div class="span4">
 
         <form:form modelAttribute="genreObject" action="${flowExecutionUrl}">
-            <div class="control-group">
+            <div id="edit-movie-genre-title-group" class="control-group">
                 <label class="control-label" for="inputTitle"><strong>Genre Title</strong></label>
                 <div class="controls">
-                    <form:input class="span4" path="title" id="inputTitle" placeholder="Genre Title" />
+                    <form:input class="span4" path="title" id="inputGenreTitle" placeholder="Genre Title" />
                 </div>
             </div>
 
             <div class="control-group">
                 <div class="controls pull-right">
                     <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Create</strong></button>
-                    <button type="submit" class="btn btn-success btn-small" id="create" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
+                    <button type="submit" class="btn btn-success btn-small" id="creategenre" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Create</strong></button>
                 </div>
             </div>
         </form:form>
@@ -48,3 +48,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/edit-movie-validation.js" defer></script>

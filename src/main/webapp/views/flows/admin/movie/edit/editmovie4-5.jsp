@@ -9,22 +9,22 @@
     <div class="span5">
 
         <form:form modelAttribute="subtitleObject" action="${flowExecutionUrl}">
-            <div class="control-group">
-                <label class="control-label" for="inputFilename"><strong>Subtitle Filename</strong></label>
+            <div id="edit-movie-subtitle-filename-group" class="control-group">
+                <label class="control-label" for="inputSubtitleFilename"><strong>Subtitle Filename</strong></label>
                 <div class="controls input-append">
-                    <form:input class="span5" path="filename" id="inputFilename" placeholder="Subtitle Filename (Don't include path)" />
+                    <form:input class="span5" path="filename" id="inputSubtitleFilename" placeholder="Subtitle Filename (Don't include path)" />
                     <span class="add-on">.vtt</span>
                 </div>
             </div>
                     
-            <div class="control-group">
+            <div id="edit-movie-subtitle-language-group" class="control-group">
                 <label class="control-label" for="inputLanguage"><strong>Language</strong></label>
                 <div class="controls">
                     <form:input class="span5" path="language" id="inputLanguage" placeholder="e.g. English" />
                 </div>
             </div>
                     
-            <div class="control-group">
+            <div id="edit-movie-subtitle-langsrc-group" class="control-group">
                 <label class="control-label" for="inputSrcLang"><strong>Language Source</strong></label>
                 <div class="controls">
                     <form:input class="span5" path="srcLang" id="inputSrcLang" placeholder="e.g. 'en'" />
@@ -34,7 +34,7 @@
             <div class="control-group">
                     <div class="controls pull-right">
                         <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Add Subtitle</strong></button>
-                        <button type="submit" class="btn btn-success btn-small" id="create" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Add Subtitle</strong></button>
+                        <button type="submit" class="btn btn-success btn-small" id="createsubtitle" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Add Subtitle</strong></button>
                     </div>
                 </div>
         </form:form>
@@ -63,3 +63,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/edit-movie-validation.js" defer></script>

@@ -12,11 +12,11 @@
 
         <p class="muted">Associate the movie with a season, or skip of no season is required.</p>
 
-            <div class="control-group">
+            <div id="edit-movie-season-group" class="control-group">
                 <label class="control-label" for="inputSeason"><strong>Choose Season</strong></label>
                 <div class="controls input-prepend">
                     <span class="add-on" title="A season defines a collection of moviesm which all is associated with the same story. A season is not when movies is in the same category, but only if they are part of the same story"><i class="icon-question-sign"></i></span>
-                        <form:select path="season.title" class="span3">
+                        <form:select id="inputSeason" path="season.title" class="span3">
                             <c:forEach items="${seasons}" var="season">
                                 <form:option value="${season.title}" />
                             </c:forEach>
@@ -62,3 +62,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/validation/edit-movie-validation.js" defer></script>
