@@ -48,7 +48,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 1 of 1</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="1,1" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="100"></div>
