@@ -6,18 +6,18 @@
 
 <div class="flow-container">
 
-    <h3>New Movie</h3>
+    <h3><spring:message code="flow.editmovie.page4.pagetitle.label" /></h3>
 
     <div class="span5">
 
-        <p class="muted">Add as many subtitles as you like for the movie.</p>
+        <p class="muted"><spring:message code="flow.editmovie.page4.pagedescription.label" /></p>
 
             <table class="table table-bordered table-striped table-condensed subtitle-table span5">
                 <thead>
                     <tr>
-                        <th>Filename</th>
-                        <th>Language</th>
-                        <th>Language Source</th>
+                        <th><spring:message code="flow.editmovie.page4.table.subtitlefilename.label" /></th>
+                        <th><spring:message code="flow.editmovie.page4.table.subtitlelanguage.label" /></th>
+                        <th><spring:message code="flow.editmovie.page4.table.subtitlelanguagesrc.label" /></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@
                             <td><c:out value="${subtitle.filename}" /></td>
                             <td><c:out value="${subtitle.language}" /></td>
                             <td><c:out value="${subtitle.srcLang}" /></td>
-                            <td><a class="btn btn-danger btn-mini" href="${flowExecutionUrl}&_eventId=removesub&subindex=<c:out value="${index}" />"><i class="icon-remove-circle icon-white"></i> Remove</a></td>
+                            <td><a class="btn btn-danger btn-mini" href="${flowExecutionUrl}&_eventId=removesub&subindex=<c:out value="${index}" />"><i class="icon-remove-circle icon-white"></i> <spring:message code="overall.flow.button.remove.label" /></a></td>
                         </tr>
                         <c:set var="index" value="${index + 1}" />
                     </c:forEach>
@@ -40,10 +40,10 @@
 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
+            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong><spring:message code="overall.flow.button.back.label" /></strong></button>
             <div class="pull-right">
-                <button type="submit" class="btn btn-warning" id="addsub" name="_eventId_addsub"><i class="icon-plus icon-white"></i> <strong>Add Subtitle</strong></button>
-                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
+                <button type="submit" class="btn btn-warning" id="addsub" name="_eventId_addsub"><i class="icon-plus icon-white"></i> <strong><spring:message code="flow.editmovie.page4.form.button.addsubtitle.label" /></strong></button>
+                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong><spring:message code="overall.flow.button.next.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 4 of 5</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="4,5" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="75"></div>

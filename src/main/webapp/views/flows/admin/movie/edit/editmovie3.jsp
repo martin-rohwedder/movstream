@@ -6,16 +6,16 @@
 
 <div class="flow-container">
 
-    <h3>New Movie</h3>
+    <h3><spring:message code="flow.editmovie.page3.pagetitle.label" /></h3>
 
     <div class="span5">
 
-        <p class="muted">Define the movie filename and movie picture filename.</p>
+        <p class="muted"><spring:message code="flow.editmovie.page3.pagedescription.label" /></p>
 
             <div id="edit-movie-filename-group" class="control-group">
-                <label class="control-label" for="inputMovieFilename"><strong>Movie Filename</strong></label>
+                <label class="control-label" for="inputMovieFilename"><strong><spring:message code="flow.editmovie.page3.form.moviefilename.label" /></strong></label>
                 <div class="controls controls-row">
-                    <form:input class="span4" path="movieFilename" id="inputMovieFilename" placeholder="Movie Filename (Don't include path)" />
+                    <form:input class="span4" path="movieFilename" id="inputMovieFilename" />
                     <form:select path="movieType.name" class="span1">
                         <c:forEach items="${movieTypes}" var="type">
                             <form:option value="${type.name}" />
@@ -25,9 +25,9 @@
             </div>
 
             <div id="edit-movie-picture-filename-group" class="control-group">
-                <label class="control-label" for="inputPictureFilename"><strong>Movie Picture Filename</strong></label>
+                <label class="control-label" for="inputPictureFilename"><strong><spring:message code="flow.editmovie.page3.form.picturefilename.label" /></strong></label>
                 <div class="controls">
-                    <form:input class="span5" path="pictureFilename" id="inputPictureFilename" placeholder="picture Filename (Don't include path)" />
+                    <form:input class="span5" path="pictureFilename" id="inputPictureFilename" />
                 </div>
             </div>
 
@@ -37,8 +37,8 @@
                 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
-            <button type="submit" class="btn btn-info pull-right" id="next3" name="_eventId_next"><strong>Next</strong> <i class="icon-chevron-right icon-white"></i></button>
+            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong><spring:message code="overall.flow.button.back.label" /></strong></button>
+            <button type="submit" class="btn btn-info pull-right" id="next3" name="_eventId_next"><strong><spring:message code="overall.flow.button.next.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
         </div>
     </div>
 </form:form>
@@ -48,7 +48,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 3 of 5</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="3,5" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="50"></div>

@@ -4,37 +4,37 @@
 
 <div class="flow-container">
 
-    <h3>New Movie</h3>
+    <h3><spring:message code="flow.editmovie.page4_5.pagetitle.label" /></h3>
 
     <div class="span5">
 
         <form:form modelAttribute="subtitleObject" action="${flowExecutionUrl}">
             <div id="edit-movie-subtitle-filename-group" class="control-group">
-                <label class="control-label" for="inputSubtitleFilename"><strong>Subtitle Filename</strong></label>
+                <label class="control-label" for="inputSubtitleFilename"><strong><spring:message code="flow.editmovie.page4_5.form.subtitlefilename.label" /></strong></label>
                 <div class="controls input-append">
-                    <form:input class="span5" path="filename" id="inputSubtitleFilename" placeholder="Subtitle Filename (Don't include path)" />
+                    <form:input class="span5" path="filename" id="inputSubtitleFilename" />
                     <span class="add-on">.vtt</span>
                 </div>
             </div>
                     
             <div id="edit-movie-subtitle-language-group" class="control-group">
-                <label class="control-label" for="inputLanguage"><strong>Language</strong></label>
+                <label class="control-label" for="inputLanguage"><strong><spring:message code="flow.editmovie.page4_5.form.subtitlelanguage.label" /></strong></label>
                 <div class="controls">
-                    <form:input class="span5" path="language" id="inputLanguage" placeholder="e.g. English" />
+                    <form:input class="span5" path="language" id="inputLanguage" />
                 </div>
             </div>
                     
             <div id="edit-movie-subtitle-langsrc-group" class="control-group">
-                <label class="control-label" for="inputSrcLang"><strong>Language Source</strong></label>
+                <label class="control-label" for="inputSrcLang"><strong><spring:message code="flow.editmovie.page4_5.form.subtitlelanguagesrc.label" /></strong></label>
                 <div class="controls">
-                    <form:input class="span5" path="srcLang" id="inputSrcLang" placeholder="e.g. 'en'" />
+                    <form:input class="span5" path="srcLang" id="inputSrcLang" />
                 </div>
             </div>
             
             <div class="control-group">
                     <div class="controls pull-right">
-                        <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong>Don't Add Subtitle</strong></button>
-                        <button type="submit" class="btn btn-success btn-small" id="createsubtitle" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong>Add Subtitle</strong></button>
+                        <button type="submit" class="btn btn-danger btn-small" id="back" name="_eventId_back"><i class="icon-remove-circle icon-white"></i> <strong><spring:message code="overall.flow.button.abort.label" /></strong></button>
+                        <button type="submit" class="btn btn-success btn-small" id="createsubtitle" name="_eventId_create"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="overall.flow.button.create.label" /></strong></button>
                     </div>
                 </div>
         </form:form>
@@ -46,7 +46,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 4 of 5</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="4,5" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="75"></div>

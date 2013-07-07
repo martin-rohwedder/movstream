@@ -6,22 +6,22 @@
 
 <div class="flow-container">
 
-    <h3>New Movie</h3>
+    <h3><spring:message code="flow.editmovie.page2.pagetitle.label" /></h3>
     
     <div class="span5">
 
-        <p class="muted">Associate the movie with a season, or skip of no season is required.</p>
+        <p class="muted"><spring:message code="flow.editmovie.page2.pagedescription.label" /></p>
 
             <div id="edit-movie-season-group" class="control-group">
-                <label class="control-label" for="inputSeason"><strong>Choose Season</strong></label>
+                <label class="control-label" for="inputSeason"><strong><spring:message code="flow.editmovie.page2.form.season.label" /></strong></label>
                 <div class="controls input-prepend">
-                    <span class="add-on" title="A season defines a collection of moviesm which all is associated with the same story. A season is not when movies is in the same category, but only if they are part of the same story"><i class="icon-question-sign"></i></span>
+                    <span class="add-on" title="<spring:message code="flow.editmovie.page2.form.season.helptext" />"><i class="icon-question-sign"></i></span>
                         <form:select id="inputSeason" path="season.title" class="span3">
                             <c:forEach items="${seasons}" var="season">
                                 <form:option value="${season.title}" />
                             </c:forEach>
                         </form:select>
-                    <button type="submit" class="btn btn-link btn-mini" id="newseason" name="_eventId_newseason">(Create New Season)</button>
+                    <button type="submit" class="btn btn-link btn-mini" id="newseason" name="_eventId_newseason">(<spring:message code="flow.editmovie.page2.form.season.newseason.button" />)</button>
                 </div>
             </div>
 
@@ -31,10 +31,10 @@
 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong>Back</strong></button>
+            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong><spring:message code="overall.flow.button.back.label" /></strong></button>
             <div class="pull-right">
-                <button type="submit" class="btn btn-warning" id="skip" name="_eventId_skip"><strong>Skip This Part</strong> <i class="icon-share-alt icon-white"></i></button>
-                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong>Add To Season</strong> <i class="icon-chevron-right icon-white"></i></button>
+                <button type="submit" class="btn btn-warning" id="skip" name="_eventId_skip"><strong><spring:message code="flow.editmovie.page2.form.button.skip.label" /></strong> <i class="icon-share-alt icon-white"></i></button>
+                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong><spring:message code="flow.editmovie.page2.form.button.addtoseason.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 2 of 5</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="2,5" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="25"></div>
