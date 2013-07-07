@@ -5,6 +5,7 @@ import dk.movstream.web.domain.Movie;
 import dk.movstream.web.domain.MovieType;
 import dk.movstream.web.domain.Season;
 import dk.movstream.web.domain.Subtitle;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
@@ -86,6 +87,9 @@ public class MovieDaoImpl implements MovieDao {
         }
         
         //Save the movie details, and get the new movie ID.
+        if (movie.getDateCreated() == null) {
+            movie.setDateCreated(new Date());
+        }
         this.sessionFactory.getCurrentSession().saveOrUpdate(movie);
     }
 

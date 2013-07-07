@@ -2,6 +2,7 @@ package dk.movstream.web.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -39,6 +42,7 @@ public class Movie implements Serializable {
     private Genre genre;
     private MovieType movieType;
     private List<Subtitle> subtitles = new ArrayList<Subtitle>();
+    private Date dateCreated;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -147,6 +151,16 @@ public class Movie implements Serializable {
     
     public void removeSubtitleByObject(Subtitle subtitle) {
         getSubtitles().remove(subtitle);
+    }
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DATE_CREATED")
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
     
 }
