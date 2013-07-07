@@ -4,24 +4,24 @@
 
 <div class="flow-container">
 
-    <h3>New Movie</h3>
+    <h3><spring:message code="flow.newmovie.page5.pagetitle.label" /></h3>
 
     <div class="span8">
 
-        <p class="muted">Inspect the details of the movie before saving in the database</p>
+        <p class="muted"><spring:message code="flow.newmovie.page5.pagedescription.label" /></p>
 
         <dl class="dl-horizontal">
-            <dt>Title</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.title.label" /></dt>
             <dd><c:out value="${movieForm.title}" /></dd>
-            <dt>Genre</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.genre.label" /></dt>
             <dd><c:out value="${movieForm.genre.title}" /></dd>
-            <dt>Description</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.description.label" /></dt>
             <dd><c:out value="${movieForm.description}" /></dd>
-            <dt>Season</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.season.label" /></dt>
             <dd>
                 <c:choose>
                     <c:when test="${empty movieForm.season}">
-                        No Season associated
+                        <spring:message code="flow.newmovie.page5.details.noseason.label" />
                     </c:when>
                     <c:otherwise>
                         <c:out value="${movieForm.season.title} (${movieForm.season.id})" /><br />
@@ -29,15 +29,15 @@
                     </c:otherwise>
                 </c:choose>
             </dd>
-            <dt>Movie Filename</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.moviefilename.label" /></dt>
             <dd><c:out value="${movieForm.movieFilename}" />.<c:out value="${movieForm.movieType.name}" /></dd>
-            <dt>Picture Filename</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.picturefilename.label" /></dt>
             <dd><c:out value="${movieForm.pictureFilename}" /></dd>
-            <dt>Subtitles</dt>
+            <dt><spring:message code="flow.newmovie.page5.details.subtitle.label" /></dt>
             <dd>
                 <c:choose>
                     <c:when test="${empty movieForm.subtitles}">
-                        No Subtitles added
+                        <spring:message code="flow.newmovie.page5.details.nosubtitle.label" />
                     </c:when>
                     <c:otherwise>
                         <c:forEach items="${movieForm.subtitles}" var="subtitle">
@@ -55,9 +55,9 @@
 <form:form modelAttribute="movieForm" action="${flowExecutionUrl}" class="clearfix">
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-arrow-left icon-white"></i> <strong>Back</strong></button>
+            <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-arrow-left icon-white"></i> <strong><spring:message code="overall.flow.button.back.label" /></strong></button>
             <div class="pull-right">
-                <button type="submit" class="btn btn-success" id="savemovie" name="_eventId_savemovie"><i class="icon-ok-circle icon-white"></i> <strong>Save Movie</strong></button>
+                <button type="submit" class="btn btn-success" id="savemovie" name="_eventId_savemovie"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="flow.newmovie.page5.form.button.savemovie.label" /></strong></button>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
 <div>
     <hr />
         
-    <p class="muted text-center">Step 5 of 5</p>
+    <p class="muted text-center"><spring:message code="overall.flow.steps.label" arguments="5,5" argumentSeparator="," /></p>
         
     <div class="progress progress-striped active">
         <div class="bar" data-percentage="100"></div>
