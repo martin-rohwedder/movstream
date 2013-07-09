@@ -1,5 +1,6 @@
 package dk.movstream.web.service;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -20,8 +21,25 @@ public class SystemSettingsService {
     
     private final Properties SYSTEM_SETTINGS_PROPERTIES = new Properties();
     
-    public void setLanguageCode(String languageCode) throws IOException {
-        SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.language", languageCode);
+    private String languageCode = null;
+    
+    public SystemSettingsService() throws IOException {
+        Properties prop = new Properties();
+        prop.load(new FileInputStream(SYSTEM_SETTINGS_FILE.getFile()));
+        
+        this.languageCode = prop.getProperty("system.default.language");
+    }
+    
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
+    }
+    
+    public String getLanguageCode() {
+        return this.languageCode;
+    }
+    
+    public void saveSystemSettings() throws IOException {
+        SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.language", this.languageCode);
         SYSTEM_SETTINGS_PROPERTIES.store(new FileOutputStream(SYSTEM_SETTINGS_FILE.getFile()), null);
     }
     

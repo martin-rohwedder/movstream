@@ -149,6 +149,7 @@ public class AdministrationController {
     public String deleteSeasonAction(@RequestParam(value = "languageCode", required = true) String lang)
             throws IOException {
         systemSettingsService.setLanguageCode(lang);
+        systemSettingsService.saveSystemSettings();
         return "redirect:/admin/settings?settingsSaved=0";
     }
     
