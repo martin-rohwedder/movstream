@@ -7,13 +7,8 @@ import dk.movstream.web.service.SeasonService;
 import dk.movstream.web.service.SystemSettingsService;
 import dk.movstream.web.service.UserService;
 import dk.movstream.web.service.model.UserRoleListModel;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -141,6 +136,8 @@ public class AdministrationController {
         ModelAndView mav = new ModelAndView("adminmanagesettings");
         
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("languages", systemSettingsService.getLanguages());
+        mav.addObject("currentLanguageCode", systemSettingsService.getLanguageCode());
         
         return mav;
     }
