@@ -6,6 +6,8 @@ import dk.movstream.web.domain.MovieType;
 import dk.movstream.web.domain.Season;
 import dk.movstream.web.domain.Subtitle;
 import dk.movstream.web.persistence.dao.MovieDao;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,19 @@ public class MovieService {
         return movieDao.findAllMoviesBySeasonId(seasonId);
     }
     
-    public Movie getMovieById(long movieId) {
-        return movieDao.findMovieById(movieId);
+    public Movie getMovieById(long movieId) throws IOException {
+        Movie movie = movieDao.findMovieById(movieId);
+        
+        if (movie != null) {
+            File file = new File(new SystemSettingsService().getLocalDirectory() + "movies" + File.separator + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+            if (file.exists()) {
+                movie.setMovieFilename("/movstream-files/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+            } else {
+                movie.setMovieFilename("movieNotFound");
+            }
+        }
+
+        return movie;
     }
     
     public List<Movie> getAllMoviesByGenreId(long genreId) {
