@@ -138,6 +138,7 @@ public class AdministrationController {
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         mav.addObject("languages", systemSettingsService.getLanguages());
         mav.addObject("currentLanguageCode", systemSettingsService.getLanguageCode());
+        mav.addObject("localDirectory", systemSettingsService.getLocalDirectory());
         
         return mav;
     }

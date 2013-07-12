@@ -2,6 +2,7 @@ package dk.movstream.web.config;
 
 import dk.movstream.web.util.i18n.PropertyLocaleChangeInterceptor;
 import dk.movstream.web.util.i18n.PropertyLocaleResolver;
+import java.io.File;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -40,6 +41,21 @@ public class DefaultWebConfigurationContext extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        createLocalDirectories(env.getProperty("system.default.localDirectory"));
+        registry.addResourceHandler("/movstream-files/**").addResourceLocations("file:" + env.getProperty("system.default.localDirectory"));
+    }
+    
+    /**
+     * Create Local directories for movies, subtitles and images
+     * @param mainPath The main path to the local directory eg. C:\mymovies\
+     */
+    private void createLocalDirectories(String mainPath) {
+        File file = new File(mainPath + "subtitles");
+        file.mkdirs();
+        file = new File(mainPath + "movies");
+        file.mkdirs();
+        file = new File(mainPath + "images");
+        file.mkdirs();
     }
     
     @Bean
