@@ -34,19 +34,8 @@ public class MovieService {
         return movieDao.findAllMoviesBySeasonId(seasonId);
     }
     
-    public Movie getMovieById(long movieId) throws IOException {
-        Movie movie = movieDao.findMovieById(movieId);
-        
-        if (movie != null) {
-            File file = new File(new SystemSettingsService().getLocalDirectory() + "movies" + File.separator + movie.getMovieFilename() + "." + movie.getMovieType().getName());
-            if (file.exists()) {
-                movie.setMovieFilename("/movstream-files/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName());
-            } else {
-                movie.setMovieFilename("movieNotFound");
-            }
-        }
-
-        return movie;
+    public Movie getMovieById(long movieId) {
+        return movieDao.findMovieById(movieId);
     }
     
     public List<Movie> getAllMoviesByGenreId(long genreId) {

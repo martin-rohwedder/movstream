@@ -74,6 +74,10 @@ table.subtitle-table {
 .flow-container {
     min-height: 400px;
 }
+.movie-img {
+    width: 160px;
+    height: 200px;
+}
 
 /* Responsive CSS fix */
 @media (max-width: 979px) {

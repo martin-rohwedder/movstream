@@ -32,15 +32,29 @@
             <c:when test="${empty movie.season}">
                 <li>
                     <div rel="popover" data-content="<p><c:out value="${movie.description}" /><br /><strong><spring:message code="overall.genre.label" />:</strong> <span class='text-info'><c:out value="${movie.genre.title}" /></span></p><a href='<c:out value="${pageContext.servletContext.contextPath}" />/movie/show/<c:out value="${movie.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-play icon-white'></i> <spring:message code="overall.playmovie.button.label" /></a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
-                        <img src="http://placehold.it/160x200" alt="" />
+                        <c:choose>
+                            <c:when test="${movie.pictureFilename eq 'pictureNotFound'}">
+                                <img class="movie-img" src="http://placehold.it/160x200" alt="" />
+                            </c:when>
+                            <c:otherwise>
+                                <img class="movie-img" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.pictureFilename}" />" alt="" />
+                            </c:otherwise>
+                        </c:choose>
                         <p class="text-center"><c:out value="${movie.title}" /></p>
                     </div>
                 </li>
             </c:when>
             <c:otherwise>
                 <li>
-                    <div rel="popover" data-content="<p><c:out value="${movie.season.description}" /><br /><strong><spring:message code="overall.genre.label" />:</strong> <span class='text-info'><c:out value="${movie.genre.title}" /></span></p><a href='<c:out value="${pageContext.servletContext.contextPath}" />/season/showepisodes/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-share-alt icon-white'></i> <spring:message code="overall.showepisodes.button.label" /></a>" data-original-title="<c:out value="${movie.title}" />" class="thumbnail">
-                        <img src="http://placehold.it/160x200" alt="" />
+                    <div rel="popover" data-content="<p><c:out value="${movie.season.description}" /><br /><strong><spring:message code="overall.genre.label" />:</strong> <span class='text-info'><c:out value="${movie.genre.title}" /></span></p><a href='<c:out value="${pageContext.servletContext.contextPath}" />/season/showepisodes/<c:out value="${movie.season.id}" />' class='btn btn-success btn-large btn-block'><i class='icon-share-alt icon-white'></i> <spring:message code="overall.showepisodes.button.label" /></a>" data-original-title="<c:out value="${movie.season.title}" />" class="thumbnail">
+                        <c:choose>
+                            <c:when test="${movie.pictureFilename eq 'pictureNotFound'}">
+                                <img class="movie-img" src="http://placehold.it/160x200" alt="" />
+                            </c:when>
+                            <c:otherwise>
+                                <img class="movie-img" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.pictureFilename}" />" alt="" />
+                            </c:otherwise>
+                        </c:choose>
                         <p class="text-center"><c:out value="${movie.season.title}" /></p>
                     </div>
                 </li>

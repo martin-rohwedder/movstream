@@ -73,4 +73,22 @@ public class Utility {
         return myMovies;
     }
     
+    public static List<Movie> sortMoviesForAGenre(List<Movie> movies) {
+        long seasonId = -1;
+        List<Movie> myMovies = new ArrayList<Movie>();
+        for (Movie movie : movies) {
+            if (movie.getSeason() == null) {
+                myMovies.add(movie);
+            }
+            else {
+                if (seasonId != movie.getSeason().getId()) {
+                    seasonId = movie.getSeason().getId();
+                    myMovies.add(movie);
+                }
+            }
+        }
+        
+        return myMovies;
+    }
+    
 }
