@@ -100,9 +100,9 @@ public class MovieController {
         
         List<Movie> movies = movieService.getAllMoviesByGenreId(genreId);
         SystemSettingsService settingsService = new SystemSettingsService();
-        boolean externalLocationIsFound = false;
         
         for (Movie movie : movies) {
+            boolean externalLocationIsFound = false;
             File pictureFile = new File(settingsService.getLocalDirectory() + "images" + File.separator + movie.getPictureFilename());
             if (pictureFile.exists()) {
                 movie.setPictureFilename("/movstream-files/images/" + movie.getPictureFilename());
