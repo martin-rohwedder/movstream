@@ -28,6 +28,7 @@ public class SystemSettingsService {
     
     private String languageCode = null;
     private String applicationTitle = null;
+    private String externalLocations = null;
     
     public SystemSettingsService() throws IOException {
         Properties prop = new Properties();
@@ -35,6 +36,7 @@ public class SystemSettingsService {
         this.applicationTitle = prop.getProperty("system.default.applicationtitle");
         this.languageCode = prop.getProperty("system.default.language");
         this.LOCAL_DIRECTORY = prop.getProperty("system.default.localDirectory");
+        this.externalLocations = prop.getProperty("system.default.externalLocations");
         
         LANGUAGES.addAll(Arrays.asList(Language.values()));
     }
@@ -62,11 +64,20 @@ public class SystemSettingsService {
     public List<Language> getLanguages() {
         return this.LANGUAGES;
     }
+
+    public String getExternalLocations() {
+        return this.externalLocations;
+    }
+
+    public void setExternalLocations(String externalLocations) {
+        this.externalLocations = externalLocations;
+    }
     
     public void saveSystemSettings() throws IOException {
         SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.applicationtitle", this.applicationTitle);
         SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.language", this.languageCode);
         SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.localDirectory", this.LOCAL_DIRECTORY);
+        SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.externalLocations", this.externalLocations);
         SYSTEM_SETTINGS_PROPERTIES.store(new FileOutputStream(SYSTEM_SETTINGS_FILE.getFile()), null);
     }
     

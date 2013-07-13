@@ -142,17 +142,19 @@ public class AdministrationController {
         mav.addObject("languages", systemSettingsService.getLanguages());
         mav.addObject("currentLanguageCode", systemSettingsService.getLanguageCode());
         mav.addObject("localDirectory", systemSettingsService.getLocalDirectory());
+        mav.addObject("externalLocations", systemSettingsService.getExternalLocations());
         
         return mav;
     }
     
     @RequestMapping(value = {"/settings"}, method = RequestMethod.POST)
-    public String saveSettingsAction(HttpServletRequest request, @RequestParam(value = "languageCode", required = true) String lang, @RequestParam(value = "applicationtitle", required = true) String applicationTitle)
+    public String saveSettingsAction(HttpServletRequest request, @RequestParam(value = "languageCode", required = true) String lang, @RequestParam(value = "applicationtitle", required = true) String applicationTitle, @RequestParam(value = "externalLocations", required = true) String externalLocations)
             throws IOException {
         HttpSession session = request.getSession();
         
         systemSettingsService.setApplicationTitle(applicationTitle);
         systemSettingsService.setLanguageCode(lang);
+        systemSettingsService.setExternalLocations(externalLocations);
         systemSettingsService.saveSystemSettings();
         session.setAttribute("applicationTitle", systemSettingsService.getApplicationTitle());
         return "redirect:/admin/settings?settingsSaved=0";

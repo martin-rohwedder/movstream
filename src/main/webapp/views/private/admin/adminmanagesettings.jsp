@@ -39,10 +39,10 @@
     </div>
     
     <div class="control-group">
-        <label class="control-label" for="movieLocations">External Movie Locations</label>
+        <label class="control-label" for="externalLocations">External Movie Locations</label>
         <div class="controls input-prepend">
             <span class="add-on" title="You can define more than one external movie locations, by adding the web address to the location, and seperate each locaton by a comma. If you don't use any external locations, you can also upload movies to your local context, {LOCAL_LOCATION}. To get information about, how to change your local context, please click the link 'hwo to change local context' besides the local location field"><i class="icon-question-sign"></i></span>
-            <input class="input-xxlarge" type="text" id="movieLocations" name="movieLocations" placeholder="http://www.mymovies.com/movies/, http://..." />
+            <input class="input-xxlarge" type="text" id="externalLocations" name="externalLocations" placeholder="http://www.mymovies.com/movies/, http://..." value="<c:out value="${externalLocations}" />" />
         </div>
     </div>
     
