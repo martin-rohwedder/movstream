@@ -66,8 +66,9 @@ public class MovieController {
                             movie.setMovieFilename(location + "/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName());
 
                             for (Subtitle subtitle : movie.getSubtitles()) {
-                                if (Utility.externalFileExists(location + "/subtitles/" + subtitle.getFilename() + ".vtt")) {
-                                    subtitle.setFilename(location + "/subtitles/" + subtitle.getFilename() + ".vtt");
+                                File subtitleFile = new File(settingsService.getLocalDirectory() + "subtitles" + File.separator + subtitle.getFilename() + ".vtt");
+                                if (subtitleFile.exists()) {
+                                    subtitle.setFilename("/movstream-files/subtitles/" + subtitle.getFilename() + ".vtt");
                                 }
                             }
 
@@ -98,14 +99,33 @@ public class MovieController {
         ModelAndView mav = new ModelAndView("showmoviesbygenre");
         
         List<Movie> movies = movieService.getAllMoviesByGenreId(genreId);
+        SystemSettingsService settingsService = new SystemSettingsService();
+        boolean externalLocationIsFound = false;
         
         for (Movie movie : movies) {
-            File pictureFile = new File(new SystemSettingsService().getLocalDirectory() + "images" + File.separator + movie.getPictureFilename());
+            File pictureFile = new File(settingsService.getLocalDirectory() + "images" + File.separator + movie.getPictureFilename());
             if (pictureFile.exists()) {
                 movie.setPictureFilename("/movstream-files/images/" + movie.getPictureFilename());
             }
             else {
-                movie.setPictureFilename("pictureNotFound");
+                if (!settingsService.getExternalLocations().equalsIgnoreCase("")) {
+                    String externalLocationsString = settingsService.getExternalLocations().trim().replaceAll(" ", "");
+                    String[] locations = externalLocationsString.split(",");
+                    for (String location : locations) {
+                        if (Utility.externalFileExists(location + "/images/" + movie.getPictureFilename())) {
+                            movie.setPictureFilename(location + "/images/" + movie.getPictureFilename());
+
+                            externalLocationIsFound = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!externalLocationIsFound) {
+                        movie.setPictureFilename("pictureNotFound");
+                    }
+                } else {
+                    movie.setPictureFilename("pictureNotFound");
+                }
             }
         }
         

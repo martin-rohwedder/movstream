@@ -7,6 +7,8 @@
     <h3><spring:message code="flow.editmovie.page4_5.pagetitle.label" /></h3>
 
     <div class="span5">
+        
+        <p class="muted"><spring:message code="flow.editmovie.page4_5.pagedescription.label" /></p>
 
         <form:form modelAttribute="subtitleObject" action="${flowExecutionUrl}">
             <div id="edit-movie-subtitle-filename-group" class="control-group">

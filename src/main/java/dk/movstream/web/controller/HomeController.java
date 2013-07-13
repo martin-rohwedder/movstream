@@ -43,14 +43,33 @@ public class HomeController {
         }
         
         List<Movie> movies = movieService.getAllMoviesOrderedByTitle();
+        SystemSettingsService settingsService = new SystemSettingsService();
+        boolean externalLocationIsFound = false;
         
         for (Movie movie : movies) {
-            File pictureFile = new File(new SystemSettingsService().getLocalDirectory() + "images" + File.separator + movie.getPictureFilename());
+            File pictureFile = new File(settingsService.getLocalDirectory() + "images" + File.separator + movie.getPictureFilename());
             if (pictureFile.exists()) {
                 movie.setPictureFilename("/movstream-files/images/" + movie.getPictureFilename());
             }
             else {
-                movie.setPictureFilename("pictureNotFound");
+                if (!settingsService.getExternalLocations().equalsIgnoreCase("")) {
+                    String externalLocationsString = settingsService.getExternalLocations().trim().replaceAll(" ", "");
+                    String[] locations = externalLocationsString.split(",");
+                    for (String location : locations) {
+                        if (Utility.externalFileExists(location + "/images/" + movie.getPictureFilename())) {
+                            movie.setPictureFilename(location + "/images/" + movie.getPictureFilename());
+
+                            externalLocationIsFound = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!externalLocationIsFound) {
+                        movie.setPictureFilename("pictureNotFound");
+                    }
+                } else {
+                    movie.setPictureFilename("pictureNotFound");
+                }
             }
         }
         

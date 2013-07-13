@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:choose>
@@ -22,7 +23,14 @@
                                 <img class="movie-img" src="http://placehold.it/160x200" alt="" />
                             </c:when>
                             <c:otherwise>
-                                <img class="movie-img" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.pictureFilename}" />" alt="" />
+                                <c:choose>
+                                    <c:when test="${fn:startsWith(movie.pictureFilename, 'http')}">
+                                        <img class="movie-img" src="<c:out value="${movie.pictureFilename}" />" alt="" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img class="movie-img" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.pictureFilename}" />" alt="" />
+                                    </c:otherwise>
+                                </c:choose>
                             </c:otherwise>
                         </c:choose>
                         <p class="text-center"><c:out value="${movie.title}" /></p>
