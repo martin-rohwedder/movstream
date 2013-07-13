@@ -6,6 +6,8 @@
 
         <h1 class="page-header"><c:out value="${movie.title}" /></h1>
 
+        <div id="video-player">
+        
         <c:choose>
             <c:when test="${movie.movieFilename eq 'movieNotFound'}">
                 <h2><spring:message code="page.showmovie.nomoviefile.label" />!</h2>
@@ -13,7 +15,7 @@
             <c:otherwise>
                 <c:choose>
                     <c:when test="${externalMovie eq true}">
-                        <video id="video-player" class="video-js vjs-default-skin" controls preload="none" width="850" height="450" data-setup="{}">
+                        <video class="video-js vjs-default-skin" controls preload="auto" width="850" height="450" data-setup="{}">
                             <source src="<c:out value="${movie.movieFilename}" />" type='video/mp4' />
                             <c:forEach items="${movie.subtitles}" var="subtitle">
                                 <track kind="subtitles" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${subtitle.filename}" />" srclang="<c:out value="${subtitle.srcLang}" />" label="<c:out value="${subtitle.language}" />" />
@@ -21,7 +23,7 @@
                         </video>
                     </c:when>
                     <c:otherwise>
-                        <video id="video-player" class="video-js vjs-default-skin" controls preload="none" width="850" height="450" data-setup="{}">
+                        <video class="video-js vjs-default-skin" controls preload="auto" width="850" height="450" data-setup="{}">
                             <source src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.movieFilename}" />" type='video/mp4' />
                             <c:forEach items="${movie.subtitles}" var="subtitle">
                                 <track kind="subtitles" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${subtitle.filename}" />" srclang="<c:out value="${subtitle.srcLang}" />" label="<c:out value="${subtitle.language}" />" />
@@ -32,6 +34,8 @@
             </c:otherwise>
         </c:choose>
 
+        </div>
+               
     </c:when>
     <c:otherwise>
         <p class="lead text-center"><spring:message code="page.showmovie.nomovie.label" /></p>

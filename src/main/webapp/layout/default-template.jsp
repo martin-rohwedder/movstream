@@ -29,7 +29,7 @@
     <body>
         <tiles:useAttribute id="currentPage" name="page" classname="java.lang.String" />
         
-        <div class="navbar navbar navbar-fixed-top">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

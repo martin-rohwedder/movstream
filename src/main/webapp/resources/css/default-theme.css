@@ -10,9 +10,13 @@ body {
     padding-top: 60px;
     
     /* Border radius and box shadow */
-    -webkit-border-radius: 10px;
-           -moz-border-radius: 10px;
-                border-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+        -moz-border-radius-bottomright: 10px;
+            border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+        -moz-border-radius-bottomleft: 10px;
+            border-bottom-left-radius: 10px;
+            
     -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.2);
        -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.2);
             box-shadow: 0px 0px 5px rgba(0,0,0,.2);
@@ -82,7 +86,7 @@ table.subtitle-table {
 /* Responsive CSS fix */
 @media (max-width: 979px) {
     .container-content {
-        padding-top: 20px; 
+        padding-top: 20px;
     }
     .navbar-text.pull-right {
         float: none;
