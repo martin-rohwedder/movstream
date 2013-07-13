@@ -42,24 +42,52 @@ public class MovieController {
     public ModelAndView renderShowMovie(@PathVariable("movieId") long movieId) throws IOException {
         ModelAndView mav = new ModelAndView("showmovie");
         Movie movie = movieService.getMovieById(movieId);
+        SystemSettingsService settingsService = new SystemSettingsService();
+        boolean externalLocationIsFound = false;
         
         if (movie != null) {
-            File movieFile = new File(new SystemSettingsService().getLocalDirectory() + "movies" + File.separator + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+            File movieFile = new File(settingsService.getLocalDirectory() + "movies" + File.separator + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+            
             if (movieFile.exists()) {
                 movie.setMovieFilename("/movstream-files/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+
+                for (Subtitle subtitle : movie.getSubtitles()) {
+                    File subtitleFile = new File(settingsService.getLocalDirectory() + "subtitles" + File.separator + subtitle.getFilename() + ".vtt");
+                    if (subtitleFile.exists()) {
+                        subtitle.setFilename("/movstream-files/subtitles/" + subtitle.getFilename() + ".vtt");
+                    }
+                }
             } else {
-                movie.setMovieFilename("movieNotFound");
-            }
-            
-            for (Subtitle subtitle : movie.getSubtitles()) {
-                File subtitleFile = new File(new SystemSettingsService().getLocalDirectory() + "subtitles" + File.separator + subtitle.getFilename() + ".vtt");
-                if (subtitleFile.exists()) {
-                    subtitle.setFilename("/movstream-files/subtitles/" + subtitle.getFilename() + ".vtt");
+                if (!settingsService.getExternalLocations().equalsIgnoreCase("")) {
+                    String externalLocationsString = settingsService.getExternalLocations().trim().replaceAll(" ", "");
+                    String[] locations = externalLocationsString.split(",");
+                    for (String location : locations) {
+                        if (Utility.externalFileExists(location + "/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName())) {
+                            movie.setMovieFilename(location + "/movies/" + movie.getMovieFilename() + "." + movie.getMovieType().getName());
+
+                            for (Subtitle subtitle : movie.getSubtitles()) {
+                                if (Utility.externalFileExists(location + "/subtitles/" + subtitle.getFilename() + ".vtt")) {
+                                    subtitle.setFilename(location + "/subtitles/" + subtitle.getFilename() + ".vtt");
+                                }
+                            }
+
+                            externalLocationIsFound = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!externalLocationIsFound) {
+                        movie.setMovieFilename("movieNotFound");
+                    }
+                }
+                else {
+                    movie.setMovieFilename("movieNotFound");
                 }
             }
         }
         
-        mav.addObject("movie", movie);        
+        mav.addObject("movie", movie);
+        mav.addObject("externalMovie", externalLocationIsFound);
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
         return mav;

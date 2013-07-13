@@ -1,6 +1,8 @@
 package dk.movstream.web.util;
 
 import dk.movstream.web.domain.Movie;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -89,6 +91,23 @@ public class Utility {
         }
         
         return myMovies;
+    }
+    
+    /**
+     * Check if an external file does exists
+     * @param URL 
+     * @return true if the file exists
+     */
+    public static boolean externalFileExists(String URL) {
+        try {
+            HttpURLConnection.setFollowRedirects(false);
+            HttpURLConnection conn = (HttpURLConnection) new URL(URL).openConnection();
+            conn.setRequestMethod("HEAD");
+            return (conn.getResponseCode() == HttpURLConnection.HTTP_OK);  //Reponse status code is 200 = OK
+        }
+        catch(Exception ex) {
+            return false;
+        }
     }
     
 }
