@@ -8,6 +8,8 @@ import dk.movstream.web.service.SystemSettingsService;
 import dk.movstream.web.service.UserService;
 import dk.movstream.web.service.model.UserRoleListModel;
 import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -136,6 +138,7 @@ public class AdministrationController {
         ModelAndView mav = new ModelAndView("adminmanagesettings");
         
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("applicationtitle", systemSettingsService.getApplicationTitle());
         mav.addObject("languages", systemSettingsService.getLanguages());
         mav.addObject("currentLanguageCode", systemSettingsService.getLanguageCode());
         mav.addObject("localDirectory", systemSettingsService.getLocalDirectory());
@@ -144,10 +147,14 @@ public class AdministrationController {
     }
     
     @RequestMapping(value = {"/settings"}, method = RequestMethod.POST)
-    public String deleteSeasonAction(@RequestParam(value = "languageCode", required = true) String lang)
+    public String saveSettingsAction(HttpServletRequest request, @RequestParam(value = "languageCode", required = true) String lang, @RequestParam(value = "applicationtitle", required = true) String applicationTitle)
             throws IOException {
+        HttpSession session = request.getSession();
+        
+        systemSettingsService.setApplicationTitle(applicationTitle);
         systemSettingsService.setLanguageCode(lang);
         systemSettingsService.saveSystemSettings();
+        session.setAttribute("applicationTitle", systemSettingsService.getApplicationTitle());
         return "redirect:/admin/settings?settingsSaved=0";
     }
     

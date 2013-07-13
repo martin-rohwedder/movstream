@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     
-                    <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand">Movstream</a>
+                    <a href="<c:out value="${pageContext.servletContext.contextPath}" />/" class="brand"><c:out value="${applicationTitle}" /></a>
                     <div class="nav-collapse collapse">
                         <p class="navbar-text pull-right"><spring:message code="template.navigation.loggedinas.label" /> <a href="<c:out value="${pageContext.servletContext.contextPath}" />/user" class="navbar-link">${user.username}</a></p>
                         

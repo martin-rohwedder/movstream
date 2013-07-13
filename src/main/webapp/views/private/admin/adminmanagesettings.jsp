@@ -7,6 +7,13 @@
 
 <form method="post">
     <div class="control-group">
+        <label class="control-label" for="applicationtitle">Page Title</label>
+        <div class="controls">
+            <input type="text" class="input-large" id="applicationtitle" name="applicationtitle" value="<c:out value="${applicationtitle}" />" maxlength="20" />
+        </div>
+    </div>
+    
+    <div class="control-group">
         <label class="control-label" for="systemLanguage">System Language</label>
         <div class="controls">
             <select class="input-large" id="systemLanguage" name="languageCode">

@@ -38,6 +38,9 @@ public class HomeController {
         if (session.getAttribute("user") == null) {
             session.setAttribute("user", SecurityContextSupport.getUserDetails().getUser());
         }
+        if (session.getAttribute("applicationTitle") == null) {
+            session.setAttribute("applicationTitle", new SystemSettingsService().getApplicationTitle());
+        }
         
         List<Movie> movies = movieService.getAllMoviesOrderedByTitle();
         

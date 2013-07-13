@@ -27,10 +27,12 @@ public class SystemSettingsService {
     private final String LOCAL_DIRECTORY;
     
     private String languageCode = null;
+    private String applicationTitle = null;
     
     public SystemSettingsService() throws IOException {
         Properties prop = new Properties();
         prop.load(new FileInputStream(SYSTEM_SETTINGS_FILE.getFile()));
+        this.applicationTitle = prop.getProperty("system.default.applicationtitle");
         this.languageCode = prop.getProperty("system.default.language");
         this.LOCAL_DIRECTORY = prop.getProperty("system.default.localDirectory");
         
@@ -44,6 +46,14 @@ public class SystemSettingsService {
     public String getLanguageCode() {
         return this.languageCode;
     }
+
+    public String getApplicationTitle() {
+        return this.applicationTitle;
+    }
+
+    public void setApplicationTitle(String applicationTitle) {
+        this.applicationTitle = applicationTitle;
+    }
     
     public String getLocalDirectory() {
         return this.LOCAL_DIRECTORY;
@@ -54,6 +64,7 @@ public class SystemSettingsService {
     }
     
     public void saveSystemSettings() throws IOException {
+        SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.applicationtitle", this.applicationTitle);
         SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.language", this.languageCode);
         SYSTEM_SETTINGS_PROPERTIES.setProperty("system.default.localDirectory", this.LOCAL_DIRECTORY);
         SYSTEM_SETTINGS_PROPERTIES.store(new FileOutputStream(SYSTEM_SETTINGS_FILE.getFile()), null);
