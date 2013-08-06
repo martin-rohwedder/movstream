@@ -1,5 +1,6 @@
 package dk.movstream.web.controller;
 
+import dk.movstream.web.util.Utility;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
@@ -24,6 +25,8 @@ public class AuthenticationController {
         if (authEx != null) {
             mav.addObject("loginError", "An Error Occured! Please check that you have provided the correct username and password");
         }
+        
+        mav.addObject("versionNumber", Utility.getApplicationVersionNumber());
         
         return mav;
     }

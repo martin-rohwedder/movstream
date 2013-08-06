@@ -12,7 +12,8 @@ body {
     
     max-width: 300px;
     margin-left: -150px;
-    
+}
+.form-signin {
     border: 1px solid #e5e5e5;
     background-color: white;
     -webkit-border-radius: 5px;
@@ -21,8 +22,7 @@ body {
         -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.form-signin {
+                
     padding: 19px 29px 29px;
 }
 .form-signin h2 {
@@ -35,4 +35,9 @@ body {
 }
 .login-error {
     margin: 150px;
+}
+.version-number {
+    color: #c0c0c0;
+    text-shadow: 0px 0px 2px #d0d0d0;
+    text-align: center;
 }

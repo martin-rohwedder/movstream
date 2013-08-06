@@ -14,6 +14,23 @@ import java.util.List;
 public class Utility {
     
     /**
+     * Version number format is {MAJOR}.{MINOR}.{PATCH}
+     * 
+     * MAJOR: Defines a major change in the application, like a complete change of the design
+     * MINOR: Defines a minor change in the application, like some new usefull features or a larger software hotfix patch
+     * PATCH: Defines a little change in the application, like a fast hotfix for implemented for a critical bug
+     */
+    private static final String APPLICATION_VERSION_NUMBER = "1.0.0";
+    
+    /**
+     * Get the Application Version Number for this application.
+     * @return A string containing the current application version number.
+     */
+    public static String getApplicationVersionNumber() {
+        return APPLICATION_VERSION_NUMBER;
+    }
+    
+    /**
      * Sort movies after the movie titles first letter. If between 0 and 9, 
      * the movies need to be collected together. This is to provide the home view
      * with a list of movies which itself has an ordered list of movies which has the same

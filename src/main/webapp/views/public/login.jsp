@@ -46,3 +46,5 @@
     
     <button class="btn btn-large btn-primary" type="submit"><i class="icon-lock icon-white"></i> <spring:message code="page.login.form.submit.label" /></button>
 </form>
+
+<p class="version-number"><spring:message code="overall.version.label" /> <c:out value="${versionNumber}" /></p>
