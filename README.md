@@ -2,6 +2,8 @@
 
 > Movstream is a web application, which provides you with a personal and intuitive movie streaming application. With movstream you can insert information about your movie files on your server or an external server, and use the application to watch these movies easy through your favorite web browser.
 
+To begin use the application, please refer to the documentations [installation section](https://github.com/martin-rohwedder/movstream/blob/master/docs/User_Guide.md#installation)
+
 ## Contributing ##
 
 Movstream is a free open source Java web application, and we appriciate all the help we can get. If you experience any problems when using the application, or if you have any ideas/modifications, please refer to the [movstream issues page](https://github.com/martin-rohwedder/movstream/issues?state=open), where you can create an issue explaining your problem, or providing your modifications.
