@@ -1,7 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<h1><spring:message code="page.adminhome.pagetitle.label" /></h1>
+<p class="muted"><spring:message code="page.adminhome.pagedescription.label" /></p>
+
+<br />
 
 <c:if test="${moviePercentageBasedOnGenresMap.size() ne 0}">
 <div id="genre-movies-sum-chart" style="width: 470px; height: 300px;"></div>
