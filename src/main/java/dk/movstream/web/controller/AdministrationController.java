@@ -42,6 +42,7 @@ public class AdministrationController {
         ModelAndView mav = new ModelAndView("adminhome");
         
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
+        mav.addObject("moviePercentageBasedOnGenresMap", genreService.moviePercentageBasedOnGenres());
         
         return mav;
     }

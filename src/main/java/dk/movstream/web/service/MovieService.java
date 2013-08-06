@@ -6,8 +6,6 @@ import dk.movstream.web.domain.MovieType;
 import dk.movstream.web.domain.Season;
 import dk.movstream.web.domain.Subtitle;
 import dk.movstream.web.persistence.dao.MovieDao;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

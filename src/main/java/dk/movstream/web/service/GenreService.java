@@ -2,6 +2,8 @@ package dk.movstream.web.service;
 
 import dk.movstream.web.domain.Genre;
 import dk.movstream.web.persistence.dao.GenreDao;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +35,38 @@ public class GenreService {
         }
         
         return genres;
+    }
+    
+    /**
+     * Retrieve a map containing the genre name and a percentage
+     * value indicating the number of movies associated with that genre.
+     * 
+     * @return a Map with genre names and number of movies in percentage
+     */
+    public HashMap<String, Double> moviePercentageBasedOnGenres() {
+        HashMap<String, Double> percentageMap = new HashMap<String, Double>();
+        List<Genre> genres = new ArrayList<Genre>(this.getAllMovieGenresWithMovies());
+        int totalNumberOfMovies = this.getTotalNumberOfMovies(genres);
+        
+        if (totalNumberOfMovies > 0)
+        {
+            for (Genre genre : genres) {
+                //Get the percentage of movies to this specific genre.
+                double percentage = Math.round((((double) genre.getMovies().size() / totalNumberOfMovies) * 100) * 100.0) / 100.0;
+                percentageMap.put(genre.getTitle(), percentage);
+            }
+        }
+        
+        return percentageMap;
+    }
+    
+    private int getTotalNumberOfMovies(List<Genre> genres)
+    {
+        int total = 0;
+        for (Genre genre : genres) {
+            total += genre.getMovies().size();
+        }
+        return total;
     }
     
     public List<Genre> getAllMovieGenres() {

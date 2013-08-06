@@ -21,6 +21,7 @@
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/tsort.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap-progressbar.min.js" type="text/javascript"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/highcharts.js" type="text/javascript"></script>
         
         <!-- Fallback on video player to use flash if needed -->
         <script>
