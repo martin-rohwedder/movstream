@@ -96,8 +96,15 @@ Create a new MySQL database with an optional name, and here after you can execut
 
     insert into `user` (`USERNAME`, `PASSWORD`, `USER_ROLE`)
     values ('superadmin', 'dd36de2d67eb892eb38744489c8f6efe215523b88fd8671a5b91f9711d5821c9', 'ROLE_SUPERADMIN');
+    
+    insert into `movie_type` (`NAME`)
+    values ('mp4');
+    insert into `movie_type` (`NAME`)
+    values ('webm');
+    insert into `movie_type` (`NAME`)
+    values ('ogv');
 
-This script will create the tables needed for the database, and insert one row to the 'user' table. This row contains the superadmin user, and it has the password 'default'. You will be told to change the password on the first login, so don't change it at this point.
+This script will create the tables needed for the database, and insert one row to the 'user' table, and the move file extensions, which the player supports. The user row contains the superadmin user, and it has the password 'default'. You will be told to change the password on the first login, so don't change it at this point.
 
 ### 1.3 Add a Tomcat host ###
 
