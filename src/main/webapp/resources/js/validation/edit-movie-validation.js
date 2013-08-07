@@ -170,7 +170,7 @@ $(document).ready(function(){
         }
         
         //Validate description
-        if ($('#inputDescription').val().length === 0 || $(this).val().length > 255) {
+        if ($('#inputDescription').val().length === 0 || $('#inputDescription').val().length > 255) {
             $(descriptionGroupId).removeClass('success');
             $(descriptionGroupId).addClass('error');
             hasErrors = true;
