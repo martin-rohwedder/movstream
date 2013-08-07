@@ -46,7 +46,7 @@ $(document).ready(function(){
     });
     
     $('#inputDescription').bind('change blur keyup mouseup', function(){
-        if ($(this).val().length === 0) {
+        if ($(this).val().length === 0 || $(this).val().length > 255) {
             $(descriptionGroupId).removeClass('success');
             $(descriptionGroupId).addClass('error');
             hasErrors = true;
@@ -91,15 +91,9 @@ $(document).ready(function(){
     });
     
     $('#inputSeasonDescription').bind('change blur keyup mouseup', function(){
-        if ($(this).val().length === 0) {
-            $(seasonDescriptionGroupId).removeClass('success');
-            $(seasonDescriptionGroupId).addClass('error');
-            hasErrors = true;
-        } else {
-            $(seasonDescriptionGroupId).removeClass('error');
-            $(seasonDescriptionGroupId).addClass('success');
-            hasErrors = false;
-        }
+        $(seasonDescriptionGroupId).removeClass('error');
+        $(seasonDescriptionGroupId).addClass('success');
+        hasErrors = false;
     });
     
     //Page 3 validation
@@ -116,15 +110,9 @@ $(document).ready(function(){
     });
     
     $('#inputPictureFilename').bind('change blur keyup mouseup', function(){
-        if ($(this).val().length === 0) {
-            $(pictureFilenameGroupId).removeClass('success');
-            $(pictureFilenameGroupId).addClass('error');
-            hasErrors = true;
-        } else {
-            $(pictureFilenameGroupId).removeClass('error');
-            $(pictureFilenameGroupId).addClass('success');
-            hasErrors = false;
-        }
+        $(pictureFilenameGroupId).removeClass('error');
+        $(pictureFilenameGroupId).addClass('success');
+        hasErrors = false;
     });
     
     //Page 4.5 validation
@@ -182,7 +170,7 @@ $(document).ready(function(){
         }
         
         //Validate description
-        if ($('#inputDescription').val().length === 0) {
+        if ($('#inputDescription').val().length === 0 || $(this).val().length > 255) {
             $(descriptionGroupId).removeClass('success');
             $(descriptionGroupId).addClass('error');
             hasErrors = true;
@@ -233,18 +221,6 @@ $(document).ready(function(){
             hasErrors = false;
         }
         
-        //Validate description
-        if ($('#inputSeasonDescription').val().length === 0) {
-            $(seasonDescriptionGroupId).removeClass('success');
-            $(seasonDescriptionGroupId).addClass('error');
-            hasErrors = true;
-            errorCount++;
-        } else {
-            $(seasonDescriptionGroupId).removeClass('error');
-            $(seasonDescriptionGroupId).addClass('success');
-            hasErrors = false;
-        }
-        
         if (hasErrors || errorCount > 0) {
             e.preventDefault();
             errorCount = 0;
@@ -262,18 +238,6 @@ $(document).ready(function(){
         } else {
             $(filenameGroupId).removeClass('error');
             $(filenameGroupId).addClass('success');
-            hasErrors = false;
-        }
-        
-        //validate picture filename
-        if ($('#inputPictureFilename').val().length === 0) {
-            $(pictureFilenameGroupId).removeClass('success');
-            $(pictureFilenameGroupId).addClass('error');
-            hasErrors = true;
-            errorCount++;
-        } else {
-            $(pictureFilenameGroupId).removeClass('error');
-            $(pictureFilenameGroupId).addClass('success');
             hasErrors = false;
         }
         

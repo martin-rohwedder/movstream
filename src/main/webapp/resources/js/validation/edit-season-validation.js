@@ -18,15 +18,9 @@ $(document).ready(function(){
     });
     
     $('#inputDescription').bind('change blur keyup mouseup', function(){
-        if ($(this).val().length === 0) {
-            $(descriptionGroupId).removeClass('success');
-            $(descriptionGroupId).addClass('error');
-            hasErrors = true;
-        } else {
-            $(descriptionGroupId).removeClass('error');
-            $(descriptionGroupId).addClass('success');
-            hasErrors = false;
-        }
+        $(descriptionGroupId).removeClass('error');
+        $(descriptionGroupId).addClass('success');
+        hasErrors = false;
     });
     
     $('#saveseason').click(function(e) {
@@ -39,18 +33,6 @@ $(document).ready(function(){
         } else {
             $(titleGroupId).removeClass('error');
             $(titleGroupId).addClass('success');
-            hasErrors = false;
-        }
-        
-        //Validate description
-        if ($('#inputDescription').val().length === 0) {
-            $(descriptionGroupId).removeClass('success');
-            $(descriptionGroupId).addClass('error');
-            hasErrors = true;
-            errorCount++;
-        } else {
-            $(descriptionGroupId).removeClass('error');
-            $(descriptionGroupId).addClass('success');
             hasErrors = false;
         }
         
