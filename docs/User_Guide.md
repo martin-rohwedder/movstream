@@ -172,7 +172,7 @@ The next menu item 'Settings' is where all the action for administrators will be
 * Change the application name, the default is movstream, but you can call it whatever you like.
 * Change the system language. Notice that this language will force all other users to see the application in the choosen language.
 * Local Directory. This is not editable from within the system. If you want to change the local directory, you have to stop the tomcat server, and change it in the system.properties file manually (Refer to section [1.4 Configure the Application for first use](https://github.com/martin-rohwedder/movstream/blob/master/docs/User_Guide.md#14-configure-the-application-for-first-use) in this guide).
-* External Locations. You have the option to provide external location where your movie files are saved. If you provide more than one, you should seperate them by a comma. Notice that if you specify and external location called `http://www.example.com`, then you have to create two directories named `movies` and `images`, where you have to put movie files and images inside. To learn more about External locations, please refer to the `(Add an external location section)` int his guide.
+* External Locations. You have the option to provide external location where your movie files are saved. If you provide more than one, you should seperate them by a comma. Notice that if you specify and external location called `http://www.example.com`, then you have to create two directories named `movies` and `images`, where you have to put movie files and images inside. To learn more about External locations, please refer to the `(Add an external location section)` in his guide.
 
 The next tab to be aware about is the 'Manage Movies' tab. In here you will find a button called 'Create New Movie', and it's here you have to provide information about the movie you want to add to the system. When movies are added to the system, you have the opportunity to edit or even delete movies from the system again.
 
@@ -181,3 +181,11 @@ The next tab to be aware about is the 'Manage Movies' tab. In here you will find
 The 'Manage Genres' and 'Manage Seasons' tabs only allow you to edit or delete genres and seasons (with all their associated movies), but the creation of a genre or season, is done on the fly during a movie creation.
 
 This was a guick overview of the application, and in following sections, we will be describing on how to add movies in detail, Managing of users and how to get your first movie functioning in the application.
+
+### 2.2 System Settings: Use External Locations ###
+
+In movstream you have the opportunity to use external locations, where you have you movie files. An external location could be another server which is accessible from a web browser. For instance you have another server which is accessible from the URL `http://mymovies.example.com`. In here you have your movies files. Though Movstream is dependent on a specific structure on external locations. All movies should be in a folder called `movies`, and all images/thumbnails should be in a folder called `images`. This means that a movie file should be accessable from a web browser when typing the URL `http://mymovies.example.com/movies/mymoviefile.mp4`, and likewise with a thumbnail picture associated with the movie, should be accessable from the URL `http://mymovies.example.com/images/myimage.jpg`.
+
+Notice that subtitles can't be accessed through an external location. These subtitle files therefore have to be put in the local directory (specified on the system.properties file) on the web server. But don't worry. subtitles and movies can still be associated even though they don't are on the same server.
+
+You can sepcify as many external locations as you like, all you have to do, is to separate them by a comma, eg. `http://mymovies.example.com, http://www.example.com`
