@@ -50,12 +50,14 @@ public class DefaultWebConfigurationContext extends WebMvcConfigurerAdapter {
      * @param mainPath The main path to the local directory eg. C:\mymovies\
      */
     private void createLocalDirectories(String mainPath) {
-        File file = new File(mainPath + "subtitles");
-        file.mkdirs();
-        file = new File(mainPath + "movies");
-        file.mkdirs();
-        file = new File(mainPath + "images");
-        file.mkdirs();
+        if (!mainPath.isEmpty()) {
+            File file = new File(mainPath + "subtitles");
+            file.mkdirs();
+            file = new File(mainPath + "movies");
+            file.mkdirs();
+            file = new File(mainPath + "images");
+            file.mkdirs();
+        }
     }
     
     @Bean
