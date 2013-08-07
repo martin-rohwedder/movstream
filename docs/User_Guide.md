@@ -1,5 +1,7 @@
 # User Guide #
 
+This user guide contains information about how to install movstream on your server, and how to use the application when the installation has been completed. Before you can begin however, you need to obtain the application WAR file from my website.
+
 ## 1 Installation ##
 
 To get started using this application, you have to follow a few simple steps, but before we do that you need to have your server environment setup correctly
@@ -147,3 +149,35 @@ If you're on a Windows Server, you have to manually escape backslashes when prov
 Don't bother adding an external location at this point, since this is doable inside the application. The only thing we have to modify manually in the system.properties file is the local directory. If you haven't created the folder movstreamfiles at the C drive, then don't bother either, since the Movstream application will ceate the folder structure for you autoamtically during startup.
 
 Now Start up Tomcat, and the installation is done.
+
+## 2 How to use the application ##
+
+Movstream is designed to be easy to use, however it can be good to have read a little about, how to use the features before beginning to actually use them. This section will start out from the very basic of how to navigate in the application, to how to add your first movie, so lets begin.
+
+### 2.1 Our first overview of the application ###
+
+If this is the very first time you startup the application in a web browser, you should see a login page. during the installation, you have already created your superadmin user, so it should be ready to login. The credentials is
+
+    username: superadmin
+    password: default
+
+Notice the password default is a standard password throughout the application. All new users will be provided with this password, which they later can change. When you log in, you will be prompted to change your password. This happens because the system can reckognise that the user is using the default password, and this is not recommended to use. You will therefore have to change the password using this dialog, and when you click ok, the password has been changed.
+
+The first page you will encounter is the home page. This page holds a complete list of all movies registered in the system, in alphabetically order, 0-9 to Z. At the first use this page is rather empty, but when time goes, you'll begin add movies, and this page will automatically be populated with these movies.
+
+In the top you should see a navigation bar. This navigation bar will have 5 different menu items. 'Home', 'Browse Genre', 'My User', 'Settings' and 'Log Out'. Since we have no movies or genres, lets fast skip the 'Home' and 'Browse Genre' menu items, and go to 'My User' instead. This menu item contains a page, where you have the opportunity to change your password once again. This i most usefull later if you're not sure that your password is safe enough.
+
+The next menu item 'Settings' is where all the action for administrators will be found. It's in here you can see details about the application, add new moves, edit genres or seasons, add users and etc. More importantly for you as a superadmin, is the tab 'System Settings'. This tab is only accesable by a superadmin account, and no one else. If you open this page, you will have the following options.
+
+* Change the application name, the default is movstream, but you can call it whatever you like.
+* Change the system language. Notice that this language will force all other users to see the application in the choosen language.
+* Local Directory. This is not editable from within the system. If you want to change the local directory, you have to stop the tomcat server, and change it in the system.properties file manually (Refer to section [1.4 Configure the Application for first use](https://github.com/martin-rohwedder/movstream/blob/master/docs/User_Guide.md#14-configure-the-application-for-first-use) in this guide).
+* External Locations. You have the option to provide external location where your movie files are saved. If you provide more than one, you should seperate them by a comma. Notice that if you specify and external location called `http://www.example.com`, then you have to create two directories named `movies` and `images`, where you have to put movie files and images inside. To learn more about External locations, please refer to the `(Add an external location section)` int his guide.
+
+The next tab to be aware about is the 'Manage Movies' tab. In here you will find a button called 'Create New Movie', and it's here you have to provide information about the movie you want to add to the system. When movies are added to the system, you have the opportunity to edit or even delete movies from the system again.
+
+'Manage Users' works the same way, though here you'll also have the opportunity to reset passwords for a specific user.
+
+The 'Manage Genres' and 'Manage Seasons' tabs only allow you to edit or delete genres and seasons (with all their associated movies), but the creation of a genre or season, is done on the fly during a movie creation.
+
+This was a guick overview of the application, and in following sections, we will be describing on how to add movies in detail, Managing of users and how to get your first movie functioning in the application.
