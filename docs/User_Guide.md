@@ -189,3 +189,17 @@ In movstream you have the opportunity to use external locations, where you have 
 Notice that subtitles can't be accessed through an external location. These subtitle files therefore have to be put in the local directory (specified on the system.properties file) on the web server. But don't worry. subtitles and movies can still be associated even though they don't are on the same server.
 
 You can sepcify as many external locations as you like, all you have to do, is to separate them by a comma, eg. `http://mymovies.example.com, http://www.example.com`
+
+### 2.3 Manage Movies: Add your first movie ###
+
+Under the `Manage Movies` tab, you'll have the option to choose `Create New Movie` button. This button will start a create new movie flow.
+
+When creating a new movie, you're actually not only beginning to create a new movie, but also a new genre, or a associate the movie to a new season. On the first step you'll have to provide information about the movie like it's title, description and which genre it's associated with. If no suitable genres can be found, you'll have to create a new genre which fits to the movie. This can be done by clicking the link `Create New Genre`.
+
+The next step will ask you if the movie should be associated with a season. A season is only to be used when a movie is a splitted up in parts (for instance a triology). If you don't want to associate it with a season click the button `Skip This Part`. Else you have to find the correct season from the drop down box, or create a new season of no suitable season can be found.
+
+The next step will ask for the movie filename and the image file name for the thumbnail image used with this movie. Please notice that you only need to provide the filename of the movie and image, not the path. The application will automatically search in your local directory or on your external locations for a movie with that specific filename, and likewise with the image file. You'll also need to be aware of that image filename you have to provide the file extension manually, though on the movie file you should select the file extension from the dropdown box.
+
+In the next step you can provide subtitles to your movie, if there is any. You can add multiple subtitles to the movie, and this is done by clicking the button `Add Subtitle`. To add a subtitle, you have to provide the susbtitle filename, but not the file extension. Please notice that subtitles can only be loaded from the local directory (subtitles folder), and not from external locations. The Language text box provides the Label which is shown in the video player. You can for instance here write `Danish`, if the subtitle provide is in danish. The language code supports the video player with more information about the language of the subtitle. Language codes for danish is for instance `da`, but a complete list of language codes can be found [here](https://github.com/videojs/video.js/blob/master/docs/tracks.md#srclang)
+
+The last step is a resume of your movie details. Look them over and if they are ok, you can click the button `Save Movie`, to save the movie in the database.
