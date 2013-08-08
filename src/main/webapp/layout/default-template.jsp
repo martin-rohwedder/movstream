@@ -82,7 +82,7 @@
                                 </c:otherwise>
                             </c:choose>
                             
-                            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN') or hasRole('ROLE_TEST')">
                                 <li class="divider-vertical"></li>
                                 
                                 <c:choose>

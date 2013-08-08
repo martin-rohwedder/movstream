@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:if test="${not empty param.created}">
     <div class="alert alert-success">
@@ -39,7 +40,14 @@
                 <td style="width: 40px;"><c:out value="${movie.id}" /></td>
                 <td><c:out value="${movie.title}" /></td>
                 <td style="width: 80px;"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/movie/edit?editMovieId=<c:out value="${movie.id}" />" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> <spring:message code="page.adminmanagemovie.button.edit.label" /></a></td>
-                <td style="width: 80px;"><a href="#modal-delete-container" data-id="<c:out value="${movie.id}" />" class="btn btn-danger btn-mini trigger-delete-movie"><i class="icon-remove-circle icon-white"></i> <spring:message code="page.adminmanagemovie.button.delete.label" /></a></td>
+                <td style="width: 80px;">
+                    <sec:authorize access="hasRole('ROLE_TEST')">
+                    <a href="#modal-delete-container" data-id="<c:out value="${movie.id}" />" class="btn btn-danger btn-mini trigger-delete-movie disabled"><i class="icon-remove-circle icon-white"></i> <spring:message code="page.adminmanagemovie.button.delete.label" /></a>
+                    </sec:authorize>
+                    <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                    <a href="#modal-delete-container" data-id="<c:out value="${movie.id}" />" class="btn btn-danger btn-mini trigger-delete-movie"><i class="icon-remove-circle icon-white"></i> <spring:message code="page.adminmanagemovie.button.delete.label" /></a>
+                    </sec:authorize>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
@@ -75,7 +83,10 @@
     $('.trigger-delete-movie').click(function(e) {
         e.preventDefault();
         
-        var id = $(this).data('id');
-        $('#modal-delete-container').data('id', id).modal('show');
+        if (!$(this).hasClass('disabled'))
+        {
+            var id = $(this).data('id');
+            $('#modal-delete-container').data('id', id).modal('show');
+        }
     });
 </script>

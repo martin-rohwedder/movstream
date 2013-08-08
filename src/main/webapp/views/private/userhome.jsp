@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <h1 class="page-header"><spring:message code="page.userhome.pagetitle.label" /></h1>
 
@@ -86,7 +87,12 @@
 
     <div class="control-group">
         <div class="controls">
+            <sec:authorize access="hasRole('ROLE_TEST')">
+            <button type="submit" disabled="disabled" class="btn btn-info btn-large"><spring:message code="page.userhome.form.button.changepassword.label" /></button>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
             <button type="submit" class="btn btn-info btn-large"><spring:message code="page.userhome.form.button.changepassword.label" /></button>
+            </sec:authorize>
         </div>
     </div>
 </form>

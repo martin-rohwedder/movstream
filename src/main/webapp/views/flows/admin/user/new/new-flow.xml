@@ -4,7 +4,7 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')" />
+    <secured attributes="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_TEST')" />
     
     <var name="userRoleListModel" class="dk.movstream.web.service.model.UserRoleListModel" />
     

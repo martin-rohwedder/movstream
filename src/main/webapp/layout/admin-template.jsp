@@ -85,7 +85,7 @@
                                 </c:otherwise>
                             </c:choose>
                             
-                            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+                            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN') or hasRole('ROLE_TEST')">
                                 <li class="divider-vertical"></li>
                                 
                                 <c:choose>
@@ -154,7 +154,7 @@
                     </c:otherwise>
                 </c:choose>
                         
-                <sec:authorize access="hasRole('ROLE_SUPERADMIN')">
+                <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_TEST')">
                     <c:choose>
                         <c:when test="${adminPage eq 'adminmanagesettings'}">
                             <li class="active pull-right"><a href="<c:out value="${pageContext.servletContext.contextPath}" />/admin/settings"><spring:message code="template.subnavigation.menuitem.systemsettings.label" /></a></li>

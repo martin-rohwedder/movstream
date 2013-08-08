@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:if test="${not empty param.settingsSaved}">
     <div class="alert alert-success">
@@ -55,7 +56,12 @@
     
     <div class="control-group">
         <div class="controls">
-            <button class="btn btn-success" type="submit"><i class="icon-white icon-ok-circle"></i> <spring:message code="page.adminmanagesettings.form.button.savesettings.label" /></button>
+            <sec:authorize access="hasRole('ROLE_TEST')">
+                <button disabled="disabled" class="btn btn-success" type="submit"><i class="icon-white icon-ok-circle"></i> <spring:message code="page.adminmanagesettings.form.button.savesettings.label" /></button>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_SUPERADMIN')">
+                <button class="btn btn-success" type="submit"><i class="icon-white icon-ok-circle"></i> <spring:message code="page.adminmanagesettings.form.button.savesettings.label" /></button>
+            </sec:authorize>
         </div>
     </div>
 </form>

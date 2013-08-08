@@ -20,8 +20,8 @@
         <security:intercept-url pattern="/login" access="permitAll" />
         <security:intercept-url pattern="/resources/**" access="permitAll" />
         
-        <security:intercept-url pattern="/admin/settings" access="hasAnyRole('ROLE_SUPERADMIN')" />
-        <security:intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERADMIN')" />
+        <security:intercept-url pattern="/admin/settings" access="hasAnyRole('ROLE_SUPERADMIN', 'ROLE_TEST')" />
+        <security:intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERADMIN', 'ROLE_TEST')" />
         
         <security:intercept-url pattern="/**" access="authenticated" />
         

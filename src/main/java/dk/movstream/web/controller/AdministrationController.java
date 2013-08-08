@@ -72,6 +72,7 @@ public class AdministrationController {
         
         UserRoleListModel userRoleListModel = new UserRoleListModel();
         userRoleListModel.addUserRole("ROLE_SUPERADMIN", "Super Administrator");
+        userRoleListModel.addUserRole("ROLE_TEST", "Test");
         mav.addObject("userRoleListModel", userRoleListModel);
         
         return mav;

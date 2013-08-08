@@ -1,6 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <form:form modelAttribute="userForm" action="${flowExecutionUrl}">
 
@@ -38,7 +39,12 @@
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-danger pull-left" id="end" name="_eventId_end"><i class="icon-remove-circle icon-white"></i> <strong><spring:message code="overall.flow.button.cancel.label" /></strong></button>
-            <button type="submit" class="btn btn-info pull-right" id="saveuser" name="_eventId_saveuser"><strong><spring:message code="flow.newuser.page1.form.button.saveuser.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
+            <sec:authorize access="hasRole('ROLE_TEST')">
+            <button type="submit" disabled="disbaled" class="btn btn-success pull-right" id="saveuser" name="_eventId_saveuser"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="flow.newuser.page1.form.button.saveuser.label" /></strong></button>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
+            <button type="submit" class="btn btn-success pull-right" id="saveuser" name="_eventId_saveuser"><i class="icon-ok-circle icon-white"></i> <strong><spring:message code="flow.newuser.page1.form.button.saveuser.label" /></strong></button>
+            </sec:authorize>
         </div>
     </div>
 </form:form>
