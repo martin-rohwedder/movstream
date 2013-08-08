@@ -40,9 +40,16 @@ $(document).ready(function(){
     });
     
     $('#inputGenre').bind('mousedown', function(){
-        $(genreGroupId).removeClass('error');
-        $(genreGroupId).addClass('success');
-        hasErrors = false;
+        //Validate if a genre has been selected
+        if ($(this).val() === "----------") {
+            $(genreGroupId).removeClass('success');
+            $(genreGroupId).addClass('error');
+            hasErrors = true;
+        } else {
+            $(genreGroupId).removeClass('error');
+            $(genreGroupId).addClass('success');
+            hasErrors = false;
+        }
     });
     
     $('#inputDescription').bind('change blur keyup mouseup', function(){
@@ -166,6 +173,18 @@ $(document).ready(function(){
         } else {
             $(titleGroupId).removeClass('error');
             $(titleGroupId).addClass('success');
+            hasErrors = false;
+        }
+        
+        //Validate if a genre has been selected
+        if ($('#inputGenre').val() === "----------") {
+            $(genreGroupId).removeClass('success');
+            $(genreGroupId).addClass('error');
+            hasErrors = true;
+            errorCount++;
+        } else {
+            $(genreGroupId).removeClass('error');
+            $(genreGroupId).addClass('success');
             hasErrors = false;
         }
         

@@ -24,9 +24,16 @@
                 <div class="controls input-prepend">
                     <span class="add-on" title="<spring:message code="flow.newmovie.page1.form.genre.helptext" />"><i class="icon-question-sign"></i></span>
                         <form:select id="inputGenre" path="genre.title" class="span3">
-                            <c:forEach items="${genres}" var="genre">
+                            <c:choose>
+                                <c:when test="${genres.isEmpty()}">
+                                <form:option value="----------" />
+                                </c:when>
+                                <c:otherwise>
+                                <c:forEach items="${genres}" var="genre">
                                 <form:option value="${genre.title}" />
-                            </c:forEach>
+                                </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </form:select>
                     <button type="submit" class="btn btn-link btn-mini" id="newgenre" name="_eventId_newgenre">(<spring:message code="flow.newmovie.page1.form.genre.newgenre.button" />)</button>
                 </div>
