@@ -17,9 +17,16 @@
                 <div class="controls input-prepend">
                     <span class="add-on" title="<spring:message code="flow.editmovie.page2.form.season.helptext" />"><i class="icon-question-sign"></i></span>
                         <form:select id="inputSeason" path="season.title" class="span3">
-                            <c:forEach items="${seasons}" var="season">
+                            <c:choose>
+                                <c:when test="${seasons.isEmpty()}">
+                                <form:option value="----------" />
+                                </c:when>
+                                <c:otherwise>
+                                <c:forEach items="${seasons}" var="season">
                                 <form:option value="${season.title}" />
-                            </c:forEach>
+                                </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </form:select>
                     <button type="submit" class="btn btn-link btn-mini" id="newseason" name="_eventId_newseason">(<spring:message code="flow.editmovie.page2.form.season.newseason.button" />)</button>
                 </div>
@@ -34,7 +41,7 @@
             <button type="submit" class="btn btn-info pull-left" id="back" name="_eventId_back"><i class="icon-chevron-left icon-white"></i> <strong><spring:message code="overall.flow.button.back.label" /></strong></button>
             <div class="pull-right">
                 <button type="submit" class="btn btn-warning" id="skip" name="_eventId_skip"><strong><spring:message code="flow.editmovie.page2.form.button.skip.label" /></strong> <i class="icon-share-alt icon-white"></i></button>
-                <button type="submit" class="btn btn-info" id="next" name="_eventId_next"><strong><spring:message code="flow.editmovie.page2.form.button.addtoseason.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
+                <button type="submit" class="btn btn-info" id="addtoseason" name="_eventId_next"><strong><spring:message code="flow.editmovie.page2.form.button.addtoseason.label" /></strong> <i class="icon-chevron-right icon-white"></i></button>
             </div>
         </div>
     </div>

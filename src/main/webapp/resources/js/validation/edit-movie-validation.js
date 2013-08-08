@@ -79,9 +79,15 @@ $(document).ready(function(){
     
     //Page 2 validation
     $('#inputSeason').bind('mousedown', function(){
-        $(seasonGroupId).removeClass('error');
-        $(seasonGroupId).addClass('success');
-        hasErrors = false;
+        if ($(this).val() === "----------") {
+            $(seasonGroupId).removeClass('success');
+            $(seasonGroupId).addClass('error');
+            hasErrors = true;
+        } else {
+            $(seasonGroupId).removeClass('error');
+            $(seasonGroupId).addClass('success');
+            hasErrors = false;
+        }
     });
     
     //Page 2.5 validation
@@ -217,6 +223,25 @@ $(document).ready(function(){
         } else {
             $(genreTitleGroupId).removeClass('error');
             $(genreTitleGroupId).addClass('success');
+            hasErrors = false;
+        }
+        
+        if (hasErrors || errorCount > 0) {
+            e.preventDefault();
+            errorCount = 0;
+        }
+    });
+    
+    //Page 2 validation button add to season
+    $('#addtoseason').click(function(e) {
+        if ($('#inputSeason').val() === "----------") {
+            $(seasonGroupId).removeClass('success');
+            $(seasonGroupId).addClass('error');
+            hasErrors = true;
+            errorCount++;
+        } else {
+            $(seasonGroupId).removeClass('error');
+            $(seasonGroupId).addClass('success');
             hasErrors = false;
         }
         

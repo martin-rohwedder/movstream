@@ -15,7 +15,7 @@
             <dt><spring:message code="flow.editmovie.page5.details.title.label" /></dt>
             <dd><c:out value="${movieForm.title}" /></dd>
             <dt><spring:message code="flow.editmovie.page5.details.genre.label" /></dt>
-            <dd><c:out value="${movieForm.genre.title} (${movieForm.genre.id})" /></dd>
+            <dd><c:out value="${movieForm.genre.title}" /></dd>
             <dt><spring:message code="flow.editmovie.page5.details.description.label" /></dt>
             <dd><c:out value="${movieForm.description}" /></dd>
             <dt><spring:message code="flow.editmovie.page5.details.season.label" /></dt>
@@ -25,7 +25,7 @@
                         <spring:message code="flow.editmovie.page5.details.noseason.label" />
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${movieForm.season.title} (${movieForm.season.id})" /><br />
+                        <c:out value="${movieForm.season.title}" /><br />
                         <c:out value="${movieForm.season.description}" />
                     </c:otherwise>
                 </c:choose>
