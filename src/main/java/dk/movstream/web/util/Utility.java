@@ -20,7 +20,7 @@ public class Utility {
      * MINOR: Defines a minor change in the application, like some new usefull features or a larger software hotfix patch
      * PATCH: Defines a little change in the application, like a fast hotfix for implemented for a critical bug
      */
-    private static final String APPLICATION_VERSION_NUMBER = "1.0.0";
+    private static final String APPLICATION_VERSION_NUMBER = "1.0.1";
     
     /**
      * Get the Application Version Number for this application.
