@@ -15,7 +15,7 @@
             <c:otherwise>
                 <c:choose>
                     <c:when test="${externalMovie eq true}">
-                        <video class="video-js vjs-default-skin" width="850" height="450" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
+                        <video class="video-js vjs-default-skin" width="100%" height="450" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
                             <source src="<c:out value="${movie.movieFilename}" />" type='video/mp4' />
                             <c:forEach items="${movie.subtitles}" var="subtitle">
                                 <track kind="subtitles" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${subtitle.filename}" />" srclang="<c:out value="${subtitle.srcLang}" />" label="<c:out value="${subtitle.language}" />" />
@@ -23,7 +23,7 @@
                         </video>
                     </c:when>
                     <c:otherwise>
-                        <video class="video-js vjs-default-skin" width="850" height="450" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
+                        <video class="video-js vjs-default-skin" width="100%" height="450" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
                             <source src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.movieFilename}" />" type='video/mp4' />
                             <c:forEach items="${movie.subtitles}" var="subtitle">
                                 <track kind="subtitles" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${subtitle.filename}" />" srclang="<c:out value="${subtitle.srcLang}" />" label="<c:out value="${subtitle.language}" />" />
