@@ -48,7 +48,7 @@
                                 </c:choose>
                             </c:otherwise>
                         </c:choose>
-                        <p class="text-center"><c:out value="${movie.title}" /></p>
+                        <p class="movie-title-thumbnail text-center"><c:out value="${movie.title}" /></p>
                     </div>
                 </li>
             </c:when>
