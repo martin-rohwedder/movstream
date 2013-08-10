@@ -63,7 +63,7 @@
                                 <img class="movie-img" src="<c:out value="${pageContext.servletContext.contextPath}" /><c:out value="${movie.pictureFilename}" />" alt="" />
                             </c:otherwise>
                         </c:choose>
-                        <p class="text-center"><c:out value="${movie.season.title}" /></p>
+                        <p class="movie-title-thumbnail text-center"><c:out value="${movie.season.title}" /></p>
                     </div>
                 </li>
             </c:otherwise>
