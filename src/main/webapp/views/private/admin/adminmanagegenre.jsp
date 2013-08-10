@@ -20,6 +20,8 @@
 
 <br />
 
+<c:if test="${!genres.isEmpty()}">
+
 <table class="table table-striped table-condensed table-bordered table-sorter">
     <thead>
         <tr>
@@ -46,6 +48,8 @@
     </tbody>
 </table>
 
+</c:if>
+        
 <div id="modal-delete-container" class="modal hide fade">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
