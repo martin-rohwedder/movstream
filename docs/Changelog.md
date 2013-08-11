@@ -2,6 +2,10 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.1 ###
+
+* Subtitle text size modified, to a bigger size.
+
 ### Version 1.1.0 ###
 
 Hotfixes from version 1.0.1 has been included in this update.
