@@ -2,6 +2,10 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.3 ###
+
+* Hotfix created due to subtitles which overlapped each other especially in fullscreen mode.
+
 ### Version 1.1.2 ###
 
 * Video JS has been replaced by another video player, due to problems when pausing video.

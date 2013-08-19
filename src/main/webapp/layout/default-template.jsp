@@ -45,6 +45,16 @@
 		$.jme.options.embeddedPlayer = 'embedded-player.html';
 		$.jme.startJME();
 	</script>
+        
+        <style>
+        .cue-display span.cue-wrapper {
+            font-size: 100%;
+            line-height: 35px;
+        }
+        .cue-display span.cue {
+            background: none;
+        }
+</style>
     </head>
     <body>
         <tiles:useAttribute id="currentPage" name="page" classname="java.lang.String" />
