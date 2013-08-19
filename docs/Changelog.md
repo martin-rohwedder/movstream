@@ -2,6 +2,10 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.2 ###
+
+* Video JS has been replaced by another video player, due to problems when pausing video.
+
 ### Version 1.1.1 ###
 
 * Subtitle text size modified, to a bigger size.
