@@ -2,7 +2,7 @@
 
 > Movstream is a web application, which provides you with a personal and intuitive movie streaming application. With movstream you can insert information about your movie files on your server or an external server, and use the application to watch these movies easy through your favorite web browser.
 
-To begin use the application, please refer to the documentations [installation section](https://github.com/martin-rohwedder/movstream/blob/master/docs/User_Guide.md#1-installation). If you want to check out a demo before installation, you can log in to [movstream demo application](http://movstreamdemo.martinrohwedder.dk), with the username `test` and password `secret`.
+To begin use the application, please refer to the documentations [installation section](https://github.com/martin-rohwedder/movstream/blob/master/docs/User_Guide.md#1-installation). If you want to check out a demo before installation, you can log in to [movstream demo application](http://movstreamtest.martinrohwedder.dk), with the username `test` and password `secret`.
 
 ## Contributing ##
 
