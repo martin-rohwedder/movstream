@@ -14,17 +14,37 @@
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/default-theme.css" />
-        <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/video-js.min.css" />
+        <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/player-styles.css" />
         
         <!-- Javascript -->
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/video.min.js" type="text/javascript"></script>
+        <script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/extras/modernizr-custom.js" type="text/javascript"></script>
+<script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/polyfiller.js" type="text/javascript"></script>
         
-        <!-- Fallback on video player to use flash if needed -->
+<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.base.min.js"></script>
+<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.fullscreen.min.js"></script>
+<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.track.min.js"></script>
+<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.embed.min.js"></script>
+        
         <script>
-            _V_.options.flash.swf = "<c:out value="${pageContext.servletContext.contextPath}" />/resources/flash/video-js.swf";
-        </script>
+		(!$.jme && document.write('<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.full.min.js"><\/script>'));
+	</script>
+	
+	<!-- start polyfill (only if webshims is included) -->
+	<script>
+		if($.webshims && $.webshims.setOptions){
+			$.webshims.setOptions({
+				track: {override: true}
+			});
+			$.webshims.polyfill('mediaelement');
+		}
+		
+		//config embedded-player path (should be full path) in production
+		//$('.mediaplayer').jmeFn('getIframe');
+		$.jme.options.embeddedPlayer = 'embedded-player.html';
+		$.jme.startJME();
+	</script>
     </head>
     <body>
         <tiles:useAttribute id="currentPage" name="page" classname="java.lang.String" />
