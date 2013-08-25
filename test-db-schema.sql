@@ -111,6 +111,8 @@ insert into `movie_type` (`NAME`)
 values ('webm');
 insert into `movie_type` (`NAME`)
 values ('ogv');
+insert into `movie_type` (`NAME`)
+values ('mkv');
 
 insert into `movie` (`TITLE`, `DESCRIPTION`, `MOVIE_FILENAME`, `PICTURE_FILENAME`, `GENRE_ID`, `SEASON_ID`, `MOVIE_TYPE_ID`, `DATE_CREATED`)
 values ('24 Season 1 - Episode 1', 'Follow Jack Bauer', '24-1-1', '24-1-1-pic', 1, 1, 1, now());

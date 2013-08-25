@@ -103,6 +103,8 @@ Create a new MySQL database with an optional name, and here after you can execut
     values ('webm');
     insert into `movie_type` (`NAME`)
     values ('ogv');
+    insert into `movie_type` ('NAME')
+    values ('mkv');
 
 This script will create the tables needed for the database, and insert one row to the 'user' table, and the move file extensions, which the player supports. The user row contains the superadmin user, and it has the password 'default'. You will be told to change the password on the first login, so don't change it at this point.
 
