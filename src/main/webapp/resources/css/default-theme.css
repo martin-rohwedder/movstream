@@ -88,6 +88,10 @@ table.subtitle-table {
     word-wrap: normal;
 }
 
+.thumbnails > li {
+    height: 290px;
+}
+
 /* Responsive CSS fix */
 @media (max-width: 979px) {
     .container-content {
