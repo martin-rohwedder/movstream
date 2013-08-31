@@ -135,7 +135,11 @@
         </div>
         
         <div class="container container-content">
+            <a name="top"></a>
+            
             <tiles:insertAttribute name="content" />
+            
+            <a href="#top" class="btn btn-mini btn-inverse pull-right"><spring:message code="overall.gototop.label" /></a>
         </div>
         
         <div class="container">

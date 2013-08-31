@@ -107,7 +107,7 @@
             </div>
         </div>
         
-        <div class="container container-content">
+        <div class="container container-content">            
             <ul class="nav nav-tabs">
                 <c:choose>
                     <c:when test="${adminPage eq 'adminhome'}">
