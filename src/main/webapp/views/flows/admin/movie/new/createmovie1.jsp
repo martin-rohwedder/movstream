@@ -15,7 +15,7 @@
             <div id="new-movie-title-group" class="control-group">
                 <label class="control-label" for="inputTitle"><strong><spring:message code="flow.newmovie.page1.form.title.label" /></strong></label>
                 <div class="controls">
-                    <form:input class="span5" path="title" id="inputTitle" />
+                    <form:input class="span5" path="title" id="inputTitle" maxlength="64" />
                 </div>
             </div>
 

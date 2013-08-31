@@ -2,6 +2,10 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.4 ###
+
+* Hotfix created to ensure the a maximum length has been added to the movie title input field, so the title doesn't exceed the maximum characters
+
 ### Version 1.1.3 ###
 
 * Hotfix created due to subtitles which overlapped each other especially in fullscreen mode.
