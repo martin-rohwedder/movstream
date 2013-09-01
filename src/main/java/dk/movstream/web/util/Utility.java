@@ -47,6 +47,7 @@ public class Utility {
         for (Movie m : movies) {
             //if first letter in title equals the current letter iterated over, continue.
             if (m.getTitle().substring(0, 1).equalsIgnoreCase(letter)) {
+                //Check if the movie is part of a season or not
                 if (m.getSeason() == null) {
                     myMovies.get(index).add(m);
                 } else {
@@ -56,12 +57,15 @@ public class Utility {
                     }
                 }
             } else {
+                //If movie title matches a digit, add it to the order of 0 to 9.
                 if (m.getTitle().substring(0, 1).matches("^[0-9]$")) {
+                    //We need to set index to zero if its less than zero, and initialize myMovies with a fresh ArrayList.
                     if (index < 0) {
                         index = 0;
                         myMovies.add(new ArrayList<Movie>());
                     }
 
+                    //Check if the movie is part of a season or not
                     if (m.getSeason() == null) {
                         myMovies.get(index).add(m);
                     } else {
@@ -70,7 +74,9 @@ public class Utility {
                             seasonId = m.getSeason().getId();
                         }
                     }
+                //Else add the movie under it's respective first letter
                 } else {
+                    //Check if the movie is part of a season or not
                     if (m.getSeason() == null) {
                         index++;
                         myMovies.add(new ArrayList<Movie>());
