@@ -2,6 +2,22 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.9 ###
+
+* Movies can now be searched from the home view.
+
+### Version 1.1.8 ###
+
+* Genre link is now availible to be clicked when viewing the popover description of a movie.
+
+### Version 1.1.7 ###
+
+* Go to top og page button added
+
+### Version 1.1.6 ###
+
+* No image placehold picture has been added, instead of using http://placehold.it/200x160
+
 ### Version 1.1.5 ###
 
 * Hotfix created to fix the problem with thumbnails not aligning correct when those above have longer movie names
