@@ -15,6 +15,7 @@ public interface MovieDao {
     List<Movie> findAllMoviesOrderedByTitle();
     List<Movie> findAllMoviesBySeasonId(long seasonId);
     Movie findMovieById(long movieId);
+    Movie findMovieByMovieTitle(String movieTitle);
     List<Movie> findAllMoviesByGenreId(long genreId);
     List<MovieType> findAllMovieTypes();
     void insertMovie(Movie movie);

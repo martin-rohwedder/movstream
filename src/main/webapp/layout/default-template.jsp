@@ -11,6 +11,7 @@
         <title><tiles:insertAttribute name="title" ignore="true" /></title>
         
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/jquery-ui.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/default-theme.css" />
@@ -18,14 +19,18 @@
         
         <!-- Javascript -->
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/jquery-ui-1.10.3.min.js"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/extras/modernizr-custom.js" type="text/javascript"></script>
-<script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/polyfiller.js" type="text/javascript"></script>
         
-<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.base.min.js"></script>
-<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.fullscreen.min.js"></script>
-<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.track.min.js"></script>
-<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.embed.min.js"></script>
+        <script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/extras/modernizr-custom.js" type="text/javascript"></script>
+        <script src="http://afarkas.github.io/webshim/demos/js-webshim/minified/polyfiller.js" type="text/javascript"></script>
+
+        <!--<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/modernizr-custom.js" type="text/javascript"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/polyfiller.js" type="text/javascript"></script>-->
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.base.min.js"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.fullscreen.min.js"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.track.min.js"></script>
+        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.embed.min.js"></script>
         
         <script>
 		(!$.jme && document.write('<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.full.min.js"><\/script>'));

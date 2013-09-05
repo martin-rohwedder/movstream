@@ -36,6 +36,10 @@ public class MovieService {
         return movieDao.findMovieById(movieId);
     }
     
+    public Movie getMovieByMovieTitle(String movieTitle) {
+        return movieDao.findMovieByMovieTitle(movieTitle);
+    }
+    
     public List<Movie> getAllMoviesByGenreId(long genreId) {
         return movieDao.findAllMoviesByGenreId(genreId);
     }
@@ -55,6 +59,18 @@ public class MovieService {
     public void deleteMovie(long id) {
         Movie movie = this.movieDao.findMovieById(id);
         this.movieDao.removeMovie(movie);
+    }
+    
+    public List<String> getAllMovieTitles()
+    {
+        List<String> movieTitles = new ArrayList<String>();
+        List<Movie> movies = movieDao.findAllMoviesOrderedByTitle();
+        for (Movie movie : movies)
+        {
+            movieTitles.add(movie.getTitle());
+        }
+        
+        return movieTitles;
     }
     
     /**

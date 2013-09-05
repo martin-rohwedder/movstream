@@ -67,6 +67,12 @@ public class MovieDaoImpl implements MovieDao {
     public List<MovieType> findAllMovieTypes() {
         return this.sessionFactory.getCurrentSession().createQuery("from MovieType movietype").list();
     }
+    
+    @Override
+    @Transactional(readOnly=true)
+    public Movie findMovieByMovieTitle(String movieTitle) {
+        return (Movie) this.sessionFactory.getCurrentSession().createQuery("from Movie movie where movie.title = :TITLE").setParameter("TITLE", movieTitle).uniqueResult();
+    }
 
     @Override
     @Transactional

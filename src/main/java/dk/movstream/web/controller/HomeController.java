@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 /**
  *
@@ -73,6 +74,7 @@ public class HomeController {
             }
         }
         
+        mav.addObject("movieTitlesList", movieService.getAllMovieTitles());
         mav.addObject("movies", Utility.sortMoviesAlphabetically(movies));
         mav.addObject("navGenres", genreService.getAllMovieGenresWithMovies());
         
@@ -81,6 +83,17 @@ public class HomeController {
         }
         
         return mav;
+    }
+    
+    @RequestMapping(value = {"/","/home"}, method = RequestMethod.POST)
+    public String handleMovieSearch(@RequestParam("movieTitle") String movieTitle) {
+        Movie movie = movieService.getMovieByMovieTitle(movieTitle);
+        if (movie != null) {
+            return "redirect:/movie/show/" + movie.getId();
+        }
+        else {
+            return "redirect:/home?movieSearchFail=1";
+        }
     }
     
 }

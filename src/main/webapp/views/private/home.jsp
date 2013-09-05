@@ -2,7 +2,45 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<script> 
+          $(function() {
+    var myMovieTitles = [
+  <c:set var="movieSize" value="1" scope="page" />
+  <c:forEach items="${movieTitlesList}" var="movieTitle">
+      <c:choose>
+          <c:when test="${movieSize < movieTitlesList.size()}">
+              "${movieTitle}",
+          </c:when>
+          <c:otherwise>
+              "${movieTitle}"
+          </c:otherwise>
+      </c:choose>
+      <c:set var="movieSize" value="${movieSize + 1}" scope="page" />
+  </c:forEach>
+    ];
+    $( "#mySearch" ).autocomplete({
+      source: myMovieTitles
+    });
+  });
+    </script>
+    
+<div class="ui-widget pull-right" style="margin-top: 25px;">
+    <form method="post">
+        <div class="input-append">
+            <input type="text" id="mySearch" name="movieTitle" placeholder="<spring:message code="page.home.search.input.placeholder" />" />
+            <button type="submit" class="btn add-on btn-inverse"><i class="icon-white icon-search"></i></button>
+        </div>
+    </form>
+</div>
+    
 <h1 class="page-header"><spring:message code="page.home.pagetitle.label" /></h1>
+
+<c:if test="${param.movieSearchFail == 1}">
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong><spring:message code="overall.error.label" />!</strong> <spring:message code="page.home.errorbox.message.searchfailed.label" /></p>
+    </div>
+</c:if>
 
 <c:if test="${param.passwordChanged == 3}">
     <div class="alert alert-success">

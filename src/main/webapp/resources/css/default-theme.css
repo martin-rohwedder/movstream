@@ -92,6 +92,10 @@ table.subtitle-table {
     height: 290px;
 }
 
+.input-append button.add-on {
+    height: inherit !important;
+}
+
 /* Responsive CSS fix */
 @media (max-width: 979px) {
     .container-content {
