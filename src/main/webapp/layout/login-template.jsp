@@ -7,6 +7,8 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/img/favicon.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/img/favicon.ico" type="image/x-icon" />
         <title><tiles:insertAttribute name="title" ignore="true" /></title>
         
         <!-- CSS -->
