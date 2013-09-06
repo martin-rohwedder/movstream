@@ -2,6 +2,10 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.10 ###
+
+* Favicon added to the website.
+
 ### Version 1.1.9 ###
 
 * Movies can now be searched from the home view.
