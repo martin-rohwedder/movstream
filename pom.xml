@@ -4,7 +4,7 @@
 
     <groupId>dk.movstream</groupId>
     <artifactId>movstream</artifactId>
-    <version>1.0</version>
+    <version>1.1.11</version>
     <packaging>war</packaging>
 
     <name>movstream</name>

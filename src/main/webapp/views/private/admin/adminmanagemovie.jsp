@@ -72,8 +72,6 @@
     </div>
 </div>
 
-<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/sorttable.js"></script>
-
 <script type="text/javascript">
     $('#modal-delete-container').bind('show', function() {
         var id = $(this).data('id'),

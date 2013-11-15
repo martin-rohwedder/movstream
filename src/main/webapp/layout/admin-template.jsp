@@ -16,12 +16,10 @@
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/default-theme.css" />
-        <link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/video-js.min.css" />
         
         <!-- Javascript -->
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/tsort.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/bootstrap-progressbar.min.js" type="text/javascript"></script>
         <script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/highcharts.js" type="text/javascript"></script>
         
@@ -186,15 +184,6 @@
                 </div>
             </div>
         </div>
-        
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('table.table-sorter').tableSort({
-                    animation: "slide",
-                    speed: 1000
-                });
-            });
-        </script>
         
     </body>
 </html>

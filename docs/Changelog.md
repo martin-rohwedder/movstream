@@ -2,6 +2,11 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.11 ###
+
+* Issue of manage movies on admin page is loading page very slow, has been resolved. It seems that some, not used JS files, was trying to be loaded. It also seems that the table sort javascript event was slowing down the page load, when many movies was attached to the table which could be sorted.
+* Removed sort table functionality, due to effeciency of bad page load.
+
 ### Version 1.1.10 ###
 
 * Favicon added to the website.
