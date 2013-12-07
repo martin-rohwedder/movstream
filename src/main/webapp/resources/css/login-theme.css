@@ -2,7 +2,7 @@ body {
     background: #f5f5f5 url("../img/bg-gray.jpg") repeat top left;
 }
 .signin-to-center {
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     z-index: 100;

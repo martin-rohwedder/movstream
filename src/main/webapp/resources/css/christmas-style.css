@@ -1,0 +1,19 @@
+/* christmas style */
+html.christmas-bg, html.christmas-bg > body {
+    background: url('../img/bg-christmas.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.pixie-hat {
+    position: absolute;
+    top: -30px;
+    left: -65px;
+    z-index: 10;
+    width: 130px;
+    height: 140px;
+    background: url("../img/red-pixie-hats.png") -100px -140px;
+}
+

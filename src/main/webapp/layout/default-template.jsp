@@ -164,5 +164,15 @@
                 </div>
             </div>
         </div>
+                
+        <script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/utilities.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if (isDateBetweenRange(new Date(), new Date(new Date().getFullYear(), 11, 01), new Date(new Date().getFullYear(), 11, 31))) {
+                    $("head").append($('<link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/christmas-style.css" />'));
+                    $("html").addClass("christmas-bg");
+                }
+            });
+        </script>
     </body>
 </html>

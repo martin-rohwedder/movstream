@@ -28,5 +28,15 @@
         <div class="signin-to-center">
             <tiles:insertAttribute name="content" />
         </div>
+        
+        <script type="text/javascript" src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/utilities.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if (isDateBetweenRange(new Date(), new Date(new Date().getFullYear(), 11, 01), new Date(new Date().getFullYear(), 11, 31))) {
+                    $("head").append($('<link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/christmas-style.css" />'));
+                    $(".form-signin").prepend($('<div class="pixie-hat"></div>'));
+                }
+            });
+        </script>
     </body>
 </html>
