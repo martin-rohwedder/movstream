@@ -24,6 +24,11 @@
         <put-attribute name="adminpage" value="" />
     </definition>
     
+    <!-- No Content Template -->
+    <definition name="show-movie-template" template="/layout/show-movie-template.jsp">
+        <put-attribute name="content" value="" />
+    </definition>
+    
     <!-- Home View -->
     <definition name="home" extends="default-template">
         <put-attribute name="title" value="Movstream" />
@@ -39,10 +44,8 @@
     </definition>
     
     <!-- Show movie View -->
-    <definition name="showmovie" extends="default-template">
-        <put-attribute name="title" value="movstream" />
-        <put-attribute name="content" value="/views/private/showmovie.jsp" />
-        <put-attribute name="page" value="movie" />
+    <definition name="showmovie" extends="show-movie-template">
+        <put-attribute name="content" value="/views/private/showmoviefullscreen.jsp" />
     </definition>
     
     <!-- Show movie by genre view -->

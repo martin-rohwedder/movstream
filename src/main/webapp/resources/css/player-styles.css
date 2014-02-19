@@ -93,7 +93,7 @@ html.jme-embedded-player .mediaplayer video {
 
 .state-idle .jme-default-media-overlay,
 .state-ended .jme-default-media-overlay {
-	background: url("../img/play-overlay.png") no-repeat center;
+	background: url("../img/play.png") no-repeat center;
 }
 /* default end */
 
@@ -101,8 +101,8 @@ html.jme-embedded-player .mediaplayer video {
 video {
 	position: relative;
 	display: block;
-	width: 800px;
-	height: 450px;
+	width: 100%;
+	height: 100%;
 }
 
 .mediaplayer {
@@ -148,7 +148,8 @@ video {
 }
 
 .mediaplayer .media-controls {
-	max-width: 980px;
+	max-width: 60%;
+	height:100%;
 	margin: 0 auto;
 	padding: 0 10px;
 	-webkit-transition: all 400ms;
@@ -260,11 +261,19 @@ html > body .media-controls .media-bar {
 }
 
 .media-controls .ws-range {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
 	outline: none;
 }
 .media-controls .ws-range-rail {
+	position: absolute;
+	display: block;
+	top: 0;
 	left: 0;
 	right: 0;
+	height: 100%;
 }
 
 .media-controls .time-slider {
@@ -293,7 +302,7 @@ html > body .media-controls .media-bar {
 	background-position: 0 -1199px;
 }
 
-.media-controls .time-slider .ws-range-min {
+.media-controls .time-slider .ws-range-progress {
 	position: absolute;
 	height: 4px;
 	background:#369;
@@ -331,7 +340,7 @@ html > body .media-controls .media-bar {
 	min-width: 40px;
 }
 .media-controls .buffer-progress .buffer-progress-indicator {
-	background: #E3E3E3;
+	background: #128deb;
 	border-radius: 3px 3px 3px 3px;
 	cursor: pointer;
 }
@@ -359,7 +368,7 @@ html > body .media-controls .media-bar {
 	margin: 0 0 0 3px;
 }
 
-.media-controls  .volume-slider .ws-range-min {
+.media-controls  .volume-slider .ws-range-progress {
 	position: absolute;
 	background: url("../img/player-sprites.png") no-repeat scroll 1px -499px transparent;
 	height: 100%;
@@ -369,7 +378,7 @@ html > body .media-controls .media-bar {
 	top: 0;
 }
 
-.state-muted .media-controls .volume-slider .ws-range-min {
+.state-muted .media-controls .volume-slider .ws-range-progress {
 	visibility: hidden;
 }
 
