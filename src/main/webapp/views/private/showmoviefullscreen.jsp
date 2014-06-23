@@ -74,8 +74,8 @@ _delay = setInterval(delayCheck, 670)
 <body>
 
 	<link href="<c:out value="${pageContext.servletContext.contextPath}" />/resources/css/player-styles.css" rel="stylesheet" />
-	<script src="http://afarkas.github.io/webshim/js-webshim/minified/extras/modernizr-custom.js"></script>
-	<script src="http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js"></script>
+	<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/js-webshim/minified/extras/modernizr-custom.js"></script>
+	<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/js-webshim/minified/polyfiller.js"></script>
 	<script>
 		(!$.jme && document.write('<script src="<c:out value="${pageContext.servletContext.contextPath}" />/resources/js/player/jme.full.min.js"><\/script>'));
 	</script>

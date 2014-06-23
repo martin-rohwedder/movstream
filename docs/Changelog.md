@@ -2,6 +2,14 @@
 
 > The changelog has a description of all changes made in the different updates.
 
+### Version 1.1.14 ###
+
+* Webshim js files v.1.14.2 added locally, since the latest version (v. 1.14.3) was causing problems with subtitles
+
+### Version 1.1.13 ###
+
+* Full Screen player added
+
 ### Version 1.1.12 ###
 
 * Christmas design added. This design is only active during christmas time 1. of December to 31. of December.
